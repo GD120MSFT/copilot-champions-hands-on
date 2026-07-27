@@ -99,6 +99,43 @@
   .why{margin:.55rem 0 0;padding:.6rem .8rem;background:var(--cream);border-left:3px solid var(--line);border-radius:0 6px 6px 0;color:var(--muted);font-size:.82rem;}
   .why b{color:var(--ink);}
 
+  /* inline colour-coding inside prompts, matched to the four ingredients */
+  pre .g,pre .c,pre .s,pre .e{padding:.06em .18em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  pre .g{background:rgba(15,122,135,.14);box-shadow:inset 0 -2px 0 #0f7a87;}
+  pre .c{background:rgba(47,111,68,.14);box-shadow:inset 0 -2px 0 #2f6f44;}
+  pre .s{background:rgba(143,45,86,.14);box-shadow:inset 0 -2px 0 #8f2d56;}
+  pre .e{background:rgba(194,90,0,.14);box-shadow:inset 0 -2px 0 #c25a00;}
+  .gcse.live::after{content:"shown in the prompt below";margin-left:.2rem;color:var(--muted);font-size:.62rem;font-weight:700;letter-spacing:.02em;text-transform:none;}
+
+  /* option A / B blocks */
+  .opt-or{display:flex;align-items:center;gap:.9rem;margin:1.1rem 0;color:var(--muted);font-size:.72rem;font-weight:900;letter-spacing:.12em;}
+  .opt-or::before,.opt-or::after{content:"";flex:1;height:1px;background:var(--line);}
+  .opt-tag{padding:.3rem .6rem;color:#fff;background:var(--ink);border-radius:5px;font-size:.66rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .opt-tag.b{background:var(--blue);}
+
+  /* workflow pattern flows */
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem;margin:.45rem 0 0;}
+  .flow span{padding:.34rem .6rem;background:var(--green-soft);color:var(--green-deep);border-radius:5px;font-size:.78rem;font-weight:800;}
+  .flow i{color:var(--muted);font-style:normal;font-weight:900;}
+  .flow.blue span{background:var(--blue-soft);color:var(--blue);}
+  .pattern{padding:.85rem 1.05rem;background:#fff;border:1px solid var(--line);border-radius:9px;margin:.55rem 0;}
+  .pattern b{display:block;font-size:.92rem;color:var(--ink);}
+  .pattern em{display:block;margin-top:.15rem;color:var(--muted);font-size:.8rem;font-style:normal;}
+
+  /* two-column compare */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:1.2rem 0;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden;}
+  .vs>div{padding:1rem 1.15rem;background:#fff;}
+  .vs h5{margin:0 0 .3rem;font-size:.95rem;letter-spacing:0;}
+  .vs p{margin:.25rem 0 0;color:var(--muted);font-size:.85rem;}
+  @media(max-width:760px){.vs{grid-template-columns:1fr;}}
+
+  /* KPI -> process -> activity -> use case chain */
+  .chain{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin:1.1rem 0 .4rem;}
+  .chain div{padding:.7rem .5rem;text-align:center;color:#fff;border-radius:7px;font-size:.82rem;font-weight:800;line-height:1.25;}
+  .chain small{display:block;margin-top:.2rem;font-size:.68rem;font-weight:700;opacity:.85;}
+  .c1{background:#0f7a87;} .c2{background:#2f6f44;} .c3{background:#8f2d56;} .c4{background:#c25a00;}
+  @media(max-width:760px){.chain{grid-template-columns:1fr 1fr;}}
+
   .steps{display:grid;gap:.6rem;margin:1.2rem 0;padding:0;list-style:none;counter-reset:steps;}
   .steps li{position:relative;padding-left:2.95rem;min-height:2.2rem;}
   .steps li::before{counter-increment:steps;content:counter(steps);position:absolute;left:0;top:0;display:grid;place-items:center;width:2.2rem;height:2.2rem;color:#fff;background:var(--green);font-weight:900;border-radius:6px;}
@@ -167,7 +204,7 @@
       <button class="mode-btn" data-mode="agent" role="tab">Agent Building</button>
     </div>
     <div class="rail-header">
-      <p class="eyebrow">E7 Accelerate · Copilot Premium</p>
+      <p class="eyebrow">Copilot Premium deployment</p>
       <h1 id="rail-title">Advanced Capabilities, live</h1>
     </div>
     <nav class="nav" id="nav"></nav>
@@ -178,7 +215,7 @@
     <section class="panel is-active" data-mode="adv" data-idx="0">
       <div class="kicker">Welcome</div>
       <h2>The power moves you may not be using yet</h2>
-      <p class="lede">Your live-along guide for the Advanced Capabilities block. We&rsquo;ll run four capabilities as <strong>one connected workflow</strong>, find <strong>your own use case</strong>, and at two points you&rsquo;ll try it on your own laptop. Copy every prompt straight from this page.</p>
+      <p class="lede">Your live-along guide for the Advanced Capabilities section. We&rsquo;ll run four capabilities as <strong>one connected workflow</strong>, find <strong>your own use case</strong>, and at two points you&rsquo;ll try it on your own laptop. Copy every prompt straight from this page.</p>
       <div class="grid4">
         <article><strong>Personalize</strong><p>Set Copilot up around your role so it persists.</p></article>
         <article><strong>Chain</strong><p>Research &rarr; draft &rarr; deck, without leaving the flow.</p></article>
@@ -202,10 +239,10 @@
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4>Read the pattern in action</h4><button class="copy-button">Copy</button></div>
-      <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre>Identify an active initiative I own and prepare a short executive summary for a leadership check-in. The audience is a cross-functional leadership team, the discussion is 15 minutes, and the goal is to align on one decision. Review email threads and meetings from the past two weeks where I am a participant, and cite the sources behind each point. Start with why you chose this initiative, then give three key points, the decision needed, two risks, and a recommended next step.</pre>
+      <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre><span class="g">Identify an active initiative I own and prepare a short executive summary for a leadership check-in.</span> <span class="c">The audience is a cross-functional leadership team, the discussion is 15 minutes, and the goal is to align on one decision.</span> <span class="s">Review email threads and meetings from the past two weeks where I am a participant, and cite the sources behind each point.</span> <span class="e">Start with why you chose this initiative, then give three key points, the decision needed, two risks, and a recommended next step.</span></pre>
       </div>
-      <p class="why"><b>Read it back against the four colours above.</b> Every prompt in this walkthrough carries the same strip, so you can see the pattern rather than memorise it &mdash; that&rsquo;s what makes it teachable.</p>
+      <p class="why"><b>The colours above are the same four ingredients, highlighted in the prompt itself.</b> Every prompt in this walkthrough carries the strip, and the key ones are colour-coded like this &mdash; so you can see the pattern rather than memorise it. That&rsquo;s what makes it teachable.</p>
       <ul class="steps">
         <li><strong>State the goal.</strong><small>What do you want Copilot to accomplish?</small></li>
         <li><strong>Add context.</strong><small>Audience, situation, people, time period.</small></li>
@@ -220,34 +257,40 @@
       <h2>Personalization &amp; memory</h2>
       <p class="lede">Tell Copilot who you are once, and it persists across every chat &mdash; the same AI-first exercise your leaders already ran. Under five minutes.</p>
       <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~5 min</span><span class="pill">Copilot Chat</span></div>
-      <div class="scenario"><strong>Let Copilot interview you.</strong><p>Instead of writing settings from scratch, have Copilot ask about your role, then draft your personalization for you. Start a new chat first.</p></div>
+      <div class="scenario"><strong>Two ways in &mdash; pick one.</strong><p>Either answer five quick questions, or let Copilot read your actual work and tell you what it already knows. Both end in the same place: settings that persist across every chat. Start a new chat first.</p></div>
+      <div class="opt-or">CHOOSE ONE STARTING POINT</div>
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Let Copilot interview you</h4><button class="copy-button">Copy</button></div>
+        <div class="prompt-header"><h4><span class="opt-tag">Option A</span>&nbsp; Have it ask you five questions</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre><span class="g">Help me personalize Copilot for my role at Manulife.</span> <span class="c">I want you to respond the same way in every future chat without me re-explaining who I am.</span> <span class="s">Ask me five questions, one at a time: my role and business area, my top priorities this quarter, the people and teams I work with most, the kinds of documents I create, and the tone I prefer. Wait for my answer before asking the next one.</span> <span class="e">Then draft my personalization instructions in the first person, under 200 words, ready to paste straight into Copilot&rsquo;s settings.</span></pre>
+        <p class="why"><b>Best when</b> you want full control over what Copilot knows, or your recent work isn&rsquo;t representative of your actual role.</p>
+      </div>
+      <div class="opt-or">OR</div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="opt-tag b">Option B</span>&nbsp; Let it read your work first</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre><span class="g">Build my Copilot personalization from what you can already see about my work.</span> <span class="c">I want it grounded in evidence rather than guesses, and I do not want a long interview.</span> <span class="s">Use my work profile, anything you already remember about me, and my email, meetings, chats and files from the last 30 days.</span> <span class="e">First give me up to ten short statements about my role, priorities, main collaborators and the documents I produce &mdash; and label each one [Profile], [Recent work] or [Assumption]. Then ask me only the two questions you still genuinely need. Then draft my personalization instructions in the first person, under 200 words, ready to paste into Copilot&rsquo;s settings.</span></pre>
+        <p class="why"><b>This is the Copilot Premium advantage.</b> It reads your real working context, tells you what it inferred versus what it knows, and only asks what it cannot work out &mdash; two questions instead of twenty.</p>
+      </div>
+
+      <div class="opt-or">THEN, WHICHEVER YOU CHOSE</div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Sharpen it before you save</h4><button class="copy-button">Copy</button></div>
         <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre>Help me personalize Copilot for my role at Manulife. Ask me five questions, one at a time: my role and business area, my top priorities this quarter, the people and teams I work with most, the kinds of documents I create, and the tone I prefer. Wait for my answer before asking the next one. Then draft a set of personalization instructions, written in the first person and under 200 words, that I can paste straight into Copilot&rsquo;s settings.</pre>
+        <pre>Tighten those personalization instructions so they actually change how you answer me. Keep my role, priorities and key collaborators. Add how I want you to handle uncertainty, that I want sources named whenever you use my files or meetings, and my default format &mdash; short, structured, decision first. Remove anything generic that would apply to any employee. Return the final version only, ready to paste.</pre>
       </div>
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Let it read your actual work first</h4><button class="copy-button">Copy</button></div>
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Prove it works</h4><button class="copy-button">Copy</button></div>
         <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre>Before I answer anything, look across my email, meetings, chats and files from the last 30 days and tell me what you can already infer about my role: the business area I sit in, the three topics I spend the most time on, the people I work with most often, and the types of documents I produce. Show it as a short list, mark anything you are inferring rather than certain about, and then ask me what to correct.</pre>
-        <p class="why"><b>Why this is the champion move.</b> Copilot already has your work context &mdash; most people never ask it to use that. Starting here makes the personalization accurate in one pass instead of five questions of guesswork.</p>
-      </div>
-      <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Sharpen it before you save</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre>Tighten those personalization instructions so they change how you actually answer me. Keep my role, priorities and key collaborators. Add how I want you to handle uncertainty, that I want sources named whenever you use my files or meetings, and my preferred default format &mdash; short, structured, decision-first. Remove anything generic that would apply to any employee. Return the final version only, ready to paste.</pre>
-      </div>
-      <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 4 · Prove it&rsquo;s live</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre>Tell me what you now remember about me and how that will change your answers. Then, using those settings, draft a three-sentence update on what I should focus on this week based on my recent meetings and email. Point out which parts of your answer came from my personalization so I can see the difference.</pre>
+        <pre>Now that my personalization is saved, tell me in one line what you understand about me. Then draft a three-sentence update on what I should focus on this week, based on my recent meetings and email. Point out which parts of your answer came from my personalization &mdash; so I can see the difference it made.</pre>
+        <p class="why"><b>If you can&rsquo;t see the difference, it isn&rsquo;t specific enough yet.</b> Go back and add what makes your role different from anyone else&rsquo;s.</p>
       </div>
       <ul class="steps">
         <li><strong>Start a new chat.</strong><small>So the setup isn&rsquo;t coloured by earlier context.</small></li>
-        <li><strong>Ground it in your real work.</strong><small>Run prompt 2 first &mdash; let Copilot infer your role from your own email, meetings and files, then correct it.</small></li>
-        <li><strong>Interview, then sharpen.</strong><small>Prompts 1 and 3 &mdash; answer honestly, then cut anything that would apply to anyone.</small></li>
+        <li><strong>Pick Option A or Option B.</strong><small>Not both &mdash; they&rsquo;re two routes to the same place. B is the one worth showing your teams.</small></li>
+        <li><strong>Sharpen it.</strong><small>Cut anything that would apply to any other employee.</small></li>
         <li><strong>Save it.</strong><small>Paste the final version into Copilot&rsquo;s personalization / custom-instructions settings.</small></li>
-        <li><strong>Prove it works.</strong><small>Prompt 4 &mdash; you should be able to see the difference. If you can&rsquo;t, it isn&rsquo;t specific enough yet.</small></li>
+        <li><strong>Prove it works.</strong><small>Run the last prompt &mdash; you should be able to see the change.</small></li>
       </ul>
       <div class="note amber"><span class="lbl">Leave with it running</span><strong>Don&rsquo;t stop at &ldquo;drafted.&rdquo;</strong> The goal is that your personalization is saved and shaping answers before you leave the room &mdash; that&rsquo;s what you&rsquo;ll be teaching your teams to do.</div>
       <div class="note"><span class="lbl">Why this matters for champions</span><strong>You can only teach what you understand.</strong> Champions who get the &ldquo;behind the scenes&rdquo; of custom instructions and memory can set it up for a whole team.</div>
@@ -261,8 +304,8 @@
       <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~8 min</span><span class="pill">Chat &rarr; Word &rarr; PowerPoint</span></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Catch up &mdash; find the signal</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre>I am catching up after a busy week and need to walk into my leadership check-in knowing what actually moved. Review my work from the past five business days across email, chats, meetings and files. Identify the five developments most likely to need my attention. For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</pre>
+        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre><span class="c">I am catching up after a busy week and need to walk into my leadership check-in knowing what actually moved.</span> <span class="s">Review my work from the past five business days across email, chats, meetings and files.</span> <span class="g">Identify the five developments most likely to need my attention.</span> <span class="e">For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</span></pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Draft the leader update</h4><button class="copy-button">Copy</button></div>
@@ -276,25 +319,48 @@
       </div>
       <p class="why"><b>Notice what makes this a chain.</b> Prompt 2 uses prompt 1&rsquo;s output as its source, and prompt 3 uses prompt 2&rsquo;s. You never re-explain the context &mdash; that&rsquo;s the whole technique.</p>
       <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify before you rely on it.</strong> Open at least one cited source. Chaining is powerful precisely because each step trusts the last &mdash; so an error in step one travels all the way to your slides.</div>
+
+      <h3 style="margin:1.9rem 0 .3rem">The same shape, different starting points</h3>
+      <p class="lede" style="margin:.4rem 0 1rem">The chain you just ran starts from your week. Most repeated work follows the same three-part shape &mdash; <strong>gather &rarr; shape &rarr; deliver</strong> &mdash; it just starts somewhere else. Find yours.</p>
+      <div class="pattern"><b>Start from your week</b><em>The one you just ran &mdash; for any recurring check-in or status.</em>
+        <div class="flow"><span>Catch up on 5 days</span><i>&rarr;</i><span>Leader update</span><i>&rarr;</i><span>Slides</span></div></div>
+      <div class="pattern"><b>Start from a document</b><em>A report, submission or policy lands and something has to come out of it.</em>
+        <div class="flow"><span>Summarize the file</span><i>&rarr;</i><span>Pull the implications</span><i>&rarr;</i><span>Draft the response</span></div></div>
+      <div class="pattern"><b>Start from a meeting</b><em>Decisions get made and the follow-through is the work.</em>
+        <div class="flow"><span>Recap &amp; decisions</span><i>&rarr;</i><span>Actions by owner</span><i>&rarr;</i><span>Follow-up note</span></div></div>
+      <div class="pattern"><b>Start from data</b><em>The numbers arrive and someone has to explain them.</em>
+        <div class="flow"><span>Analyse the export</span><i>&rarr;</i><span>Explain what moved</span><i>&rarr;</i><span>Commentary for review</span></div></div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Find your own chain</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Look at my work over the last 30 days and find the multi-step outputs I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three. For each, show it as a three-step chain, say what starts it off, who receives the final output, and write the first prompt I would run to begin that chain. Then tell me which of the three is the best one to hand to Copilot first, and why.</pre>
+        <p class="why"><b>Ask yourself as you read it back:</b> which of these do I do most often &mdash; and what would it be worth if the first draft were already written?</p>
+      </div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Cross-app orchestration</button></div>
     </section>
 
     <section class="panel" data-mode="adv" data-idx="4">
       <div class="kicker">Capability 3 · watch on screen</div>
       <h2>Cross-app orchestration</h2>
-      <p class="lede">One ask that moves across the Microsoft 365 apps &mdash; ground on a file, draft in Word, summarize into PowerPoint, pressure-test in Excel, hand off in Outlook. We drive this from the front to stay on time.</p>
-      <div class="meta"><span class="pill blue">Presenter demo</span><span class="pill">Word · PowerPoint · Excel · Outlook · Teams</span></div>
+      <p class="lede">Chaining goes <strong>deeper</strong> on one thing. Orchestration goes <strong>wider</strong> &mdash; one grounded source, several different outputs, each for a different audience and surface. We drive this from the front to stay on time.</p>
+      <div class="vs">
+        <div><h5 style="color:var(--green-deep)">Chaining &mdash; a line</h5><p>Each step transforms the one before it. Your week becomes an update, the update becomes slides. Remove a step and the next one is impossible.</p>
+          <div class="flow"><span>A</span><i>&rarr;</i><span>B</span><i>&rarr;</i><span>C</span></div></div>
+        <div><h5 style="color:var(--blue)">Orchestration &mdash; a hub</h5><p>One source of truth feeds several outputs that don&rsquo;t depend on each other. The brief, the deck and the email are siblings, not a sequence &mdash; each shaped for who receives it.</p>
+          <div class="flow blue"><span>Source</span><i>&rarr;</i><span>Word</span><span>PowerPoint</span><span>Outlook</span></div></div>
+      </div>
+      <div class="meta"><span class="pill blue">Presenter demo</span><span class="pill">Word · PowerPoint · Outlook</span></div>
       <div class="grid3">
-        <article><strong>Ground</strong><p>Point Copilot at a source file &mdash; a report or dataset for a business unit.</p></article>
-        <article><strong>Create</strong><p>Draft a brief in Word, then a matching deck in PowerPoint from the same source.</p></article>
-        <article><strong>Pressure-test</strong><p>Find the outliers in Excel, then send it on in Outlook.</p></article>
+        <article><strong>Ground once</strong><p>Point Copilot at a single source file &mdash; a report or dataset for a business unit.</p></article>
+        <article><strong>Branch out</strong><p>Three outputs from that one source: the detail, the discussion, the hand-off.</p></article>
+        <article><strong>Stay consistent</strong><p>Same facts in all three &mdash; only the length, format and framing change.</p></article>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="demo-tag">Presenter demo</span>&nbsp; The orchestration ask</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre>Using the attached report, draft a one-page brief in Word covering the situation, the three most important findings with evidence, and a recommended next step. Keep it under 400 words and cite the figure behind each finding. Then create a five-slide PowerPoint that mirrors it, no more than four bullets a slide. Finally, draft an Outlook email to my team under 150 words with the decision first, owners and dates second, and open questions last &mdash; plain language, ready for me to review before sending.</pre>
+        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre><span class="s">Using the attached report as the single source for all three outputs,</span> <span class="g">produce a written brief, a short deck and an email &mdash; each aimed at a different audience.</span> <span class="c">The brief is for someone who needs the detail, the deck is for a leadership discussion, and the email is for my team who need to know what to do next.</span> <span class="e">The Word brief: under 400 words, covering the situation, the three most important findings with the figure behind each, and a recommended next step. The PowerPoint: five slides, no more than four bullets each. The Outlook email: under 150 words, decision first, owners and dates second, open questions last, plain language. Keep the facts identical across all three &mdash; only the framing changes.</span></pre>
       </div>
-      <div class="note"><span class="lbl">Champion takeaway</span><strong>Show it once, cleanly, then reuse it.</strong> The point isn&rsquo;t the individual apps &mdash; it&rsquo;s that a single intent carries across all of them.</div>
+      <div class="note"><span class="lbl">Champion takeaway</span><strong>The grounding is the point, not the app-hopping.</strong> Because all three outputs come from one source, the numbers can&rsquo;t drift between the brief, the deck and the email &mdash; which is exactly what goes wrong when three people build them separately.</div>
       <div class="guide"><button class="guide-button secondary" data-go="3">&larr; Back</button><button class="guide-button" data-go="5">Next &rarr; Find your use case</button></div>
     </section>
 
@@ -302,6 +368,13 @@
       <div class="kicker">Make it yours · you try this</div>
       <h2>From a KPI you own to a Copilot use case</h2>
       <p class="lede">A <strong>Copilot use case</strong> means applying Copilot Premium to a real business scenario for value &mdash; not building a data-science model. Pick your business group, then use the master prompt to find one that&rsquo;s yours.</p>
+      <div class="chain">
+        <div class="c1">KPI<small>the outcome you own</small></div>
+        <div class="c2">Process<small>what delivers it</small></div>
+        <div class="c3">Activity<small>the step with friction</small></div>
+        <div class="c4">Copilot use case<small>what you apply</small></div>
+      </div>
+      <p class="why" style="margin-bottom:1.2rem"><b>Work right to left and you get a tool looking for a job.</b> Work left to right and every use case has a number attached to it. We go deeper on this after the break &mdash; for now, just find one that&rsquo;s yours.</p>
       <div class="bu-bar">
         <label for="bu-select-adv">Your business group:</label>
         <select id="bu-select-adv"></select>
@@ -314,7 +387,8 @@
         <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
         <pre id="master-prompt">Pick your business group above to tailor this prompt.</pre>
       </div>
-      <div class="note"><span class="lbl">Bring it back</span><strong>Found something?</strong> Drop it in the champion Teams channel as a Copilot use case so we prioritize and build the highest-impact ones together.</div>
+      <div class="note blue"><span class="lbl">Carry this into the build</span><strong>Hold on to what you find here.</strong> The use case you land on is what you&rsquo;ll shape into an agent in the next section &mdash; so pick one you actually want to stop doing by hand.</div>
+      <div class="note"><span class="lbl">Bring it back</span><strong>Then drop it in the champion Teams channel</strong> as a Copilot use case, so it reaches the AI Leads and Portfolio Leads who prioritise the backlog &mdash; and we build the highest-impact ones together.</div>
       <div class="guide"><button class="guide-button secondary" data-go="4">&larr; Back</button><button class="guide-button" data-go="6">Next &rarr; The agentic landscape</button></div>
     </section>
 
@@ -395,6 +469,15 @@
         <article><strong>Productivity</strong><p>Automates a personal, repeatable weekly chore &mdash; the catch-up, the status roll-up.</p></article>
       </div>
       <div class="note amber"><span class="lbl">Decide first</span><strong>Match the pattern to the friction.</strong> A &ldquo;where do I find X&rdquo; problem is a knowledge agent; a &ldquo;do this the same way every time&rdquo; problem is a specialty agent.</div>
+
+      <h3 style="margin:1.9rem 0 .3rem">What this looks like across Manulife</h3>
+      <p class="lede" style="margin:.4rem 0 1rem">Real examples from the use-case work behind this programme &mdash; the same three patterns, in different business groups.</p>
+      <div class="grid3">
+        <article><strong>Knowledge</strong><p><b>Policy &amp; guideline assistants.</b> Investment guidelines, audit methodology, HR policy, conservation playbooks &mdash; grounded on the approved source so the answer is consistent no matter who asks.</p></article>
+        <article><strong>Specialty</strong><p><b>Drafting against a standard.</b> Variance commentary in the reporting template, risk write-ups in the standard format, campaign briefs against the brand guide &mdash; the shape is fixed, only the content changes.</p></article>
+        <article><strong>Productivity</strong><p><b>The weekly roll-up.</b> Ops status packs, review-pack assembly, meeting follow-through &mdash; the chore you do every week that has a predictable trigger and a predictable output.</p></article>
+      </div>
+      <p class="why"><b>Notice the pattern behind the pattern.</b> Knowledge agents remove &ldquo;where do I find it&rdquo;. Specialty agents remove &ldquo;how do I write it up&rdquo;. Productivity agents remove &ldquo;I have to do this again&rdquo;. Which of those three is your friction?</p>
       <div class="guide"><button class="guide-button secondary" data-go="1">&larr; Back</button><button class="guide-button" data-go="3">Next &rarr; Build it in your pod</button></div>
     </section>
 
