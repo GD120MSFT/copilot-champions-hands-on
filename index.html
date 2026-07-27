@@ -90,6 +90,14 @@
 
   .try-tag,.demo-tag{padding:.32rem .58rem;font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;}
   .try-tag{color:#fff;background:var(--green);} .demo-tag{color:#fff;background:var(--blue);}
+  .prompt-card.blue .try-tag{background:var(--blue);}
+
+  .gcse{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;padding:.5rem 1rem;background:#FAFBFA;border-bottom:1px solid var(--line);}
+  .gcse::before{content:"Pattern";margin-right:.15rem;color:var(--muted);font-size:.62rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;}
+  .gcse span{padding:.2rem .46rem;color:#fff;font-size:.62rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;}
+  .gcse .g{background:#0f7a87;} .gcse .c{background:#2f6f44;} .gcse .s{background:#8f2d56;} .gcse .e{background:#c25a00;}
+  .why{margin:.55rem 0 0;padding:.6rem .8rem;background:var(--cream);border-left:3px solid var(--line);border-radius:0 6px 6px 0;color:var(--muted);font-size:.82rem;}
+  .why b{color:var(--ink);}
 
   .steps{display:grid;gap:.6rem;margin:1.2rem 0;padding:0;list-style:none;counter-reset:steps;}
   .steps li{position:relative;padding-left:2.95rem;min-height:2.2rem;}
@@ -194,8 +202,10 @@
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4>Read the pattern in action</h4><button class="copy-button">Copy</button></div>
+      <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
         <pre>Identify an active initiative I own and prepare a short executive summary for a leadership check-in. The audience is a cross-functional leadership team, the discussion is 15 minutes, and the goal is to align on one decision. Review email threads and meetings from the past two weeks where I am a participant, and cite the sources behind each point. Start with why you chose this initiative, then give three key points, the decision needed, two risks, and a recommended next step.</pre>
       </div>
+      <p class="why"><b>Read it back against the four colours above.</b> Every prompt in this walkthrough carries the same strip, so you can see the pattern rather than memorise it &mdash; that&rsquo;s what makes it teachable.</p>
       <ul class="steps">
         <li><strong>State the goal.</strong><small>What do you want Copilot to accomplish?</small></li>
         <li><strong>Add context.</strong><small>Audience, situation, people, time period.</small></li>
@@ -212,15 +222,34 @@
       <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~5 min</span><span class="pill">Copilot Chat</span></div>
       <div class="scenario"><strong>Let Copilot interview you.</strong><p>Instead of writing settings from scratch, have Copilot ask about your role, then draft your personalization for you. Start a new chat first.</p></div>
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Set up your personalization</h4><button class="copy-button">Copy</button></div>
-        <pre>Help me personalize Copilot for my role at Manulife. Ask me five questions, one at a time: my role and business area, my top priorities this quarter, the people and teams I work with most, the kinds of documents I create, and the tone I prefer. Wait for each answer. Then draft a set of personalization instructions I can paste into Copilot so it responds this way from now on.</pre>
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Let Copilot interview you</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Help me personalize Copilot for my role at Manulife. Ask me five questions, one at a time: my role and business area, my top priorities this quarter, the people and teams I work with most, the kinds of documents I create, and the tone I prefer. Wait for my answer before asking the next one. Then draft a set of personalization instructions, written in the first person and under 200 words, that I can paste straight into Copilot&rsquo;s settings.</pre>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Let it read your actual work first</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Before I answer anything, look across my email, meetings, chats and files from the last 30 days and tell me what you can already infer about my role: the business area I sit in, the three topics I spend the most time on, the people I work with most often, and the types of documents I produce. Show it as a short list, mark anything you are inferring rather than certain about, and then ask me what to correct.</pre>
+        <p class="why"><b>Why this is the champion move.</b> Copilot already has your work context &mdash; most people never ask it to use that. Starting here makes the personalization accurate in one pass instead of five questions of guesswork.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Sharpen it before you save</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Tighten those personalization instructions so they change how you actually answer me. Keep my role, priorities and key collaborators. Add how I want you to handle uncertainty, that I want sources named whenever you use my files or meetings, and my preferred default format &mdash; short, structured, decision-first. Remove anything generic that would apply to any employee. Return the final version only, ready to paste.</pre>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 4 · Prove it&rsquo;s live</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Tell me what you now remember about me and how that will change your answers. Then, using those settings, draft a three-sentence update on what I should focus on this week based on my recent meetings and email. Point out which parts of your answer came from my personalization so I can see the difference.</pre>
       </div>
       <ul class="steps">
         <li><strong>Start a new chat.</strong><small>So the setup isn&rsquo;t coloured by earlier context.</small></li>
-        <li><strong>Answer the five questions.</strong><small>Copilot asks one at a time &mdash; keep it real to your week.</small></li>
-        <li><strong>Save the draft.</strong><small>Paste it into Copilot&rsquo;s personalization / custom-instructions settings.</small></li>
-        <li><strong>Notice memory.</strong><small>Ask Copilot what it now remembers about you &mdash; and how to change it.</small></li>
+        <li><strong>Ground it in your real work.</strong><small>Run prompt 2 first &mdash; let Copilot infer your role from your own email, meetings and files, then correct it.</small></li>
+        <li><strong>Interview, then sharpen.</strong><small>Prompts 1 and 3 &mdash; answer honestly, then cut anything that would apply to anyone.</small></li>
+        <li><strong>Save it.</strong><small>Paste the final version into Copilot&rsquo;s personalization / custom-instructions settings.</small></li>
+        <li><strong>Prove it works.</strong><small>Prompt 4 &mdash; you should be able to see the difference. If you can&rsquo;t, it isn&rsquo;t specific enough yet.</small></li>
       </ul>
+      <div class="note amber"><span class="lbl">Leave with it running</span><strong>Don&rsquo;t stop at &ldquo;drafted.&rdquo;</strong> The goal is that your personalization is saved and shaping answers before you leave the room &mdash; that&rsquo;s what you&rsquo;ll be teaching your teams to do.</div>
       <div class="note"><span class="lbl">Why this matters for champions</span><strong>You can only teach what you understand.</strong> Champions who get the &ldquo;behind the scenes&rdquo; of custom instructions and memory can set it up for a whole team.</div>
       <div class="guide"><button class="guide-button secondary" data-go="1">&larr; Back</button><button class="guide-button" data-go="3">Next &rarr; Advanced prompt chaining</button></div>
     </section>
@@ -232,17 +261,21 @@
       <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~8 min</span><span class="pill">Chat &rarr; Word &rarr; PowerPoint</span></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Catch up &mdash; find the signal</h4><button class="copy-button">Copy</button></div>
-        <pre>Review my work from the past five business days across email, chats, meetings and files. Identify the five developments most likely to need my attention. For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Separate confirmed facts from things you are inferring.</pre>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>I am catching up after a busy week and need to walk into my leadership check-in knowing what actually moved. Review my work from the past five business days across email, chats, meetings and files. Identify the five developments most likely to need my attention. For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Draft the leader update</h4><button class="copy-button">Copy</button></div>
-        <pre>From the top three of those, draft a concise update to my leader. Lead with what needs a decision, then progress, then open questions. Keep it under 200 words, neutral and direct, and keep the sources next to each point.</pre>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>From the top three of those, draft a written update for my direct leader, who has fifteen minutes and needs to leave with one decision made. Use the items you just identified as the source. Lead with what needs a decision, then progress, then open questions. Keep it under 200 words, neutral and direct, and keep the sources next to each point.</pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Turn it into slides</h4><button class="copy-button">Copy</button></div>
-        <pre>Turn that update into three slides: one headline decision slide, one progress slide, and one risks-and-next-steps slide. Keep the wording tight enough to present live.</pre>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Turn the update you just wrote into three slides I will present live to that same leadership group. Use only what is in the update &mdash; do not add new claims. One headline decision slide, one progress slide, one risks-and-next-steps slide. Maximum four bullets per slide, under twelve words each, and give me a one-line speaker note per slide.</pre>
       </div>
-      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify before you rely on it.</strong> Open at least one cited source. Chaining is powerful precisely because each step trusts the last.</div>
+      <p class="why"><b>Notice what makes this a chain.</b> Prompt 2 uses prompt 1&rsquo;s output as its source, and prompt 3 uses prompt 2&rsquo;s. You never re-explain the context &mdash; that&rsquo;s the whole technique.</p>
+      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify before you rely on it.</strong> Open at least one cited source. Chaining is powerful precisely because each step trusts the last &mdash; so an error in step one travels all the way to your slides.</div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Cross-app orchestration</button></div>
     </section>
 
@@ -258,7 +291,8 @@
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="demo-tag">Presenter demo</span>&nbsp; The orchestration ask</h4><button class="copy-button">Copy</button></div>
-        <pre>Using the attached report, draft a one-page brief in Word covering the situation, the three most important findings with evidence, and a recommended next step. Then create a short PowerPoint that mirrors it. Finally, draft an Outlook email to my team with the decision first, owners and dates second, and open questions last &mdash; ready for me to review before sending.</pre>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Using the attached report, draft a one-page brief in Word covering the situation, the three most important findings with evidence, and a recommended next step. Keep it under 400 words and cite the figure behind each finding. Then create a five-slide PowerPoint that mirrors it, no more than four bullets a slide. Finally, draft an Outlook email to my team under 150 words with the decision first, owners and dates second, and open questions last &mdash; plain language, ready for me to review before sending.</pre>
       </div>
       <div class="note"><span class="lbl">Champion takeaway</span><strong>Show it once, cleanly, then reuse it.</strong> The point isn&rsquo;t the individual apps &mdash; it&rsquo;s that a single intent carries across all of them.</div>
       <div class="guide"><button class="guide-button secondary" data-go="3">&larr; Back</button><button class="guide-button" data-go="5">Next &rarr; Find your use case</button></div>
@@ -277,6 +311,7 @@
       <div class="bu-example" id="bu-example-adv"></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; The master prompt &mdash; find your use case</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
         <pre id="master-prompt">Pick your business group above to tailor this prompt.</pre>
       </div>
       <div class="note"><span class="lbl">Bring it back</span><strong>Found something?</strong> Drop it in the champion Teams channel as a Copilot use case so we prioritize and build the highest-impact ones together.</div>
@@ -336,6 +371,17 @@
         <li><strong>Shape the agent.</strong><small>Knowledge, specialty or productivity &mdash; pick the pattern.</small></li>
       </ul>
       <div class="note blue"><span class="lbl">Worked example</span><strong>&ldquo;I re-summarize the same policy documents for every new case.&rdquo;</strong> &rarr; a <em>knowledge agent</em> grounded on the policy library that answers case questions in seconds.</div>
+      <div class="prompt-card blue">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Let Copilot find your friction</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Look across my email, meetings, chats and files from the last 60 days and find the work I repeat. Identify five recurring tasks where I appear to do the same kind of thing more than once a month &mdash; the same type of summary, the same status update, the same document, the same question answered for someone else. For each one: what triggers it, roughly how often it happens, the steps I seem to take, and how repeatable it looks on a scale of one to five. Rank them by how worthwhile automating would be, and say what evidence you used.</pre>
+        <p class="why"><b>Start here, not from a blank page.</b> The hardest part of agent building is spotting the right problem &mdash; and your own work data already contains the answer.</p>
+      </div>
+      <div class="prompt-card blue">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Pressure-test the one you picked</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>I want to build an agent for this friction: [paste the one you picked]. Act as a sceptical reviewer. Walk it through four questions and answer each one plainly: What are the repeatable steps a person does today? What triggers it &mdash; an email, a file, a question, a date? Which of the three patterns fits best: knowledge, specialty, or productivity? And is this genuinely worth an agent, or is it really just a saved prompt? If it is too vague or too varied to automate, say so and suggest a sharper version.</pre>
+      </div>
       <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; The three patterns</button></div>
     </section>
 
@@ -364,6 +410,29 @@
         <li><strong>Test it.</strong><small>Ask it three real questions. Refine the instructions until it holds up.</small></li>
         <li><strong>Share it back.</strong><small>Gallery walk &mdash; one real agent from each pod, to reuse.</small></li>
       </ul>
+      <h3 style="margin:1.6rem 0 .2rem">Prompts for the build</h3>
+      <p class="lede" style="margin:.4rem 0 1rem">Copy these as you go. Prompt 1 writes your agent&rsquo;s instructions; prompts 2&ndash;4 are how you test it before the gallery walk.</p>
+      <div class="prompt-card blue">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Write your agent&rsquo;s instructions</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Help me write the instructions for an agent in Agent Builder. The workflow is: [paste your friction and its steps]. The people using it are [who]. Draft the agent&rsquo;s name, a one-sentence purpose, and its instructions written as direct guidance to the agent. Cover what it should always do, what it must never do, what to do when it does not know or the source does not cover the question, and the format its answers should take. Keep the instructions under 250 words and make it clear the output is a draft a human reviews.</pre>
+      </div>
+      <div class="prompt-card blue">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Generate your test questions</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Based on the agent instructions we just wrote, give me six questions to test it with: two an everyday user would obviously ask, two awkward edge cases, one where the answer is genuinely not in the source, and one that tries to push it outside its purpose. For each, tell me in one line what a good answer looks like &mdash; so I can judge the response rather than just read it.</pre>
+        <p class="why"><b>This is the step most people skip.</b> An agent that has never been tested against an edge case is a demo, not a tool your team can rely on.</p>
+      </div>
+      <div class="prompt-card blue">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Fix what the test exposed</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Here is how my agent answered the test questions: [paste the weakest two answers]. Tell me what is wrong with them &mdash; too vague, went beyond the source, wrong format, or answered something it should have declined. Then rewrite the specific lines of my agent instructions that would fix it, and show only what changed so I can paste it back in.</pre>
+      </div>
+      <div class="prompt-card blue">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 4 · Write the hand-off</h4><button class="copy-button">Copy</button></div>
+        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <pre>Write a short description of this agent so a teammate can pick it up cold: what it does, who it is for, the exact friction it removes, what it should not be used for, and two example questions to try first. Keep it under 120 words, plain language, no jargon &mdash; this goes in our champion channel for other business groups to reuse.</pre>
+      </div>
       <div class="note amber"><span class="lbl">Keep it non-sensitive</span><strong>Use a fictional or non-sensitive knowledge source for the build.</strong> Real, sensitive content comes later once your agent works.</div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Starter ideas for your group</button></div>
     </section>
@@ -422,42 +491,42 @@
 
 <script>
   var BU = {
-    "Actuarial":{kpis:["Model iteration time","Documentation quality","Review cycles"],
-      use:"Draft model-assumption documentation and review summaries from your working notes, so reviews start from a clean draft.",
-      agent:["Knowledge agent","A model-documentation assistant grounded on your standards and prior docs that drafts assumption write-ups and answers &lsquo;how did we document X&rsquo; questions."]},
-    "Audit":{kpis:["Cycle time per review","Coverage","Finding quality"],
-      use:"Summarize evidence and surface anomalies across workpapers, then draft clear, consistent findings.",
-      agent:["Specialty agent","A findings-drafting assistant that turns raw evidence notes into a consistent finding format &mdash; kept to non-sensitive test data."]},
-    "Business Ops":{kpis:["Process cycle time","SLA adherence","Handoff quality"],
-      use:"Turn a process document into a checklist and a live status update, cutting the handoff back-and-forth.",
-      agent:["Productivity agent","A process-status assistant that rolls up where each in-flight item sits and drafts the weekly status note."]},
-    "Contact Center":{kpis:["First-call resolution","Handle time","CSAT"],
-      use:"Draft response guidance from the knowledge base and summarize call notes into clean records.",
-      agent:["Knowledge agent","A response assistant grounded on approved policy/product content that suggests accurate answers for common questions."]},
-    "Finance":{kpis:["Forecast accuracy","Close-cycle time","Report turnaround"],
-      use:"Draft the commentary for a quarterly review pack from the numbers, so analysts refine rather than write from scratch.",
-      agent:["Specialty agent","A review-pack commentary assistant that drafts variance narrative against your reporting template."]},
-    "General Account":{kpis:["Reconciliation time","Data accuracy","Reporting turnaround"],
-      use:"Summarize variances and draft reconciliation commentary, flagging what needs a human check.",
-      agent:["Specialty agent","A reconciliation-commentary assistant that explains variances in your standard format and flags outliers."]},
-    "GWAM":{kpis:["Client-reporting turnaround","Proposal cycle time","Research synthesis"],
-      use:"Synthesize research and prior materials into a client-ready summary, keeping the sources attached.",
-      agent:["Knowledge agent","A research-synthesis assistant grounded on approved research that produces client-ready summaries with citations."]},
-    "Inforce":{kpis:["Case turnaround","Quality / accuracy","Backlog"],
-      use:"Summarize policy documents and pre-validate case information before it reaches the back office.",
-      agent:["Knowledge agent","A case-prep assistant grounded on the policy library that answers case questions and pre-checks required fields."]},
-    "Marketing":{kpis:["Campaign turnaround","Content volume","Engagement"],
-      use:"Draft campaign briefs and on-brand copy variants to test, then refine the strongest.",
-      agent:["Specialty agent","A campaign-brief assistant that drafts briefs and copy variants against your brand and tone guide."]},
-    "People & Comms":{kpis:["Comms turnaround","Reach / engagement","Content consistency"],
-      use:"Draft leader communications and FAQs in a consistent voice, ready for review.",
-      agent:["Specialty agent","A leader-comms assistant that drafts announcements and FAQs in your house style from a short brief."]},
-    "Retail Distribution":{kpis:["Proposal turnaround","Advisor enablement","Lead response time"],
-      use:"Draft advisor-ready summaries and first-response messages so advisors move faster.",
-      agent:["Knowledge agent","An advisor-support assistant grounded on approved product content that drafts advisor-ready answers and summaries."]},
-    "Risk":{kpis:["Review turnaround","Compliance rate","Issues surfaced early"],
-      use:"Summarize risk assessments and surface issues early, drafting the write-up against your standard.",
-      agent:["Specialty agent","A risk-write-up assistant that drafts assessments in your standard format and flags issues to escalate."]}
+    "Actuarial":{kpis:["IFRS 17 close cycle time","Experience study completion time","Assumption update cycle time","Model documentation coverage"],
+      use:"Draft the commentary for an experience study or a CSM / LIC / LRC movement analysis, so actuaries refine the narrative instead of writing it from scratch.",
+      agent:["Knowledge agent","An assumptions & methodology assistant grounded on your standards and prior studies that answers method questions and points to the source."]},
+    "Audit":{kpis:["Audit cycle time","Control coverage","Review notes / rework rate","Issue validation & closure time"],
+      use:"Summarize prior reports to scope a new engagement, and draft findings against your standard so reviewers edit rather than write.",
+      agent:["Knowledge agent","An audit methodology & standards assistant grounded on your manual that answers scoping and testing questions consistently."]},
+    "Business Ops":{kpis:["SLA attainment","Backlog & aging","Process cycle time","Straight-through-processing rate"],
+      use:"Analyse volume and SLA performance, triage exceptions to root cause, and turn a process into current SOP documentation.",
+      agent:["Knowledge agent","An SOP & process assistant grounded on your procedure library that answers \u201chow do we handle this\u201d in seconds."]},
+    "Contact Center":{kpis:["First-contact resolution (FCR)","Average handle time (AHT)","QA score","CSAT / NPS"],
+      use:"Draft call wrap-up notes into clean records and analyse call drivers to find the knowledge-base gaps behind repeat contacts.",
+      agent:["Knowledge agent","An agent-assist assistant grounded on approved policy and product content that suggests accurate answers for common questions."]},
+    "Finance":{kpis:["Month-end close cycle time","Variance-explanation time","Forecast accuracy / variance","Management reporting cycle time"],
+      use:"Draft variance and budget-versus-actual commentary from the numbers, so analysts refine the story rather than write it from scratch.",
+      agent:["Specialty agent","A review-pack commentary assistant that drafts variance narrative against your reporting template and flags what needs a human check."]},
+    "General Account":{kpis:["Investment reporting cycle time","Credit review turnaround","Credit migration & watchlist coverage","RBC / capital impact analysis time"],
+      use:"Summarize portfolio and yield analysis and draft credit review or IC memo narrative in your standard format.",
+      agent:["Knowledge agent","An investment policy & guideline assistant that answers mandate and guideline questions from the approved source."]},
+    "GWAM":{kpis:["Client reporting timeliness","Advisor/RM productivity","RFP/DDQ cycle time","Fee revenue / margin"],
+      use:"Draft quarterly client investment commentary from performance data and the approved house view, with sources kept attached.",
+      agent:["Knowledge agent","A product & fund knowledge assistant grounded on approved research that produces client-ready summaries with citations."]},
+    "Inforce":{kpis:["13th / 25th month persistency","Lapse & surrender rate","Premium conservation rate","Reinstatement rate & cycle time"],
+      use:"Analyse at-risk cohorts and lapse drivers, then draft the conservation and reinstatement outreach that follows.",
+      agent:["Knowledge agent","A conservation playbook assistant that answers \u201cwhat do we do for this case\u201d from the approved playbook."]},
+    "Marketing":{kpis:["Content velocity / time-to-campaign","Cost per qualified lead","Compliance rework rate","Campaign-attributed sales / APE"],
+      use:"Draft campaign briefs and on-brand copy variants, then localize them for market without rebuilding from scratch.",
+      agent:["Specialty agent","A brand & claims substantiation assistant that checks copy against approved claims before it goes to Compliance."]},
+    "People & Comms":{kpis:["Time to publish comms","Time-to-hire","Internal comms reach & open rate","Onboarding completion time"],
+      use:"Draft leader communications, announcements and policy FAQs in a consistent house voice, ready for review.",
+      agent:["Knowledge agent","An HR policy & benefits assistant grounded on approved policy that answers common employee questions consistently."]},
+    "Retail Distribution":{kpis:["Not-in-good-order (NIGO) rate","Time-to-quote / proposal","Advisor productivity","Placement rate"],
+      use:"Summarize discovery notes into a structured needs analysis and analyse NIGO drivers to cut rework at submission.",
+      agent:["Knowledge agent","A product & suitability reference assistant grounded on approved product content that drafts advisor-ready answers."]},
+    "Risk":{kpis:["Regulatory change assessment cycle time","Risk assessment cycle time","Issue remediation time","KRI breach aging"],
+      use:"Summarize regulatory change and map it to obligations, then draft the assessment write-up against your standard.",
+      agent:["Specialty agent","A regulatory change & obligations agent that summarizes new requirements and maps them to the controls they touch."]}
   };
   var BU_ORDER = ["Actuarial","Audit","Business Ops","Contact Center","Finance","General Account","GWAM","Inforce","Marketing","People & Comms","Retail Distribution","Risk"];
   var currentBU = "Finance";
@@ -512,7 +581,7 @@
   function fillSelect(sel){ BU_ORDER.forEach(function(name){ var o=document.createElement("option"); o.value=name; o.textContent=name; if(name===currentBU)o.selected=true; sel.appendChild(o); }); }
   function masterPromptText(bu){
     var kpi = BU[bu].kpis[0];
-    return "I work in "+bu+" at Manulife and one KPI I own is "+kpi.toLowerCase()+". Walk me through the main steps of the process behind that KPI today. Then identify the two or three steps where Copilot could save the most time or improve quality, explain why, and for each suggest a concrete way I would use Copilot \u2014 a prompt, a document to ground on, or an agent. Keep it practical for someone who is not technical.";
+    return "I work in "+bu+" at Manulife and one measure my team is judged on is "+kpi.toLowerCase()+". Walk me through the main steps of the process behind that measure today, from trigger to finished output. Then identify the two or three steps where Copilot could most improve speed or quality, and explain why that step in particular. For each one, give me a concrete way I would use it \u2014 a prompt I could run, a document to ground on, or an agent worth building \u2014 and note what a human still needs to verify. Keep it practical for someone who is not technical, and end with the single step you would start with.";
   }
   function renderBU(){
     var bu = BU[currentBU];
