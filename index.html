@@ -92,10 +92,10 @@
   .try-tag{color:#fff;background:var(--green);} .demo-tag{color:#fff;background:var(--blue);}
 
   .steps{display:grid;gap:.6rem;margin:1.2rem 0;padding:0;list-style:none;counter-reset:steps;}
-  .steps li{display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:.75rem;align-items:start;}
-  .steps li::before{counter-increment:steps;content:counter(steps);display:grid;place-items:center;width:2.2rem;height:2.2rem;color:#fff;background:var(--green);font-weight:900;border-radius:6px;}
+  .steps li{position:relative;padding-left:2.95rem;min-height:2.2rem;}
+  .steps li::before{counter-increment:steps;content:counter(steps);position:absolute;left:0;top:0;display:grid;place-items:center;width:2.2rem;height:2.2rem;color:#fff;background:var(--green);font-weight:900;border-radius:6px;}
   .steps.blue li::before{background:var(--blue);}
-  .steps strong{display:block;} .steps small{color:var(--muted);}
+  .steps strong{display:block;} .steps small{color:var(--muted);display:block;}
 
   .note{margin:1.2rem 0;padding:1rem 1.15rem;border-left:6px solid var(--green);background:var(--green-soft);border-radius:0 8px 8px 0;}
   .note.blue{border-color:var(--blue);background:var(--blue-soft);} .note.amber{border-color:var(--amber);background:var(--amber-soft);}
