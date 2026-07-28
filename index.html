@@ -305,13 +305,13 @@
       <div class="opt-or">THEN, WHICHEVER YOU CHOSE</div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Sharpen it before you save</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Tighten those personalization instructions so they actually change how you answer me. Keep my role, priorities and key collaborators. Add how I want you to handle uncertainty, that I want sources named whenever you use my files or meetings, and my default format &mdash; short, structured, decision first. Remove anything generic that would apply to any employee. Return the final version only, ready to paste.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as an editor of my Copilot settings.</span> <span class="a">Tighten those personalization instructions so they actually change how you answer me.</span> <span class="c">Work from the draft you just produced.</span> <span class="e">Keep my role, priorities and key collaborators. Add how I want you to handle uncertainty, that I want sources named whenever you use my files or meetings, and my default format &mdash; short, structured, decision first. Remove anything generic that would apply to any employee. Return the final version only, ready to paste.</span> <span class="eq">Write it in my voice, in the first person.</span></pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Prove it works</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Now that my personalization is saved, tell me in one line what you understand about me. Then draft a three-sentence update on what I should focus on this week, based on my recent meetings and email. Point out which parts of your answer came from my personalization &mdash; so I can see the difference it made.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">You are my assistant, now running with my saved personalization.</span> <span class="a">Tell me in one line what you understand about me, then draft a three-sentence update on what I should focus on this week.</span> <span class="c">Base the update on my recent meetings and email.</span> <span class="e">Point out which parts of your answer came from my personalization &mdash; so I can see the difference it made.</span> <span class="eq">Answer exactly the way my settings tell you to, so I can hear the change.</span></pre>
         <p class="why"><b>If you can&rsquo;t see the difference, it isn&rsquo;t specific enough yet.</b> Go back and add what makes your role different from anyone else&rsquo;s.</p>
       </div>
       <ul class="steps">
@@ -338,13 +338,13 @@
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Draft the leader update</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>From the top three of those, draft a written update for my direct leader, who has fifteen minutes and needs to leave with one decision made. Use the items you just identified as the source. Lead with what needs a decision, then progress, then open questions. Keep it under 200 words, neutral and direct, and keep the sources next to each point.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">From the top three of those, draft a written update for my direct leader.</span> <span class="c">Use the items you just identified as the source, and keep the sources next to each point.</span> <span class="e">Lead with what needs a decision, then progress, then open questions. Keep it under 200 words.</span> <span class="eq">My leader has fifteen minutes and needs to leave with one decision made &mdash; neutral and direct, no padding.</span></pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Turn it into slides</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Turn the update you just wrote into three slides I will present live to that same leadership group. Use only what is in the update &mdash; do not add new claims. One headline decision slide, one progress slide, one risks-and-next-steps slide. Maximum four bullets per slide, under twelve words each, and give me a one-line speaker note per slide.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">Turn the update you just wrote into three slides.</span> <span class="c">Use only what is in the update &mdash; do not add new claims.</span> <span class="e">One headline decision slide, one progress slide, one risks-and-next-steps slide. Maximum four bullets per slide, under twelve words each, and give me a one-line speaker note per slide.</span> <span class="eq">I am presenting these live to that same leadership group, so keep the wording tight enough to say out loud.</span></pre>
       </div>
       <p class="why"><b>Notice what makes this a chain.</b> Prompt 2 uses prompt 1&rsquo;s output as its source, and prompt 3 uses prompt 2&rsquo;s. You never re-explain the context &mdash; that&rsquo;s the whole technique.</p>
       <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify before you rely on it.</strong> Open at least one cited source. Chaining is powerful precisely because each step trusts the last &mdash; so an error in step one travels all the way to your slides.</div>
@@ -361,8 +361,8 @@
         <div class="flow"><span>Analyse the export</span><i>&rarr;</i><span>Explain what moved</span><i>&rarr;</i><span>Commentary for review</span></div></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Find your own chain</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Look at my work over the last 30 days and find the multi-step outputs I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three. For each, show it as a three-step chain, say what starts it off, who receives the final output, and write the first prompt I would run to begin that chain. Then tell me which of the three is the best one to hand to Copilot first, and why.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as a workflow analyst looking at how I actually spend my time.</span> <span class="a">Find the multi-step outputs I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three.</span> <span class="c">Look at my work over the last 30 days across email, meetings, chats and files.</span> <span class="e">For each, show it as a three-step chain, say what starts it off, who receives the final output, and write the first prompt I would run to begin that chain. Then tell me which of the three is the best one to hand to Copilot first, and why.</span> <span class="eq">Keep it practical &mdash; I want to act on this today, not read an analysis.</span></pre>
         <p class="why"><b>Ask yourself as you read it back:</b> which of these do I do most often &mdash; and what would it be worth if the first draft were already written?</p>
       </div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Cowork orchestration</button></div>
@@ -424,7 +424,7 @@
       <div class="bu-example" id="bu-example-adv"></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; The master prompt &mdash; find your use case</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre id="master-prompt">Pick your business group above to tailor this prompt.</pre>
       </div>
       <div class="note blue"><span class="lbl">Carry this into the build</span><strong>Hold on to what you find here.</strong> The use case you land on is what you&rsquo;ll shape into an agent in the next section &mdash; so pick one you actually want to stop doing by hand.</div>
@@ -526,14 +526,14 @@
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Let Copilot find your friction</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Look across my email, meetings, chats and files from the last 60 days and find the work I repeat. Identify five recurring tasks where I appear to do the same kind of thing more than once a month &mdash; the same type of summary, the same status update, the same document, the same question answered for someone else. For each one: what triggers it, roughly how often it happens, the steps I seem to take, and how repeatable it looks on a scale of one to five. Rank them by how worthwhile automating would be, and say what evidence you used.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as a workflow analyst.</span> <span class="a">Find the work I repeat. Identify five recurring tasks where I appear to do the same kind of thing more than once a month &mdash; the same type of summary, the same status update, the same document, the same question answered for someone else.</span> <span class="c">Look across my email, meetings, chats and files from the last 60 days.</span> <span class="e">For each one: what triggers it, roughly how often it happens, the steps I seem to take, and how repeatable it looks on a scale of one to five. Rank them by how worthwhile automating would be, and say what evidence you used.</span> <span class="eq">Be blunt about the ones that are not worth automating.</span></pre>
         <p class="why"><b>Start here, not from a blank page.</b> The hardest part of agent building is spotting the right problem &mdash; and your own work data already contains the answer.</p>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Pressure-test the one you picked</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>I want to build an agent for this friction: <span class="fill empty" data-fill="friction">[the friction you noted above]</span>. Act as a sceptical reviewer. Walk it through four questions and answer each one plainly: What are the repeatable steps a person does today? What triggers it &mdash; an email, a file, a question, a date? Which of the three patterns fits best: knowledge, specialty, or productivity? And is this genuinely worth an agent, or is it really just a saved prompt? If it is too vague or too varied to automate, say so and suggest a sharper version.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as a sceptical reviewer.</span> <span class="a">I want to build an agent for this friction: <span class="fill empty" data-fill="friction">[the friction you noted above]</span>. Walk it through four questions and answer each one plainly.</span> <span class="c">Use what I have told you about this workflow, and say so if it is not enough to judge.</span> <span class="e">What are the repeatable steps a person does today? What triggers it &mdash; an email, a file, a question, a date? Which of the three patterns fits best: knowledge, specialty, or productivity? And is this genuinely worth an agent, or is it really just a saved prompt?</span> <span class="eq">If it is too vague or too varied to automate, say so plainly and suggest a sharper version &mdash; do not be polite about it.</span></pre>
       </div>
       <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; The three patterns</button></div>
     </section>
@@ -576,24 +576,24 @@
       <p class="lede" style="margin:.4rem 0 1rem">Copy these as you go. Prompt 1 writes your agent&rsquo;s instructions; prompts 2&ndash;4 are how you test it before the gallery walk.</p>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Write your agent&rsquo;s instructions</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Help me write the instructions for an agent in Agent Builder. The workflow is: <span class="fill empty" data-fill="friction">[the friction you noted above]</span> — <span class="fill empty" data-fill="steps">[the steps you noted above]</span>. It is triggered when <span class="fill empty" data-fill="trigger">[your trigger]</span>, and it should be a <span class="fill empty" data-fill="pattern">[your pattern]</span>. The people using it are <span class="fill empty" data-fill="who">[who it is for]</span>. Draft the agent&rsquo;s name, a one-sentence purpose, and its instructions written as direct guidance to the agent. Cover what it should always do, what it must never do, what to do when it does not know or the source does not cover the question, and the format its answers should take. Keep the instructions under 250 words and make it clear the output is a draft a human reviews.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as an agent designer.</span> <span class="a">Help me write the instructions for an agent in Agent Builder.</span> <span class="c">The workflow is: <span class="fill empty" data-fill="friction">[the friction you noted above]</span> &mdash; <span class="fill empty" data-fill="steps">[the steps you noted above]</span>. It is triggered when <span class="fill empty" data-fill="trigger">[your trigger]</span>, and it should be a <span class="fill empty" data-fill="pattern">[your pattern]</span>. The people using it are <span class="fill empty" data-fill="who">[who it is for]</span>.</span> <span class="e">Draft the agent&rsquo;s name, a one-sentence purpose, and its instructions written as direct guidance to the agent. Cover what it should always do, what it must never do, what to do when it does not know or the source does not cover the question, and the format its answers should take. Keep the instructions under 250 words.</span> <span class="eq">Write it so a colleague could read it and understand what the agent is for, and make clear the output is a draft a human reviews.</span></pre>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Generate your test questions</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Based on the agent instructions we just wrote, give me six questions to test it with: two an everyday user would obviously ask, two awkward edge cases, one where the answer is genuinely not in the source, and one that tries to push it outside its purpose. For each, tell me in one line what a good answer looks like &mdash; so I can judge the response rather than just read it.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as a sceptical tester of my agent.</span> <span class="a">Give me six questions to test it with.</span> <span class="c">Base them on the agent instructions we just wrote.</span> <span class="e">Two an everyday user would obviously ask, two awkward edge cases, one where the answer is genuinely not in the source, and one that tries to push it outside its purpose. For each, tell me in one line what a good answer looks like &mdash; so I can judge the response rather than just read it.</span> <span class="eq">Phrase them the way a real colleague would ask, not as formal test cases.</span></pre>
         <p class="why"><b>This is the step most people skip.</b> An agent that has never been tested against an edge case is a demo, not a tool your team can rely on.</p>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Fix what the test exposed</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Here is how my agent answered the test questions: [paste the weakest two answers]. Tell me what is wrong with them &mdash; too vague, went beyond the source, wrong format, or answered something it should have declined. Then rewrite the specific lines of my agent instructions that would fix it, and show only what changed so I can paste it back in.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as a sceptical reviewer of my agent.</span> <span class="a">Tell me what is wrong with these answers, then rewrite the specific lines of my agent instructions that would fix it.</span> <span class="c">Here is how my agent answered the test questions: [paste the weakest two answers].</span> <span class="e">Diagnose each one &mdash; too vague, went beyond the source, wrong format, or answered something it should have declined. Then show only the instruction lines that changed, so I can paste them back in.</span> <span class="eq">Be direct &mdash; I would rather fix it now than defend it later.</span></pre>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 4 · Write the hand-off</h4><button class="copy-button">Copy</button></div>
-        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Write a short description of this agent so a teammate can pick it up cold: what it does, who it is for, the exact friction it removes, what it should not be used for, and two example questions to try first. Keep it under 120 words, plain language, no jargon &mdash; this goes in our champion channel for other business groups to reuse.</pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as the person documenting this agent so others can reuse it.</span> <span class="a">Write a short description of this agent so a teammate can pick it up cold.</span> <span class="c">Base it on the agent we just built and tested.</span> <span class="e">Cover what it does, who it is for, the exact friction it removes, what it should not be used for, and two example questions to try first. Keep it under 120 words.</span> <span class="eq">Plain language, no jargon &mdash; this goes in our champion channel for other business groups to reuse.</span></pre>
       </div>
       <div class="note amber"><span class="lbl">Keep it non-sensitive</span><strong>Use a fictional or non-sensitive knowledge source for the build.</strong> Real, sensitive content comes later once your agent works.</div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Starter ideas for your group</button></div>
@@ -744,7 +744,12 @@
   function fillSelect(sel){ BU_ORDER.forEach(function(name){ var o=document.createElement("option"); o.value=name; o.textContent=name; if(name===currentBU)o.selected=true; sel.appendChild(o); }); }
   function masterPromptText(bu){
     var kpi = BU[bu].kpis[0];
-    return "I work in "+bu+" at Manulife and one measure my team is judged on is "+kpi.toLowerCase()+". Walk me through the main steps of the process behind that measure today, from trigger to finished output. Then identify the two or three steps where Copilot could most improve speed or quality, and explain why that step in particular. For each one, give me a concrete way I would use it \u2014 a prompt I could run, a document to ground on, or an agent worth building \u2014 and note what a human still needs to verify. Keep it practical for someone who is not technical, and end with the single step you would start with.";
+    var S = function(cls, t){ return '<span class="'+cls+'">'+t+'</span>'; };
+    return S("r","Act as a process analyst who knows how insurance and wealth operations actually run.") + " "
+         + S("a","Walk me through the main steps of the process behind that measure today, from trigger to finished output. Then identify the two or three steps where Copilot could most improve speed or quality.") + " "
+         + S("c","I work in "+bu+" at Manulife and one measure my team is judged on is "+kpi.toLowerCase()+".") + " "
+         + S("e","Explain why that step in particular. For each one, give me a concrete way I would use it \u2014 a prompt I could run, a document to ground on, or an agent worth building \u2014 and note what a human still needs to verify. End with the single step you would start with.") + " "
+         + S("eq","Keep it practical for someone who is not technical.");
   }
   function renderBU(){
     var bu = BU[currentBU];
@@ -753,7 +758,7 @@
     var ex = document.getElementById("bu-example-adv");
     if(ex){ ex.innerHTML = '<div class="role">'+currentBU+' \u00b7 example Copilot use case</div><p style="margin:.35rem 0 0">'+bu.use+'</p>'; }
     var mp = document.getElementById("master-prompt");
-    if(mp){ mp.textContent = masterPromptText(currentBU); }
+    if(mp){ mp.innerHTML = masterPromptText(currentBU); }
     var ai = document.getElementById("bu-agent-idea");
     if(ai){ ai.innerHTML = '<div class="role">'+currentBU+' \u00b7 starter agent</div><h4 style="margin:.3rem 0 .3rem">'+bu.agent[0]+'</h4><p style="margin:0;color:var(--muted)">'+bu.agent[1]+'</p>'; }
     document.querySelectorAll("#bu-select-adv,#bu-select-agent").forEach(function(s){ s.value=currentBU; });
