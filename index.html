@@ -120,6 +120,11 @@
   .flow.blue span{background:var(--blue-soft);color:var(--blue);}
   .pattern{padding:.85rem 1.05rem;background:#fff;border:1px solid var(--line);border-radius:9px;margin:.55rem 0;}
   .pattern b{display:block;font-size:.92rem;color:var(--ink);}
+  .datafile{display:flex;gap:.85rem;align-items:flex-start;margin:1.1rem 0;padding:.95rem 1.1rem;background:#fff;border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:0 9px 9px 0;}
+  .datafile .ic{flex:0 0 auto;width:2.1rem;height:2.1rem;display:grid;place-items:center;background:var(--blue-soft);color:var(--blue);border-radius:6px;font-size:1rem;}
+  .datafile b{display:block;font-size:.94rem;color:var(--ink);}
+  .datafile p{margin:.2rem 0 0;color:var(--muted);font-size:.85rem;}
+  .datafile code{padding:.1rem .35rem;background:var(--cream);border-radius:4px;font-size:.82rem;font-family:Consolas,monospace;}
   .pattern em{display:block;margin-top:.15rem;color:var(--muted);font-size:.8rem;font-style:normal;}
 
   /* two-column compare */
@@ -223,7 +228,7 @@
         <article><strong>Find value</strong><p>Turn a KPI you own into a Copilot use case.</p></article>
       </div>
       <div class="note blue"><span class="lbl">How this runs</span><strong>Two modes on this page.</strong> <span class="demo-tag">Presenter demo</span> = watch on screen. <span class="try-tag">Try it</span> = you run it. When you&rsquo;re done here, switch to the <strong>Agent Building</strong> tab (top-left) for the hands-on build.</div>
-      <div class="note amber"><span class="lbl">Fallback data</span><strong>Use your own work wherever you can.</strong> Where a sample is needed we use fictional data for a made-up business unit &mdash; never real Manulife content.</div>
+      <div class="note amber"><span class="lbl">About the data you&rsquo;ll use</span><strong>Use your own work wherever you can</strong> &mdash; the prompts are far more convincing on your real week. Where a file is needed, we use a fictional company (<em>Northwind Life &amp; Wealth</em>) rather than real Manulife content. If your own mailbox is thin for any exercise, the same sample pack works as a fallback &mdash; see <strong>Sample data</strong> in the resource panel.</div>
       <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; the prompting pattern</button></div>
     </section>
 
@@ -355,12 +360,18 @@
         <article><strong>Watch it work</strong><p>Each step appears in the session as it goes, and it loads the skill it needs &mdash; Word, PowerPoint, Email.</p></article>
         <article><strong>Approve before it acts</strong><p>It pauses before anything sensitive, like sending mail. Nothing leaves without your go-ahead.</p></article>
       </div>
+      <div class="datafile">
+        <div class="ic">&#128196;</div>
+        <div><b>Sample file for this demo</b>
+        <p><code>Northwind-Life-Q3-Business-Review.docx</code> &mdash; a fictional quarterly business review for a made-up insurer. Attach it to the prompt below. Nothing in it is real Manulife content, so it is safe to project on screen.</p></div>
+      </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="demo-tag">Presenter demo</span>&nbsp; The Cowork ask</h4><button class="copy-button">Copy</button></div>
         <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
         <pre><span class="s">Using the attached report as the single source for everything you produce,</span> <span class="g">create a written brief, a short deck and a draft email for my team.</span> <span class="c">The brief is for someone who needs the detail, the deck is for a leadership discussion, and the email is for the team who need to know what to do next.</span> <span class="e">Word brief: under 400 words, covering the situation, the three most important findings with the figure behind each, and a recommended next step. PowerPoint: five slides, no more than four bullets each. Email: under 150 words, decision first, owners and dates second, open questions last. Keep the facts identical across all three &mdash; only the framing changes. Leave the email as a draft for me to review; do not send it.</span></pre>
         <p class="why"><b>Notice the last line.</b> Cowork will ask before it sends anything &mdash; but saying it in the prompt is the habit worth teaching. You stay in control of what leaves your name.</p>
       </div>
+      <div class="note amber"><span class="lbl">What to look for in the output</span><strong>There is a story buried in that report.</strong> New business is up 20.8% over the quarter &mdash; but one region&rsquo;s submission-error rate has doubled to 22.4% against a book average of 11.2%, and it is dragging cycle time with it. A good output finds it without being told to.</div>
       <div class="note blue"><span class="lbl">Where the leverage is</span><strong>Cowork can browse your whole Work IQ to pull in what it needs.</strong> That&rsquo;s the difference between an assistant that waits for you to attach a file and one that goes and finds the right file, the meeting it came from, and the thread where it was discussed.</div>
       <div class="note"><span class="lbl">Champion takeaway</span><strong>One source, three outputs, no drift.</strong> Because everything traces back to the same grounded report, the numbers can&rsquo;t disagree between the brief, the deck and the email &mdash; which is exactly what goes wrong when three people build them separately.</div>
       <div class="note amber"><span class="lbl">Teach the judgement, not just the button</span><strong>Reach for Cowork when the task is genuinely multi-step and crosses apps.</strong> For a quick draft or a fast answer, Chat is still the right tool &mdash; and it&rsquo;s faster. Knowing which to reach for is the champion skill.</div>
@@ -554,6 +565,12 @@
 
   <aside class="resources" aria-label="Resources">
     <h2>Your resource pack</h2>
+    <div class="resource-block">
+      <h3>Sample data</h3>
+      <a href="#">Northwind-Life-Q3-Business-Review.docx</a>
+      <a href="#">Northwind-Life-Q3-Data.xlsx</a>
+      <div class="ph">Fictional company &mdash; safe for demos and fallbacks. Links added when hosted.</div>
+    </div>
     <div class="resource-block">
       <h3>Your internal AI hub</h3>
       <a href="#">Your AI learning hub</a>
