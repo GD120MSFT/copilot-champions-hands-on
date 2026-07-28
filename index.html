@@ -127,6 +127,22 @@
   .datafile b{display:block;font-size:.94rem;color:var(--ink);}
   .datafile p{margin:.2rem 0 0;color:var(--muted);font-size:.85rem;}
   .datafile code{padding:.1rem .35rem;background:var(--cream);border-radius:4px;font-size:.82rem;font-family:Consolas,monospace;}
+
+  .ws{margin:1.3rem 0;padding:1.15rem 1.25rem;background:#fff;border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:0 0 10px 10px;}
+  .ws h4{margin:0 0 .2rem;font-size:1.02rem;color:var(--ink);}
+  .ws .sub{margin:0 0 .9rem;color:var(--muted);font-size:.85rem;}
+  .ws-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+  .ws-grid .full{grid-column:1 / -1;}
+  .ws label{display:block;margin-bottom:.25rem;color:var(--blue);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .ws input,.ws select{width:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.9rem;color:var(--ink);}
+  .ws input:focus,.ws select:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff;}
+  .ws .hintline{margin:.75rem 0 0;color:var(--muted);font-size:.8rem;}
+  .ws .hintline b{color:var(--ink);}
+  .ws-status{display:inline-block;margin-left:.4rem;padding:.15rem .45rem;background:var(--green-soft);color:var(--green-deep);border-radius:4px;font-size:.68rem;font-weight:800;opacity:0;transition:opacity .2s;}
+  .ws-status.on{opacity:1;}
+  .fill{padding:.06em .2em;background:rgba(0,103,184,.12);box-shadow:inset 0 -2px 0 var(--blue);border-radius:3px;}
+  .fill.empty{background:var(--cream);box-shadow:inset 0 -2px 0 var(--line);color:var(--muted);font-style:italic;}
+  @media(max-width:760px){.ws-grid{grid-template-columns:1fr;}}
   .dl{display:inline-flex;align-items:center;gap:.4rem;margin:.5rem .4rem 0 0;padding:.5rem .8rem;color:#fff;background:var(--blue);border-radius:6px;font-size:.82rem;font-weight:800;text-decoration:none;}
   .dl:hover,.dl:focus-visible{background:var(--ink);}
   .dl::before{content:"\2193";font-weight:900;}
@@ -469,6 +485,45 @@
         <li><strong>Shape the agent.</strong><small>Knowledge, specialty or productivity &mdash; pick the pattern.</small></li>
       </ul>
       <div class="note blue"><span class="lbl">Worked example</span><strong>&ldquo;I re-summarize the same policy documents for every new case.&rdquo;</strong> &rarr; a <em>knowledge agent</em> grounded on the policy library that answers case questions in seconds.</div>
+      <div class="ws">
+        <h4>Your agent, in four lines<span class="ws-status" id="ws-saved">saved</span></h4>
+        <p class="sub">Fill this in once. Everything you type here drops straight into the build prompts later &mdash; so you never retype it.</p>
+        <div class="ws-grid">
+          <div class="full">
+            <label for="ws-friction">The friction &mdash; what do you keep re-doing?</label>
+            <input id="ws-friction" type="text" placeholder="e.g. I re-summarize the same policy documents for every new case">
+          </div>
+          <div class="full">
+            <label for="ws-steps">The workflow today &mdash; the steps a person takes</label>
+            <input id="ws-steps" type="text" placeholder="e.g. find the policy, read the relevant sections, write a summary, paste it into the case note">
+          </div>
+          <div>
+            <label for="ws-trigger">What triggers it?</label>
+            <select id="ws-trigger">
+              <option value="">Choose one&hellip;</option>
+              <option>an email arrives</option>
+              <option>a file or case lands</option>
+              <option>someone asks me a question</option>
+              <option>a date or deadline</option>
+              <option>a meeting ends</option>
+            </select>
+          </div>
+          <div>
+            <label for="ws-pattern">So the pattern is</label>
+            <select id="ws-pattern">
+              <option value="">Choose one&hellip;</option>
+              <option>Knowledge agent</option>
+              <option>Specialty agent</option>
+              <option>Productivity agent</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="ws-who">Who will use it?</label>
+            <input id="ws-who" type="text" placeholder="e.g. the six analysts on my team">
+          </div>
+        </div>
+        <p class="hintline"><b>Not sure which pattern?</b> &ldquo;Where do I find X?&rdquo; is a <b>knowledge</b> agent. &ldquo;Do this the same way every time&rdquo; is a <b>specialty</b> agent. &ldquo;I do this every week&rdquo; is a <b>productivity</b> agent.</p>
+      </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Let Copilot find your friction</h4><button class="copy-button">Copy</button></div>
         <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
@@ -478,7 +533,7 @@
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Pressure-test the one you picked</h4><button class="copy-button">Copy</button></div>
         <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>I want to build an agent for this friction: [paste the one you picked]. Act as a sceptical reviewer. Walk it through four questions and answer each one plainly: What are the repeatable steps a person does today? What triggers it &mdash; an email, a file, a question, a date? Which of the three patterns fits best: knowledge, specialty, or productivity? And is this genuinely worth an agent, or is it really just a saved prompt? If it is too vague or too varied to automate, say so and suggest a sharper version.</pre>
+        <pre>I want to build an agent for this friction: <span class="fill empty" data-fill="friction">[the friction you noted above]</span>. Act as a sceptical reviewer. Walk it through four questions and answer each one plainly: What are the repeatable steps a person does today? What triggers it &mdash; an email, a file, a question, a date? Which of the three patterns fits best: knowledge, specialty, or productivity? And is this genuinely worth an agent, or is it really just a saved prompt? If it is too vague or too varied to automate, say so and suggest a sharper version.</pre>
       </div>
       <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; The three patterns</button></div>
     </section>
@@ -522,7 +577,7 @@
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Write your agent&rsquo;s instructions</h4><button class="copy-button">Copy</button></div>
         <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre>Help me write the instructions for an agent in Agent Builder. The workflow is: [paste your friction and its steps]. The people using it are [who]. Draft the agent&rsquo;s name, a one-sentence purpose, and its instructions written as direct guidance to the agent. Cover what it should always do, what it must never do, what to do when it does not know or the source does not cover the question, and the format its answers should take. Keep the instructions under 250 words and make it clear the output is a draft a human reviews.</pre>
+        <pre>Help me write the instructions for an agent in Agent Builder. The workflow is: <span class="fill empty" data-fill="friction">[the friction you noted above]</span> — <span class="fill empty" data-fill="steps">[the steps you noted above]</span>. It is triggered when <span class="fill empty" data-fill="trigger">[your trigger]</span>, and it should be a <span class="fill empty" data-fill="pattern">[your pattern]</span>. The people using it are <span class="fill empty" data-fill="who">[who it is for]</span>. Draft the agent&rsquo;s name, a one-sentence purpose, and its instructions written as direct guidance to the agent. Cover what it should always do, what it must never do, what to do when it does not know or the source does not cover the question, and the format its answers should take. Keep the instructions under 250 words and make it clear the output is a draft a human reviews.</pre>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Generate your test questions</h4><button class="copy-button">Copy</button></div>
@@ -721,6 +776,43 @@
     if(e.key==="ArrowRight") go(idx+1);
     if(e.key==="ArrowLeft") go(idx-1);
   });
+
+  // ---- pod worksheet: persist + live-fill the build prompts ----
+  var WS_KEYS = ["friction","steps","trigger","pattern","who"];
+  var WS_LABEL = {friction:"[the friction you noted above]", steps:"[the steps you noted above]",
+                  trigger:"[your trigger]", pattern:"[your pattern]", who:"[who it is for]"};
+  function wsEl(k){ return document.getElementById("ws-"+k); }
+  function wsApply(){
+    WS_KEYS.forEach(function(k){
+      var el = wsEl(k); if(!el) return;
+      var v = (el.value || "").trim();
+      document.querySelectorAll('[data-fill="'+k+'"]').forEach(function(sp){
+        if(v){ sp.textContent = v; sp.classList.remove("empty"); }
+        else { sp.textContent = WS_LABEL[k]; sp.classList.add("empty"); }
+      });
+    });
+  }
+  function wsSave(){
+    try{
+      var o = {}; WS_KEYS.forEach(function(k){ var e=wsEl(k); if(e) o[k]=e.value; });
+      localStorage.setItem("mlChampionAgent", JSON.stringify(o));
+      var s = document.getElementById("ws-saved");
+      if(s){ s.classList.add("on"); clearTimeout(window._wsT); window._wsT = setTimeout(function(){ s.classList.remove("on"); }, 1200); }
+    }catch(e){}
+  }
+  function wsLoad(){
+    try{
+      var raw = localStorage.getItem("mlChampionAgent"); if(!raw) return;
+      var o = JSON.parse(raw);
+      WS_KEYS.forEach(function(k){ var e=wsEl(k); if(e && o[k]) e.value = o[k]; });
+    }catch(e){}
+  }
+  WS_KEYS.forEach(function(k){
+    var el = wsEl(k); if(!el) return;
+    el.addEventListener("input", function(){ wsApply(); wsSave(); });
+    el.addEventListener("change", function(){ wsApply(); wsSave(); });
+  });
+  wsLoad(); wsApply();
 
   buildNav(); render(); renderBU();
 </script>
