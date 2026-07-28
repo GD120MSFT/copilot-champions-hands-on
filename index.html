@@ -67,9 +67,10 @@
   .grid3 strong,.grid2 strong{display:block;margin-bottom:.25rem;color:var(--green-deep);font-size:1.02rem;}
   .grid3 p,.grid2 p{margin:.3rem 0 0;color:var(--muted);font-size:.9rem;}
 
-  .formula{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:1.3rem 0;border-radius:8px;overflow:hidden;}
+  .formula{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:1.3rem 0;border-radius:8px;overflow:hidden;}
   .formula span{padding:1rem;text-align:center;font-weight:800;color:#fff;font-size:.92rem;}
-  .ing-goal{background:#0f7a87;} .ing-ctx{background:#2f6f44;} .ing-src{background:#8f2d56;} .ing-exp{background:#c25a00;}
+  .ing-role{background:#6E56CF;} .ing-act{background:#0f7a87;} .ing-ctx{background:#8f2d56;} .ing-exp{background:#c25a00;} .ing-eq{background:#2f6f44;}
+  @media(max-width:980px){.formula{grid-template-columns:repeat(2,1fr);}}
 
   .scenario{position:relative;margin:1.7rem 0;padding:1.35rem 1.5rem;color:#fff;background:var(--green-deep);overflow:hidden;border-radius:10px;}
   .scenario.agent{background:#123e57;}
@@ -92,20 +93,21 @@
   .try-tag{color:#fff;background:var(--green);} .demo-tag{color:#fff;background:var(--blue);}
   .prompt-card.blue .try-tag{background:var(--blue);}
 
-  .gcse{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;padding:.5rem 1rem;background:#FAFBFA;border-bottom:1px solid var(--line);}
-  .gcse::before{content:"Pattern";margin-right:.15rem;color:var(--muted);font-size:.62rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;}
-  .gcse span{padding:.2rem .46rem;color:#fff;font-size:.62rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;}
-  .gcse .g{background:#0f7a87;} .gcse .c{background:#2f6f44;} .gcse .s{background:#8f2d56;} .gcse .e{background:#c25a00;}
+  .race{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center;padding:.5rem 1rem;background:#FAFBFA;border-bottom:1px solid var(--line);}
+  .race::before{content:"RACE + EQ";margin-right:.15rem;color:var(--muted);font-size:.62rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;}
+  .race span{padding:.2rem .46rem;color:#fff;font-size:.62rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;}
+  .race .r{background:#6E56CF;} .race .a{background:#0f7a87;} .race .c{background:#8f2d56;} .race .e{background:#c25a00;} .race .eq{background:#2f6f44;}
   .why{margin:.55rem 0 0;padding:.6rem .8rem;background:var(--cream);border-left:3px solid var(--line);border-radius:0 6px 6px 0;color:var(--muted);font-size:.82rem;}
   .why b{color:var(--ink);}
 
   /* inline colour-coding inside prompts, matched to the four ingredients */
-  pre .g,pre .c,pre .s,pre .e{padding:.06em .18em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
-  pre .g{background:rgba(15,122,135,.14);box-shadow:inset 0 -2px 0 #0f7a87;}
-  pre .c{background:rgba(47,111,68,.14);box-shadow:inset 0 -2px 0 #2f6f44;}
-  pre .s{background:rgba(143,45,86,.14);box-shadow:inset 0 -2px 0 #8f2d56;}
+  pre .r,pre .a,pre .c,pre .e,pre .eq{padding:.06em .18em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  pre .r{background:rgba(110,86,207,.14);box-shadow:inset 0 -2px 0 #6E56CF;}
+  pre .a{background:rgba(15,122,135,.14);box-shadow:inset 0 -2px 0 #0f7a87;}
+  pre .c{background:rgba(143,45,86,.14);box-shadow:inset 0 -2px 0 #8f2d56;}
   pre .e{background:rgba(194,90,0,.14);box-shadow:inset 0 -2px 0 #c25a00;}
-  .gcse.live::after{content:"shown in the prompt below";margin-left:.2rem;color:var(--muted);font-size:.62rem;font-weight:700;letter-spacing:.02em;text-transform:none;}
+  pre .eq{background:rgba(47,111,68,.14);box-shadow:inset 0 -2px 0 #2f6f44;}
+  .race.live::after{content:"shown in the prompt below";margin-left:.2rem;color:var(--muted);font-size:.62rem;font-weight:700;letter-spacing:.02em;text-transform:none;}
 
   /* option A / B blocks */
   .opt-or{display:flex;align-items:center;gap:.9rem;margin:1.1rem 0;color:var(--muted);font-size:.72rem;font-weight:900;letter-spacing:.12em;}
@@ -238,25 +240,27 @@
 
     <section class="panel" data-mode="adv" data-idx="1">
       <div class="kicker">The pattern</div>
-      <h2>Four ingredients behind every strong prompt</h2>
-      <p class="lede">This builds on your enterprise prompting framework. Every prompt today gives Copilot a clear goal, the context, the sources to use, and what a good answer looks like.</p>
+      <h2>RACE + EQ &mdash; the anatomy of a strong prompt</h2>
+      <p class="lede">This is the <strong>RACE&nbsp;+&nbsp;EQ</strong> prompting framework. Every prompt today tells Copilot who to be, what to do, what to ground on, what a good answer looks like &mdash; and who it is for.</p>
       <div class="formula">
-        <span class="ing-goal">GOAL<br><small>what to accomplish</small></span>
-        <span class="ing-ctx">CONTEXT<br><small>audience, situation, time</small></span>
-        <span class="ing-src">SOURCE<br><small>which email, file, meeting</small></span>
-        <span class="ing-exp">EXPECTATIONS<br><small>format, length, priorities</small></span>
+        <span class="ing-role">R &mdash; ROLE<br><small>who Copilot acts as</small></span>
+        <span class="ing-act">A &mdash; ACTION<br><small>what you want done</small></span>
+        <span class="ing-ctx">C &mdash; CONTEXT<br><small>the files, emails, meetings to use</small></span>
+        <span class="ing-exp">E &mdash; EXPECTATION<br><small>what a good output looks like</small></span>
+        <span class="ing-eq">+ EQ<br><small>tone, audience, style</small></span>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4>Read the pattern in action</h4><button class="copy-button">Copy</button></div>
-      <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre><span class="g">Identify an active initiative I own and prepare a short executive summary for a leadership check-in.</span> <span class="c">The audience is a cross-functional leadership team, the discussion is 15 minutes, and the goal is to align on one decision.</span> <span class="s">Review email threads and meetings from the past two weeks where I am a participant, and cite the sources behind each point.</span> <span class="e">Start with why you chose this initiative, then give three key points, the decision needed, two risks, and a recommended next step.</span></pre>
+      <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">Identify an active initiative I own and prepare a short executive summary for a leadership check-in.</span> <span class="c">Review email threads and meetings from the past two weeks where I am a participant, and cite the sources behind each point.</span> <span class="e">Start with why you chose this initiative, then give three key points, the decision needed, two risks, and a recommended next step.</span> <span class="eq">The audience is a cross-functional leadership team with fifteen minutes and one decision to make — keep it direct and plain-language, no jargon.</span></pre>
       </div>
-      <p class="why"><b>The colours above are the same four ingredients, highlighted in the prompt itself.</b> Every prompt in this walkthrough carries the strip, and the key ones are colour-coded like this &mdash; so you can see the pattern rather than memorise it. That&rsquo;s what makes it teachable.</p>
+      <p class="why"><b>The colours above are the same five elements, highlighted in the prompt itself.</b> Every prompt in this walkthrough carries the strip, and the key ones are colour-coded like this &mdash; so you can see the pattern rather than memorise it. That&rsquo;s what makes it teachable. <b>Expectation is the one most people skip:</b> they tell Copilot what to do, but never what a good answer looks like.</p>
       <ul class="steps">
-        <li><strong>State the goal.</strong><small>What do you want Copilot to accomplish?</small></li>
-        <li><strong>Add context.</strong><small>Audience, situation, people, time period.</small></li>
-        <li><strong>Name the source.</strong><small>The email, meeting, file or data Copilot should use.</small></li>
-        <li><strong>Set expectations.</strong><small>Format, tone, length, priorities &mdash; then verify names and numbers.</small></li>
+        <li><strong>Set the Role.</strong><small>Who should Copilot act as? “You are my chief of staff” changes the answer more than most people expect.</small></li>
+        <li><strong>State the Action.</strong><small>What exactly do you want done? One clear verb beats three vague ones.</small></li>
+        <li><strong>Give the Context.</strong><small>The emails, meetings, files or data it should ground on &mdash; and ask it to cite them.</small></li>
+        <li><strong>Define the Expectation.</strong><small>What does a good output actually look like? Structure, length, what to include. This is the most overlooked part.</small></li>
+        <li><strong>Add the EQ.</strong><small>Who is it for, and how should it land? Tone, audience and delivery &mdash; then verify names and numbers.</small></li>
       </ul>
       <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; Personalization &amp; memory</button></div>
     </section>
@@ -270,27 +274,27 @@
       <div class="opt-or">CHOOSE ONE STARTING POINT</div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="opt-tag">Option A</span>&nbsp; Have it ask you five questions</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre><span class="g">Help me personalize Copilot for my role at Manulife.</span> <span class="c">I want you to respond the same way in every future chat without me re-explaining who I am.</span> <span class="s">Ask me five questions, one at a time: my role and business area, my top priorities this quarter, the people and teams I work with most, the kinds of documents I create, and the tone I prefer. Wait for my answer before asking the next one.</span> <span class="e">Then draft my personalization instructions in the first person, under 200 words, ready to paste straight into Copilot&rsquo;s settings.</span></pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as a Copilot setup coach.</span> <span class="a">Help me personalize Copilot for my role at Manulife, so you respond the same way in every future chat without me re-explaining who I am.</span> <span class="c">Ask me five questions, one at a time: my role and business area, my top priorities this quarter, the people and teams I work with most, the kinds of documents I create, and the tone I prefer. Wait for my answer before asking the next one.</span> <span class="e">Then draft my personalization instructions, under 200 words, ready to paste straight into Copilot&rsquo;s settings.</span> <span class="eq">Write them in the first person, in my voice.</span></pre>
         <p class="why"><b>Best when</b> you want full control over what Copilot knows, or your recent work isn&rsquo;t representative of your actual role.</p>
       </div>
       <div class="opt-or">OR</div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="opt-tag b">Option B</span>&nbsp; Let it read your work first</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre><span class="g">Build my Copilot personalization from what you can already see about my work.</span> <span class="c">I want it grounded in evidence rather than guesses, and I do not want a long interview.</span> <span class="s">Use my work profile, anything you already remember about me, and my email, meetings, chats and files from the last 30 days.</span> <span class="e">First give me up to ten short statements about my role, priorities, main collaborators and the documents I produce &mdash; and label each one [Profile], [Recent work] or [Assumption]. Then ask me only the two questions you still genuinely need. Then draft my personalization instructions in the first person, under 200 words, ready to paste into Copilot&rsquo;s settings.</span></pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">Act as a Copilot setup coach who works from evidence rather than guesses.</span> <span class="a">Build my Copilot personalization from what you can already see about my work — I do not want a long interview.</span> <span class="c">Use my work profile, anything you already remember about me, and my email, meetings, chats and files from the last 30 days.</span> <span class="e">First give me up to ten short statements about my role, priorities, main collaborators and the documents I produce &mdash; and label each one [Profile], [Recent work] or [Assumption]. Then ask me only the two questions you still genuinely need. Then draft my personalization instructions, under 200 words, ready to paste into Copilot&rsquo;s settings.</span> <span class="eq">Write them in the first person, in my voice.</span></pre>
         <p class="why"><b>This is the Copilot Premium advantage.</b> It reads your real working context, tells you what it inferred versus what it knows, and only asks what it cannot work out &mdash; two questions instead of twenty.</p>
       </div>
 
       <div class="opt-or">THEN, WHICHEVER YOU CHOSE</div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Sharpen it before you save</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Tighten those personalization instructions so they actually change how you answer me. Keep my role, priorities and key collaborators. Add how I want you to handle uncertainty, that I want sources named whenever you use my files or meetings, and my default format &mdash; short, structured, decision first. Remove anything generic that would apply to any employee. Return the final version only, ready to paste.</pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Prove it works</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Now that my personalization is saved, tell me in one line what you understand about me. Then draft a three-sentence update on what I should focus on this week, based on my recent meetings and email. Point out which parts of your answer came from my personalization &mdash; so I can see the difference it made.</pre>
         <p class="why"><b>If you can&rsquo;t see the difference, it isn&rsquo;t specific enough yet.</b> Go back and add what makes your role different from anyone else&rsquo;s.</p>
       </div>
@@ -313,17 +317,17 @@
       <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~8 min</span><span class="pill">Chat &rarr; Word &rarr; PowerPoint</span></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Catch up &mdash; find the signal</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre><span class="c">I am catching up after a busy week and need to walk into my leadership check-in knowing what actually moved.</span> <span class="s">Review my work from the past five business days across email, chats, meetings and files.</span> <span class="g">Identify the five developments most likely to need my attention.</span> <span class="e">For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</span></pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">I am catching up after a busy week — identify the five developments most likely to need my attention.</span> <span class="c">Review my work from the past five business days across email, chats, meetings and files.</span> <span class="e">For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</span> <span class="eq">I am walking straight into a leadership check-in, so keep it skimmable and direct.</span></pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Draft the leader update</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>From the top three of those, draft a written update for my direct leader, who has fifteen minutes and needs to leave with one decision made. Use the items you just identified as the source. Lead with what needs a decision, then progress, then open questions. Keep it under 200 words, neutral and direct, and keep the sources next to each point.</pre>
       </div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Turn it into slides</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Turn the update you just wrote into three slides I will present live to that same leadership group. Use only what is in the update &mdash; do not add new claims. One headline decision slide, one progress slide, one risks-and-next-steps slide. Maximum four bullets per slide, under twelve words each, and give me a one-line speaker note per slide.</pre>
       </div>
       <p class="why"><b>Notice what makes this a chain.</b> Prompt 2 uses prompt 1&rsquo;s output as its source, and prompt 3 uses prompt 2&rsquo;s. You never re-explain the context &mdash; that&rsquo;s the whole technique.</p>
@@ -341,7 +345,7 @@
         <div class="flow"><span>Analyse the export</span><i>&rarr;</i><span>Explain what moved</span><i>&rarr;</i><span>Commentary for review</span></div></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Find your own chain</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Look at my work over the last 30 days and find the multi-step outputs I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three. For each, show it as a three-step chain, say what starts it off, who receives the final output, and write the first prompt I would run to begin that chain. Then tell me which of the three is the best one to hand to Copilot first, and why.</pre>
         <p class="why"><b>Ask yourself as you read it back:</b> which of these do I do most often &mdash; and what would it be worth if the first draft were already written?</p>
       </div>
@@ -373,8 +377,8 @@
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="demo-tag">Presenter demo</span>&nbsp; The Cowork ask</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse live"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
-        <pre><span class="s">Using the attached workbook as the single source for everything you produce,</span> <span class="g">create a written brief, a short deck and a draft email for my team.</span> <span class="c">The brief is for someone who needs the detail, the deck is for a leadership discussion, and the email is for the team who need to know what to do next.</span> <span class="e">Word brief: under 400 words, covering the situation, the three most important findings with the figure behind each, and a recommended next step. Work out the findings from the data rather than repeating totals back to me. PowerPoint: five slides, no more than four bullets each. Email: under 150 words, decision first, owners and dates second, open questions last. Keep the facts identical across all three &mdash; only the framing changes. Leave the email as a draft for me to review; do not send it.</span></pre>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">Create a written brief, a short deck and a draft email for my team.</span> <span class="c">Use the attached workbook as the single source for everything you produce.</span> <span class="e">Word brief: under 400 words, covering the situation, the three most important findings with the figure behind each, and a recommended next step. Work out the findings from the data rather than repeating totals back to me. PowerPoint: five slides, no more than four bullets each. Email: under 150 words, decision first, owners and dates second, open questions last. Keep the facts identical across all three &mdash; only the framing changes. Leave the email as a draft for me to review; do not send it.</span> <span class="eq">The brief is for someone who needs the detail, the deck is for a leadership discussion, and the email is for the team who need to know what to do next — match the tone to each.</span></pre>
         <p class="why"><b>Notice the last line.</b> Cowork will ask before it sends anything &mdash; but saying it in the prompt is the habit worth teaching. You stay in control of what leaves your name.</p>
       </div>
       <div class="note amber"><span class="lbl">What to look for in the output</span><strong>There is a story buried in that data.</strong> New business is up sharply over the quarter &mdash; but one region&rsquo;s submission-error rate has roughly doubled to about 23% against a book average near 11%, and it is dragging cycle time and service load with it. A good output finds that on its own, without being told to look.</div>
@@ -404,7 +408,7 @@
       <div class="bu-example" id="bu-example-adv"></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; The master prompt &mdash; find your use case</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre id="master-prompt">Pick your business group above to tailor this prompt.</pre>
       </div>
       <div class="note blue"><span class="lbl">Carry this into the build</span><strong>Hold on to what you find here.</strong> The use case you land on is what you&rsquo;ll shape into an agent in the next section &mdash; so pick one you actually want to stop doing by hand.</div>
@@ -467,13 +471,13 @@
       <div class="note blue"><span class="lbl">Worked example</span><strong>&ldquo;I re-summarize the same policy documents for every new case.&rdquo;</strong> &rarr; a <em>knowledge agent</em> grounded on the policy library that answers case questions in seconds.</div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Let Copilot find your friction</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Look across my email, meetings, chats and files from the last 60 days and find the work I repeat. Identify five recurring tasks where I appear to do the same kind of thing more than once a month &mdash; the same type of summary, the same status update, the same document, the same question answered for someone else. For each one: what triggers it, roughly how often it happens, the steps I seem to take, and how repeatable it looks on a scale of one to five. Rank them by how worthwhile automating would be, and say what evidence you used.</pre>
         <p class="why"><b>Start here, not from a blank page.</b> The hardest part of agent building is spotting the right problem &mdash; and your own work data already contains the answer.</p>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Pressure-test the one you picked</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>I want to build an agent for this friction: [paste the one you picked]. Act as a sceptical reviewer. Walk it through four questions and answer each one plainly: What are the repeatable steps a person does today? What triggers it &mdash; an email, a file, a question, a date? Which of the three patterns fits best: knowledge, specialty, or productivity? And is this genuinely worth an agent, or is it really just a saved prompt? If it is too vague or too varied to automate, say so and suggest a sharper version.</pre>
       </div>
       <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; The three patterns</button></div>
@@ -517,23 +521,23 @@
       <p class="lede" style="margin:.4rem 0 1rem">Copy these as you go. Prompt 1 writes your agent&rsquo;s instructions; prompts 2&ndash;4 are how you test it before the gallery walk.</p>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Write your agent&rsquo;s instructions</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Help me write the instructions for an agent in Agent Builder. The workflow is: [paste your friction and its steps]. The people using it are [who]. Draft the agent&rsquo;s name, a one-sentence purpose, and its instructions written as direct guidance to the agent. Cover what it should always do, what it must never do, what to do when it does not know or the source does not cover the question, and the format its answers should take. Keep the instructions under 250 words and make it clear the output is a draft a human reviews.</pre>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Generate your test questions</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Based on the agent instructions we just wrote, give me six questions to test it with: two an everyday user would obviously ask, two awkward edge cases, one where the answer is genuinely not in the source, and one that tries to push it outside its purpose. For each, tell me in one line what a good answer looks like &mdash; so I can judge the response rather than just read it.</pre>
         <p class="why"><b>This is the step most people skip.</b> An agent that has never been tested against an edge case is a demo, not a tool your team can rely on.</p>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Fix what the test exposed</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Here is how my agent answered the test questions: [paste the weakest two answers]. Tell me what is wrong with them &mdash; too vague, went beyond the source, wrong format, or answered something it should have declined. Then rewrite the specific lines of my agent instructions that would fix it, and show only what changed so I can paste it back in.</pre>
       </div>
       <div class="prompt-card blue">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 4 · Write the hand-off</h4><button class="copy-button">Copy</button></div>
-        <div class="gcse"><span class="g">Goal</span><span class="c">Context</span><span class="s">Source</span><span class="e">Expectations</span></div>
+        <div class="race"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre>Write a short description of this agent so a teammate can pick it up cold: what it does, who it is for, the exact friction it removes, what it should not be used for, and two example questions to try first. Keep it under 120 words, plain language, no jargon &mdash; this goes in our champion channel for other business groups to reuse.</pre>
       </div>
       <div class="note amber"><span class="lbl">Keep it non-sensitive</span><strong>Use a fictional or non-sensitive knowledge source for the build.</strong> Real, sensitive content comes later once your agent works.</div>
@@ -636,7 +640,7 @@
   var currentBU = "Finance";
 
   var STEPS = {
-    adv:[["Welcome","Objectives &amp; how it runs"],["Prompting pattern","Goal + context + source"],["Personalization","Try it — set it up"],["Prompt chaining","Try it — catch up"],["Cowork orchestration","It does the work"],["Find your use case","Master prompt + your group"],["Agentic landscape","Bridge to the build"],["Take it further","Resources &amp; next"]],
+    adv:[["Welcome","Objectives &amp; how it runs"],["Prompting pattern","RACE + EQ"],["Personalization","Try it — set it up"],["Prompt chaining","Try it — catch up"],["Cowork orchestration","It does the work"],["Find your use case","Master prompt + your group"],["Agentic landscape","Bridge to the build"],["Take it further","Resources &amp; next"]],
     agent:[["Overview","What&rsquo;s worth building"],["The method","Friction to pattern"],["Three patterns","Knowledge / specialty / productivity"],["Build it in your pod","Hands-on"],["Ideas for your group","Starter agents by BU"],["Take it further","Gallery walk &amp; next"]]
   };
   var LABEL = {adv:"Advanced capabilities", agent:"Agent building"};
