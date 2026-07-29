@@ -100,7 +100,7 @@
   .why{margin:.55rem 0 0;padding:.6rem .8rem;background:var(--cream);border-left:3px solid var(--line);border-radius:0 6px 6px 0;color:var(--muted);font-size:.82rem;}
   .why b{color:var(--ink);}
 
-  /* inline colour-coding inside prompts, matched to the four ingredients */
+  /* inline color-coding inside prompts, matched to the four ingredients */
   pre .r,pre .a,pre .c,pre .e,pre .eq{padding:.06em .18em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
   pre .r{background:rgba(110,86,207,.14);box-shadow:inset 0 -2px 0 #6E56CF;}
   pre .a{background:rgba(15,122,135,.14);box-shadow:inset 0 -2px 0 #0f7a87;}
@@ -181,26 +181,30 @@
   .bu-bar .hint{color:rgba(255,255,255,.6);font-size:.82rem;}
   .bu-kpis{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0;}
   .kpi-chip{padding:.4rem .7rem;background:var(--green-soft);color:var(--green-deep);font-weight:800;font-size:.85rem;border-radius:20px;}
-  .kpi-pick{margin:1.1rem 0;padding:1.1rem 1.2rem;background:#fff;border:1px solid var(--line);border-top:5px solid var(--green-deep);border-radius:0 0 10px 10px;}
-  .kpi-pick > label{display:block;margin-bottom:.2rem;color:var(--green-deep);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
-  .kpi-pick .sub{margin:0 0 .8rem;color:var(--muted);font-size:.85rem;}
   .kpi-choices{display:flex;flex-wrap:wrap;gap:.45rem;}
   .kpi-opt{padding:.42rem .75rem;background:var(--green-soft);color:var(--green-deep);border:2px solid transparent;font-weight:800;font-size:.85rem;border-radius:20px;cursor:pointer;transition:.15s;font-family:inherit;}
   .kpi-opt:hover{border-color:var(--green-deep);}
   .kpi-opt.is-on{background:var(--green-deep);color:#fff;border-color:var(--green-deep);}
   .kpi-opt .x{margin-left:.4rem;opacity:.65;font-weight:900;}
-  .kpi-add{display:flex;gap:.5rem;margin-top:.75rem;}
-  .kpi-add input{flex:1;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.88rem;color:var(--ink);font-family:inherit;}
-  .kpi-add input:focus{outline:2px solid var(--green-deep);outline-offset:1px;background:#fff;}
-  .chain-pick{margin:1.1rem 0;padding:0;background:#fff;border:1px solid var(--line);border-top:5px solid var(--green-deep);border-radius:0 0 10px 10px;overflow:hidden;}
-  .cp-step{padding:1rem 1.2rem;border-bottom:1px solid var(--line);}
-  .cp-step:last-child{border-bottom:0;}
-  .cp-step > label{display:block;margin-bottom:.2rem;color:var(--green-deep);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
-  .cp-step .opt{margin-left:.4rem;padding:.08rem .35rem;background:var(--cream);color:var(--muted);border-radius:4px;font-size:.62rem;letter-spacing:.04em;}
-  .cp-step .sub{margin:0 0 .7rem;color:var(--muted);font-size:.84rem;}
-  .cp-step > input[type=text]{width:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.9rem;color:var(--ink);font-family:inherit;}
-  .cp-step > input[type=text]:focus{outline:2px solid var(--green-deep);outline-offset:1px;background:#fff;}
-  .kpi-add button{padding:.55rem 1rem;border:0;border-radius:6px;background:var(--green-deep);color:#fff;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit;}
+  .chain-pick{margin:1.1rem 0;padding:.85rem 1rem;background:#fff;border:1px solid var(--line);border-top:5px solid var(--green-deep);border-radius:0 0 10px 10px;}
+  .cp-step{margin-bottom:.65rem;}
+  .cp-step:last-child{margin-bottom:0;}
+  .cp-step > label{display:block;margin-bottom:.3rem;color:var(--green-deep);font-size:.65rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .cp-step > label .opt{margin-left:.35rem;color:var(--muted);font-weight:700;letter-spacing:.02em;text-transform:none;font-size:.72rem;}
+  .kpi-choices{display:flex;flex-wrap:wrap;gap:.3rem;}
+  .kpi-opt{padding:.32rem .58rem;background:var(--green-soft);color:var(--green-deep);border:2px solid transparent;font-weight:800;font-size:.78rem;border-radius:20px;cursor:pointer;transition:.15s;font-family:inherit;line-height:1.25;}
+  .kpi-opt:hover{border-color:var(--green-deep);}
+  .kpi-opt.is-on{background:var(--green-deep);color:#fff;border-color:var(--green-deep);}
+  .kpi-opt .x{margin-left:.35rem;opacity:.65;font-weight:900;}
+  .kpi-opt.add{background:transparent;color:var(--muted);border:1px dashed var(--line);font-weight:800;}
+  .kpi-opt.add:hover{color:var(--green-deep);border-color:var(--green-deep);}
+  .cp-inline{display:none;margin-top:.4rem;}
+  .cp-inline.on{display:block;}
+  .cp-inline input,.cp-act{width:100%;padding:.45rem .6rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.85rem;color:var(--ink);font-family:inherit;}
+  .cp-inline input:focus,.cp-act:focus{outline:2px solid var(--green-deep);outline-offset:1px;background:#fff;}
+  .uc-summary{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.8rem;}
+  .uc-summary span{padding:.28rem .55rem;background:var(--green-soft);color:var(--green-deep);border-radius:5px;font-size:.76rem;font-weight:800;}
+  .uc-summary span.mut{background:var(--cream);color:var(--muted);font-style:italic;font-weight:700;}
   .ws textarea{width:100%;min-height:104px;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.9rem;color:var(--ink);font-family:inherit;line-height:1.5;resize:vertical;}
   .ws textarea:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff;}
   .ws input[readonly]{background:var(--green-soft);color:var(--green-deep);font-weight:800;}
@@ -227,7 +231,8 @@
   .resource-block a:hover{color:#fff;} .resource-block a::before{content:"→ ";color:var(--green);}
   .ph{color:rgba(255,255,255,.5);font-size:.8rem;font-style:italic;}
 
-  @media (max-width:1180px){.layout{grid-template-columns:250px minmax(0,1fr);}.resources{position:static;grid-column:1/-1;max-height:none;}}
+  @media (max-width:1340px){.layout{grid-template-columns:262px minmax(0,1fr) 268px;gap:.85rem;padding:.85rem;}}
+  @media (max-width:1040px){.layout{grid-template-columns:250px minmax(0,1fr);}.resources{position:static;grid-column:1/-1;max-height:none;}}
   @media (max-width:780px){
     .topbar{grid-template-columns:1fr auto;gap:.7rem;} .topbar-progress{grid-column:1/-1;grid-row:2;}
     .layout{display:block;padding:.75rem;} .rail{position:static;max-height:none;margin-bottom:.75rem;}
@@ -299,7 +304,7 @@
       <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre><span class="r">You are my chief of staff.</span> <span class="a">Identify an active initiative I own and prepare a short executive summary for a leadership check-in.</span> <span class="c">Review email threads and meetings from the past two weeks where I am a participant, and cite the sources behind each point.</span> <span class="e">Start with why you chose this initiative, then give three key points, the decision needed, two risks, and a recommended next step.</span> <span class="eq">The audience is a cross-functional leadership team with fifteen minutes and one decision to make — keep it direct and plain-language, no jargon.</span></pre>
       </div>
-      <p class="why"><b>The colours above are the same five elements, highlighted in the prompt itself.</b> Every prompt in this walkthrough carries the strip, and the key ones are colour-coded like this &mdash; so you can see the pattern rather than memorise it. That&rsquo;s what makes it teachable. <b>Expectation is the one most people skip:</b> they tell Copilot what to do, but never what a good answer looks like.</p>
+      <p class="why"><b>The colors above are the same five elements, highlighted in the prompt itself.</b> Every prompt in this walkthrough carries the strip, and the key ones are color-coded like this &mdash; so you can see the pattern rather than memorise it. That&rsquo;s what makes it teachable. <b>Expectation is the one most people skip:</b> they tell Copilot what to do, but never what a good answer looks like.</p>
       <ul class="steps">
         <li><strong>Set the Role.</strong><small>Who should Copilot act as? “You are my chief of staff” changes the answer more than most people expect.</small></li>
         <li><strong>State the Action.</strong><small>What exactly do you want done? One clear verb beats three vague ones.</small></li>
@@ -343,7 +348,7 @@
         <p class="why"><b>If you can&rsquo;t see the difference, it isn&rsquo;t specific enough yet.</b> Go back and add what makes your role different from anyone else&rsquo;s.</p>
       </div>
       <ul class="steps">
-        <li><strong>Start a new chat.</strong><small>So the setup isn&rsquo;t coloured by earlier context.</small></li>
+        <li><strong>Start a new chat.</strong><small>So the setup isn&rsquo;t colored by earlier context.</small></li>
         <li><strong>Pick Option A or Option B.</strong><small>Not both &mdash; they&rsquo;re two routes to the same place. B is the one worth showing your teams.</small></li>
         <li><strong>Sharpen it.</strong><small>Cut anything that would apply to any other employee.</small></li>
         <li><strong>Save it.</strong><small>Paste the final version into Copilot&rsquo;s personalization / custom-instructions settings.</small></li>
@@ -385,7 +390,7 @@
       <div class="pattern"><b>Start from a meeting</b><em>Decisions get made and the follow-through is the work.</em>
         <div class="flow"><span>Recap &amp; decisions</span><i>&rarr;</i><span>Actions by owner</span><i>&rarr;</i><span>Follow-up note</span></div></div>
       <div class="pattern"><b>Start from data</b><em>The numbers arrive and someone has to explain them.</em>
-        <div class="flow"><span>Analyse the export</span><i>&rarr;</i><span>Explain what moved</span><i>&rarr;</i><span>Commentary for review</span></div></div>
+        <div class="flow"><span>Analyze the export</span><i>&rarr;</i><span>Explain what moved</span><i>&rarr;</i><span>Commentary for review</span></div></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Find your own chain</h4><button class="copy-button">Copy</button></div>
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
@@ -426,7 +431,7 @@
       <div class="note amber"><span class="lbl">What to look for in the output</span><strong>There is a story buried in that data.</strong> New business is up sharply over the quarter &mdash; but one region&rsquo;s submission-error rate has roughly doubled to about 23% against a book average near 11%, and it is dragging cycle time and service load with it. A good output finds that on its own, without being told to look.</div>
       <div class="note blue"><span class="lbl">Where the leverage is</span><strong>Cowork can browse your whole Work IQ to pull in what it needs.</strong> That&rsquo;s the difference between an assistant that waits for you to attach a file and one that goes and finds the right file, the meeting it came from, and the thread where it was discussed.</div>
       <div class="note"><span class="lbl">Champion takeaway</span><strong>One source, three outputs, no drift.</strong> Because everything traces back to the same grounded report, the numbers can&rsquo;t disagree between the brief, the deck and the email &mdash; which is exactly what goes wrong when three people build them separately.</div>
-      <div class="note amber"><span class="lbl">Teach the judgement, not just the button</span><strong>Reach for Cowork when the task is genuinely multi-step and crosses apps.</strong> For a quick draft or a fast answer, Chat is still the right tool &mdash; and it&rsquo;s faster. Knowing which to reach for is the champion skill.</div>
+      <div class="note amber"><span class="lbl">Teach the judgment, not just the button</span><strong>Reach for Cowork when the task is genuinely multi-step and crosses apps.</strong> For a quick draft or a fast answer, Chat is still the right tool &mdash; and it&rsquo;s faster. Knowing which to reach for is the champion skill.</div>
       <div class="guide"><button class="guide-button secondary" data-go="3">&larr; Back</button><button class="guide-button" data-go="5">Next &rarr; The agentic landscape</button></div>
     </section>
     <section class="panel" data-mode="adv" data-idx="5">
@@ -608,28 +613,18 @@
       <div class="chain-pick">
         <div class="cp-step">
           <label>1 &middot; The measure you own</label>
-          <p class="sub">Illustrative for your group &mdash; pick the closest, or add the one your team is actually judged on.</p>
           <div class="kpi-choices" id="kpi-choices"></div>
-          <div class="kpi-add">
-            <input id="kpi-custom" type="text" placeholder="Other &mdash; type the measure you own">
-            <button type="button" id="kpi-add-btn">Add</button>
-          </div>
+          <div class="cp-inline" id="kpi-inline"><input id="kpi-custom" type="text" placeholder="Type the measure you own, then press Enter"></div>
         </div>
         <div class="cp-step">
           <label>2 &middot; The process behind it</label>
-          <p class="sub">Which process actually delivers that measure? This is what Copilot will map for you.</p>
           <div class="kpi-choices" id="proc-choices"></div>
-          <div class="kpi-add">
-            <input id="proc-custom" type="text" placeholder="Other &mdash; type the process you have in mind">
-            <button type="button" id="proc-add-btn">Add</button>
-          </div>
+          <div class="cp-inline" id="proc-inline"><input id="proc-custom" type="text" placeholder="Type the process you have in mind, then press Enter"></div>
         </div>
         <div class="cp-step">
-          <label>3 &middot; The step with the friction <span class="opt">optional</span></label>
-          <p class="sub">The bit that annoys you most. Not sure? Leave it blank &mdash; Copilot will find the friction for you.</p>
-          <input id="act-input" type="text" placeholder="e.g. chasing the numbers from four different people before I can start">
+          <label>3 &middot; The step with the friction <span class="opt">optional &mdash; leave blank and Copilot will find it</span></label>
+          <input class="cp-act" id="act-input" type="text" placeholder="e.g. chasing the numbers from four people before I can start">
         </div>
-      </div>
       </div>
       <div class="bu-example" id="bu-example-adv"></div>
       <div class="prompt-card">
@@ -641,28 +636,12 @@
       <div class="ws">
         <h4>Your use case &mdash; capture it here<span class="ws-status" id="uc-saved">saved</span></h4>
         <p class="sub">Your choices above carry down automatically. Run the prompt, then bring the answer back here &mdash; paste Copilot&rsquo;s output or write it in your own words. This is what gets submitted.</p>
+        <div class="uc-summary" id="uc-summary"></div>
         <div class="ws-grid">
-          <div>
-            <label for="uc-bu">Business group</label>
-            <input id="uc-bu" type="text" readonly>
-          </div>
-          <div>
-            <label for="uc-kpi">The measure you own</label>
-            <input id="uc-kpi" type="text" readonly>
-          </div>
-          <div>
-            <label for="uc-proc">The process</label>
-            <input id="uc-proc" type="text" readonly>
-          </div>
-          <div>
-            <label for="uc-activity">The step with the friction</label>
-            <input id="uc-activity" type="text" readonly>
-          </div>
           <div class="full">
             <label for="uc-case">Your Copilot use case</label>
             <textarea id="uc-case" placeholder="Paste what Copilot gave you, or describe it yourself: what you would apply Copilot to, and what good looks like."></textarea>
           </div>
-        </div>
         </div>
         <div class="uc-actions">
           <button type="button" class="uc-primary" id="uc-submit">Submit use case</button>
@@ -671,17 +650,17 @@
         </div>
         <p class="hintline"><b>Saved on this device.</b> Nothing leaves this page until you press Submit.</p>
       </div>
-      <div class="note"><span class="lbl">Where it goes</span><strong>Submitted use cases reach the AI Leads and Portfolio Leads</strong> who prioritise the backlog &mdash; so the highest-impact ones get built together.</div>
+      <div class="note"><span class="lbl">Where it goes</span><strong>Submitted use cases reach the AI Leads and Portfolio Leads</strong> who prioritize the backlog &mdash; so the highest-impact ones get built together.</div>
       <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; Take it further</button></div>
     </section>
     <section class="panel" data-mode="value" data-idx="1">
       <div class="kicker">Take it with you</div>
       <h2>From capability to everyday value</h2>
-      <p class="lede">You found a use case and you built something that runs. The last step is the one that compounds &mdash; take it back to your team, and put what you found where it can be prioritised.</p>
+      <p class="lede">You found a use case and you built something that runs. The last step is the one that compounds &mdash; take it back to your team, and put what you found where it can be prioritized.</p>
       <div class="grid2">
         <article><strong>Finish &amp; share your agent</strong><p>Complete what you started in the pod and show it in your channel.</p></article>
         <article><strong>Teach the method</strong><p>Walk a teammate through friction &rarr; workflow &rarr; trigger &rarr; pattern.</p></article>
-        <article><strong>Submit your Copilot use case</strong><p>Drop it in the champion Teams channel so it reaches the AI Leads and Portfolio Leads who prioritise the backlog.</p></article>
+        <article><strong>Submit your Copilot use case</strong><p>Drop it in the champion Teams channel so it reaches the AI Leads and Portfolio Leads who prioritize the backlog.</p></article>
         <article><strong>Re-run it with your team</strong><p>Personalization and the chain make a ready-made lunch &amp; learn.</p></article>
       </div>
       <div class="note blue"><span class="lbl">The through-line</span><strong>You turned a measure you own into a use case, and a use case into something that runs on its own.</strong> That is the whole point &mdash; capability only counts once it shows up in the work.</div>
@@ -715,10 +694,10 @@
       use:"Summarize prior reports to scope a new engagement, and draft findings against your standard so reviewers edit rather than write.",
       agent:["Knowledge agent","An audit methodology & standards assistant grounded on your manual that answers scoping and testing questions consistently."]},
     "Business Ops":{kpis:["SLA attainment","Backlog & aging","Process cycle time","Straight-through-processing rate"],
-      use:"Analyse volume and SLA performance, triage exceptions to root cause, and turn a process into current SOP documentation.",
+      use:"Analyze volume and SLA performance, triage exceptions to root cause, and turn a process into current SOP documentation.",
       agent:["Knowledge agent","An SOP & process assistant grounded on your procedure library that answers \u201chow do we handle this\u201d in seconds."]},
     "Contact Center":{kpis:["First-contact resolution (FCR)","Average handle time (AHT)","QA score","CSAT / NPS"],
-      use:"Draft call wrap-up notes into clean records and analyse call drivers to find the knowledge-base gaps behind repeat contacts.",
+      use:"Draft call wrap-up notes into clean records and analyze call drivers to find the knowledge-base gaps behind repeat contacts.",
       agent:["Knowledge agent","An agent-assist assistant grounded on approved policy and product content that suggests accurate answers for common questions."]},
     "Finance":{kpis:["Month-end close cycle time","Variance-explanation time","Forecast accuracy / variance","Management reporting cycle time"],
       use:"Draft variance and budget-versus-actual commentary from the numbers, so analysts refine the story rather than write it from scratch.",
@@ -730,7 +709,7 @@
       use:"Draft quarterly client investment commentary from performance data and the approved house view, with sources kept attached.",
       agent:["Knowledge agent","A product & fund knowledge assistant grounded on approved research that produces client-ready summaries with citations."]},
     "Inforce":{kpis:["13th / 25th month persistency","Lapse & surrender rate","Premium conservation rate","Reinstatement rate & cycle time"],
-      use:"Analyse at-risk cohorts and lapse drivers, then draft the conservation and reinstatement outreach that follows.",
+      use:"Analyze at-risk cohorts and lapse drivers, then draft the conservation and reinstatement outreach that follows.",
       agent:["Knowledge agent","A conservation playbook assistant that answers \u201cwhat do we do for this case\u201d from the approved playbook."]},
     "Marketing":{kpis:["Content velocity / time-to-campaign","Cost per qualified lead","Compliance rework rate","Campaign-attributed sales / APE"],
       use:"Draft campaign briefs and on-brand copy variants, then localize them for market without rebuilding from scratch.",
@@ -739,7 +718,7 @@
       use:"Draft leader communications, announcements and policy FAQs in a consistent house voice, ready for review.",
       agent:["Knowledge agent","An HR policy & benefits assistant grounded on approved policy that answers common employee questions consistently."]},
     "Retail Distribution":{kpis:["Not-in-good-order (NIGO) rate","Time-to-quote / proposal","Advisor productivity","Placement rate"],
-      use:"Summarize discovery notes into a structured needs analysis and analyse NIGO drivers to cut rework at submission.",
+      use:"Summarize discovery notes into a structured needs analysis and analyze NIGO drivers to cut rework at submission.",
       agent:["Knowledge agent","A product & suitability reference assistant grounded on approved product content that drafts advisor-ready answers."]},
     "Risk":{kpis:["Regulatory change assessment cycle time","Risk assessment cycle time","Issue remediation time","KRI breach aging"],
       use:"Summarize regulatory change and map it to obligations, then draft the assessment write-up against your standard.",
@@ -754,7 +733,7 @@
     "General Account":["Credit & annual obligor review","Portfolio performance reporting","Investment committee memo prep","Watchlist & migration monitoring"],
     "GWAM":["Quarterly client reporting","RFP / DDQ response production","Client & advisor meeting prep","Product & fund due diligence"],
     "Inforce":["At-risk / lapse identification","Conservation outreach campaign","Surrender & reinstatement processing","Inforce portfolio review"],
-    "Marketing":["Brief to creative production","Compliance & legal review","Campaign launch & execution","Performance reporting & optimisation"],
+    "Marketing":["Brief to creative production","Compliance & legal review","Campaign launch & execution","Performance reporting & optimization"],
     "People & Comms":["Internal comms production & approval","Recruiting & candidate selection","Employee onboarding","HR policy query handling"],
     "Retail Distribution":["Quote & illustration production","Application submission & NIGO fixes","Underwriting follow-up & case management","Advisor onboarding & enablement"],
     "Risk":["Regulatory change assessment","Risk & control self-assessment","Issue & action tracking to closure","KRI monitoring & reporting"]
@@ -912,6 +891,16 @@
   // Destination for submitted use cases. Leave url empty to fall back to copy-only.
   var SUBMIT = { mode: "copy", url: "" };
 
+  function addChip(panelId, inputId){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "kpi-opt add"; b.textContent = "+ Other";
+    b.addEventListener("click", function(){
+      var p = document.getElementById(panelId); if(!p) return;
+      p.classList.add("on");
+      var inp = document.getElementById(inputId); if(inp) inp.focus();
+    });
+    return b;
+  }
   var EXTRA_P = {};        // per-BU user-added processes
   var pickedProc = {};     // per-BU selected process
 
@@ -948,6 +937,7 @@
       });
       wrap.appendChild(b);
     });
+    wrap.appendChild(addChip("proc-inline", "proc-custom"));
   }
   function addCustomProc(){
     var inp = document.getElementById("proc-custom"); if(!inp) return;
@@ -955,6 +945,7 @@
     EXTRA_P[currentBU] = EXTRA_P[currentBU] || [];
     if(EXTRA_P[currentBU].indexOf(v) < 0 && (PROCS[currentBU]||[]).indexOf(v) < 0) EXTRA_P[currentBU].push(v);
     pickedProc[currentBU] = v; inp.value = "";
+    var ip = document.getElementById("proc-inline"); if(ip) ip.classList.remove("on");
     renderProcs(); syncUseCase(); ucSave();
   }
 
@@ -994,6 +985,7 @@
       });
       wrap.appendChild(b);
     });
+    wrap.appendChild(addChip("kpi-inline", "kpi-custom"));
   }
   function addCustomKPI(){
     var inp = document.getElementById("kpi-custom"); if(!inp) return;
@@ -1001,16 +993,21 @@
     EXTRA[currentBU] = EXTRA[currentBU] || [];
     if(EXTRA[currentBU].indexOf(v) < 0 && (BU[currentBU].kpis||[]).indexOf(v) < 0) EXTRA[currentBU].push(v);
     pickedKPI[currentBU] = v; inp.value = "";
+    var ip = document.getElementById("kpi-inline"); if(ip) ip.classList.remove("on");
     renderKPIs(); syncUseCase(); ucSave();
   }
   function syncUseCase(){
-    var b = document.getElementById("uc-bu"), k = document.getElementById("uc-kpi");
-    if(b) b.value = currentBU;
-    if(k) k.value = selectedKPI() || "";
-    var pr = document.getElementById("uc-proc");
-    if(pr) pr.value = selectedProc() || "";
-    var ai = document.getElementById("act-input"), ao = document.getElementById("uc-activity");
-    if(ao) ao.value = ai ? (ai.value || "").trim() : "";
+    var sum = document.getElementById("uc-summary");
+    if(sum){
+      var ai = document.getElementById("act-input");
+      var act = ai ? (ai.value || "").trim() : "";
+      var esc = function(t){ var d=document.createElement("div"); d.textContent=t; return d.innerHTML; };
+      var parts = ['<span>'+esc(currentBU)+'</span>',
+                   '<span>'+esc(selectedKPI()||"")+'</span>',
+                   '<span>'+esc(selectedProc()||"")+'</span>'];
+      parts.push(act ? '<span>'+esc(act)+'</span>' : '<span class="mut">no friction step yet</span>');
+      sum.innerHTML = parts.join("");
+    }
     var mp = document.getElementById("master-prompt");
     if(mp) mp.innerHTML = masterPromptText(currentBU);
   }
@@ -1063,14 +1060,18 @@
     }
   }
   (function(){
-    var add = document.getElementById("kpi-add-btn");
-    if(add) add.addEventListener("click", addCustomKPI);
-    var ci = document.getElementById("kpi-custom");
-    if(ci) ci.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); addCustomKPI(); } });
-    var pa = document.getElementById("proc-add-btn");
-    if(pa) pa.addEventListener("click", addCustomProc);
-    var pi = document.getElementById("proc-custom");
-    if(pi) pi.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); addCustomProc(); } });
+    function wireInline(inputId, panelId, fn){
+      var el = document.getElementById(inputId); if(!el) return;
+      el.addEventListener("keydown", function(e){
+        if(e.key === "Enter"){ e.preventDefault(); fn(); document.getElementById(panelId).classList.remove("on"); }
+        if(e.key === "Escape"){ el.value=""; document.getElementById(panelId).classList.remove("on"); }
+      });
+      el.addEventListener("blur", function(){
+        if(!el.value.trim()) document.getElementById(panelId).classList.remove("on");
+      });
+    }
+    wireInline("kpi-custom", "kpi-inline", addCustomKPI);
+    wireInline("proc-custom", "proc-inline", addCustomProc);
     var ain = document.getElementById("act-input");
     if(ain) ain.addEventListener("input", function(){ syncUseCase(); ucSave(); });
     var uc = document.getElementById("uc-case");
