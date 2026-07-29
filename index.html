@@ -37,8 +37,8 @@
   .layout{display:grid;grid-template-columns:290px minmax(0,1fr) 300px;gap:1.2rem;width:min(1660px,100%);margin:0 auto;padding:1.2rem;}
   .rail,.resources{position:sticky;top:98px;align-self:start;max-height:calc(100vh - 116px);overflow:auto;}
   .rail{padding:1rem;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:10px;}
-  .mode-toggle{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-bottom:.9rem;padding:.3rem;background:var(--green-soft);border-radius:9px;}
-  .mode-btn{padding:.55rem .4rem;text-align:center;border:0;background:transparent;border-radius:7px;font-weight:800;font-size:.86rem;color:var(--green-deep);}
+  .mode-toggle{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.35rem;margin-bottom:.9rem;padding:.3rem;background:var(--green-soft);border-radius:9px;}
+  .mode-btn{padding:.5rem .25rem;text-align:center;border:0;background:transparent;border-radius:7px;font-weight:800;font-size:.71rem;line-height:1.15;color:var(--green-deep);}
   .mode-btn.is-active{background:var(--ink);color:#fff;}
   .rail-header{padding:.2rem .4rem .9rem;border-bottom:1px solid var(--line);}
   .eyebrow{margin:0 0 .5rem;color:var(--green-deep);font-size:.68rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;}
@@ -229,6 +229,7 @@
     <div class="mode-toggle" role="tablist">
       <button class="mode-btn is-active" data-mode="adv" role="tab">Advanced Capabilities</button>
       <button class="mode-btn" data-mode="agent" role="tab">Agent Building</button>
+      <button class="mode-btn" data-mode="value" role="tab">Capability to Value</button>
     </div>
     <div class="rail-header">
       <p class="eyebrow">Copilot Premium deployment</p>
@@ -242,18 +243,17 @@
     <section class="panel is-active" data-mode="adv" data-idx="0">
       <div class="kicker">Welcome</div>
       <h2>The power moves you may not be using yet</h2>
-      <p class="lede">Your live-along guide for the Advanced Capabilities section. We&rsquo;ll run four capabilities as <strong>one connected workflow</strong>, find <strong>your own use case</strong>, and at two points you&rsquo;ll try it on your own laptop. Copy every prompt straight from this page.</p>
+      <p class="lede">Your live-along guide for the Advanced Capabilities section. We&rsquo;ll run four capabilities as <strong>one connected workflow</strong>, and at two points you&rsquo;ll try it on your own laptop. Copy every prompt straight from this page.</p>
       <div class="grid4">
         <article><strong>Personalize</strong><p>Set Copilot up around your role so it persists.</p></article>
         <article><strong>Chain</strong><p>Research &rarr; draft &rarr; deck, without leaving the flow.</p></article>
         <article><strong>Cowork</strong><p>Hand over a multi-step task &mdash; it does the work across your apps.</p></article>
-        <article><strong>Find value</strong><p>Turn a KPI you own into a Copilot use case.</p></article>
+        <article><strong>Go agentic</strong><p>See where an agent picks up where prompting stops.</p></article>
       </div>
       <div class="note blue"><span class="lbl">How this runs</span><strong>Two modes on this page.</strong> <span class="demo-tag">Presenter demo</span> = watch on screen. <span class="try-tag">Try it</span> = you run it. When you&rsquo;re done here, switch to the <strong>Agent Building</strong> tab (top-left) for the hands-on build.</div>
       <div class="note amber"><span class="lbl">About the data you&rsquo;ll use</span><strong>Use your own work wherever you can</strong> &mdash; the prompts are far more convincing on your real week. Where a file is needed, we use a fictional company (<em>Northwind Life &amp; Wealth</em>) rather than real Manulife content. If your own mailbox is thin for any exercise, the sample workbook works as a fallback &mdash; see <strong>Sample data</strong> in the resource panel.</div>
       <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; the prompting pattern</button></div>
     </section>
-
     <section class="panel" data-mode="adv" data-idx="1">
       <div class="kicker">The pattern</div>
       <h2>RACE + EQ &mdash; the anatomy of a strong prompt</h2>
@@ -278,9 +278,8 @@
         <li><strong>Define the Expectation.</strong><small>What does a good output actually look like? Structure, length, what to include. This is the most overlooked part.</small></li>
         <li><strong>Add the EQ.</strong><small>Who is it for, and how should it land? Tone, audience and delivery &mdash; then verify names and numbers.</small></li>
       </ul>
-      <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; Personalization &amp; memory</button></div>
+      <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; Personalization</button></div>
     </section>
-
     <section class="panel" data-mode="adv" data-idx="2">
       <div class="kicker">Capability 1 · you try this</div>
       <h2>Personalization &amp; memory</h2>
@@ -323,9 +322,8 @@
       </ul>
       <div class="note amber"><span class="lbl">Leave with it running</span><strong>Don&rsquo;t stop at &ldquo;drafted.&rdquo;</strong> The goal is that your personalization is saved and shaping answers before you leave the room &mdash; that&rsquo;s what you&rsquo;ll be teaching your teams to do.</div>
       <div class="note"><span class="lbl">Why this matters for champions</span><strong>You can only teach what you understand.</strong> Champions who get the &ldquo;behind the scenes&rdquo; of custom instructions and memory can set it up for a whole team.</div>
-      <div class="guide"><button class="guide-button secondary" data-go="1">&larr; Back</button><button class="guide-button" data-go="3">Next &rarr; Advanced prompt chaining</button></div>
+      <div class="guide"><button class="guide-button secondary" data-go="1">&larr; Back</button><button class="guide-button" data-go="3">Next &rarr; Prompt chaining</button></div>
     </section>
-
     <section class="panel" data-mode="adv" data-idx="3">
       <div class="kicker">Capability 2 · you try this</div>
       <h2>Advanced prompt chaining</h2>
@@ -367,7 +365,6 @@
       </div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Cowork orchestration</button></div>
     </section>
-
     <section class="panel" data-mode="adv" data-idx="4">
       <div class="kicker">Capability 3 · watch on screen</div>
       <h2>Cowork &mdash; orchestration across your apps</h2>
@@ -401,38 +398,9 @@
       <div class="note blue"><span class="lbl">Where the leverage is</span><strong>Cowork can browse your whole Work IQ to pull in what it needs.</strong> That&rsquo;s the difference between an assistant that waits for you to attach a file and one that goes and finds the right file, the meeting it came from, and the thread where it was discussed.</div>
       <div class="note"><span class="lbl">Champion takeaway</span><strong>One source, three outputs, no drift.</strong> Because everything traces back to the same grounded report, the numbers can&rsquo;t disagree between the brief, the deck and the email &mdash; which is exactly what goes wrong when three people build them separately.</div>
       <div class="note amber"><span class="lbl">Teach the judgement, not just the button</span><strong>Reach for Cowork when the task is genuinely multi-step and crosses apps.</strong> For a quick draft or a fast answer, Chat is still the right tool &mdash; and it&rsquo;s faster. Knowing which to reach for is the champion skill.</div>
-      <div class="guide"><button class="guide-button secondary" data-go="3">&larr; Back</button><button class="guide-button" data-go="5">Next &rarr; Find your use case</button></div>
+      <div class="guide"><button class="guide-button secondary" data-go="3">&larr; Back</button><button class="guide-button" data-go="5">Next &rarr; The agentic landscape</button></div>
     </section>
-
     <section class="panel" data-mode="adv" data-idx="5">
-      <div class="kicker">Make it yours · you try this</div>
-      <h2>From a KPI you own to a Copilot use case</h2>
-      <p class="lede">A <strong>Copilot use case</strong> means applying Copilot Premium to a real business scenario for value &mdash; not building a data-science model. Pick your business group, then use the master prompt to find one that&rsquo;s yours.</p>
-      <div class="chain">
-        <div class="c1">KPI<small>the outcome you own</small></div>
-        <div class="c2">Process<small>what delivers it</small></div>
-        <div class="c3">Activity<small>the step with friction</small></div>
-        <div class="c4">Copilot use case<small>what you apply</small></div>
-      </div>
-      <p class="why" style="margin-bottom:1.2rem"><b>Work right to left and you get a tool looking for a job.</b> Work left to right and every use case has a number attached to it. We go deeper on this after the break &mdash; for now, just find one that&rsquo;s yours.</p>
-      <div class="bu-bar">
-        <label for="bu-select-adv">Your business group:</label>
-        <select id="bu-select-adv"></select>
-        <span class="hint">Examples below tailor to your group. KPIs are illustrative &mdash; swap in your own.</span>
-      </div>
-      <div class="bu-kpis" id="bu-kpis-adv"></div>
-      <div class="bu-example" id="bu-example-adv"></div>
-      <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; The master prompt &mdash; find your use case</h4><button class="copy-button">Copy</button></div>
-        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre id="master-prompt">Pick your business group above to tailor this prompt.</pre>
-      </div>
-      <div class="note blue"><span class="lbl">Carry this into the build</span><strong>Hold on to what you find here.</strong> The use case you land on is what you&rsquo;ll shape into an agent in the next section &mdash; so pick one you actually want to stop doing by hand.</div>
-      <div class="note"><span class="lbl">Bring it back</span><strong>Then drop it in the champion Teams channel</strong> as a Copilot use case, so it reaches the AI Leads and Portfolio Leads who prioritise the backlog &mdash; and we build the highest-impact ones together.</div>
-      <div class="guide"><button class="guide-button secondary" data-go="4">&larr; Back</button><button class="guide-button" data-go="6">Next &rarr; The agentic landscape</button></div>
-    </section>
-
-    <section class="panel" data-mode="adv" data-idx="6">
       <div class="kicker">Capability 4 · the bridge</div>
       <h2>The agentic landscape</h2>
       <p class="lede">You just saw Cowork take a whole task off your hands. An agent is the next step: <strong>your own</strong> version of that &mdash; shaped once for a specific job, then run the same way every time, by you or your team.</p>
@@ -441,26 +409,10 @@
         <article><strong>Knowledge</strong><p>Answers from a trusted source &mdash; policy, product or process.</p></article>
         <article><strong>Specialty</strong><p>Runs a specific task or workflow end to end against a rubric.</p></article>
       </div>
-      <div class="scenario"><strong>From &ldquo;I prompted it&rdquo; to &ldquo;it just runs.&rdquo;</strong><p>Hold onto the use case you just found. In the Agent Building tab you&rsquo;ll turn a workflow just like it into a working agent &mdash; starting with <em>what&rsquo;s worth</em> building, not <em>how</em>.</p></div>
-      <div class="note blue"><span class="lbl">Next</span><strong>Switch to the Agent Building tab</strong> (top-left) after the break.</div>
-      <div class="guide"><button class="guide-button secondary" data-go="5">&larr; Back</button><button class="guide-button" data-go="7">Next &rarr; Take it further</button></div>
+      <div class="scenario"><strong>From &ldquo;I prompted it&rdquo; to &ldquo;it just runs.&rdquo;</strong><p>That is where we go next: turning a workflow just like the ones you just ran into a working agent &mdash; starting with <em>what&rsquo;s worth</em> building, not <em>how</em>.</p></div>
+      <div class="note blue"><span class="lbl">Pause here</span><strong>Stay on this tab.</strong> We&rsquo;ll go back to the deck for the Agent Building 2.0 section &mdash; your facilitator will tell you when to switch tabs.</div>
+      <div class="guide"><button class="guide-button secondary" data-go="4">&larr; Back</button><span class="status">Pause here &mdash; your facilitator will pick it up from the deck.</span></div>
     </section>
-
-    <section class="panel" data-mode="adv" data-idx="7">
-      <div class="kicker">Take it with you</div>
-      <h2>Keep the momentum</h2>
-      <p class="lede">Everything you ran lives where you already work. Re-run these prompts with your teams &mdash; and bring what you find back to the champion channel.</p>
-      <div class="grid2">
-        <article><strong>Re-run the personalization</strong><p>Walk one teammate through the five-question setup this week.</p></article>
-        <article><strong>Teach the chain</strong><p>Show catch-up &rarr; update &rarr; deck in a lunch &amp; learn.</p></article>
-        <article><strong>Submit a Copilot use case</strong><p>Drop the one you found into the champion channel.</p></article>
-        <article><strong>Go build</strong><p>Head to the Agent Building tab and make it real.</p></article>
-      </div>
-      <div class="note"><span class="lbl">Your through-line</span><strong>You are how Manulife turns Copilot Premium into everyday value.</strong></div>
-      <div class="guide"><button class="guide-button secondary" data-go="6">&larr; Back</button><button class="guide-button" data-mode-go="agent">Go to Agent Building &rarr;</button></div>
-    </section>
-
-    <!-- AGENT BUILDING -->
     <section class="panel" data-mode="agent" data-idx="0">
       <div class="kicker agent">Agent Building 2.0</div>
       <h2>The hard part isn&rsquo;t how &mdash; it&rsquo;s what</h2>
@@ -471,10 +423,30 @@
         <article><strong>Shape the agent</strong><p>Knowledge, specialty or productivity &mdash; pick the pattern.</p></article>
       </div>
       <div class="note blue"><span class="lbl">Before you start</span><strong>Bring the friction you most want to hand off.</strong> The best agent ideas come from work you already find repetitive &mdash; not from a capability you want to try.</div>
-      <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; the method</button></div>
+      <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; The three patterns</button></div>
     </section>
-
     <section class="panel" data-mode="agent" data-idx="1">
+      <div class="kicker agent">Pick your pattern</div>
+      <h2>Three agent patterns</h2>
+      <p class="lede">Almost every useful agent is one of these three. Decide which one your friction needs before you build.</p>
+      <div class="grid3">
+        <article><strong>Knowledge</strong><p>Answers from a trusted source &mdash; policy, product, process. Grounded on documents your team relies on.</p></article>
+        <article><strong>Specialty</strong><p>Runs a specific task end to end &mdash; against a rubric, framework or standard output.</p></article>
+        <article><strong>Productivity</strong><p>Automates a personal, repeatable weekly chore &mdash; the catch-up, the status roll-up.</p></article>
+      </div>
+      <div class="note amber"><span class="lbl">Decide first</span><strong>Match the pattern to the friction.</strong> A &ldquo;where do I find X&rdquo; problem is a knowledge agent; a &ldquo;do this the same way every time&rdquo; problem is a specialty agent.</div>
+
+      <h3 style="margin:1.9rem 0 .3rem">What this looks like across Manulife</h3>
+      <p class="lede" style="margin:.4rem 0 1rem">Real examples from the use-case work behind this programme &mdash; the same three patterns, in different business groups.</p>
+      <div class="grid3">
+        <article><strong>Knowledge</strong><p><b>Policy &amp; guideline assistants.</b> Investment guidelines, audit methodology, HR policy, conservation playbooks &mdash; grounded on the approved source so the answer is consistent no matter who asks.</p></article>
+        <article><strong>Specialty</strong><p><b>Drafting against a standard.</b> Variance commentary in the reporting template, risk write-ups in the standard format, campaign briefs against the brand guide &mdash; the shape is fixed, only the content changes.</p></article>
+        <article><strong>Productivity</strong><p><b>The weekly roll-up.</b> Ops status packs, review-pack assembly, meeting follow-through &mdash; the chore you do every week that has a predictable trigger and a predictable output.</p></article>
+      </div>
+      <p class="why"><b>Notice the pattern behind the pattern.</b> Knowledge agents remove &ldquo;where do I find it&rdquo;. Specialty agents remove &ldquo;how do I write it up&rdquo;. Productivity agents remove &ldquo;I have to do this again&rdquo;. Which of those three is your friction?</p>
+      <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; The method</button></div>
+    </section>
+    <section class="panel" data-mode="agent" data-idx="2">
       <div class="kicker agent">The method</div>
       <h2>Four steps to what&rsquo;s worth building</h2>
       <p class="lede">Run any idea through these four steps before you touch Agent Builder. This is where the value is &mdash; not in the clicking.</p>
@@ -535,31 +507,8 @@
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre><span class="r">Act as a sceptical reviewer.</span> <span class="a">I want to build an agent for this friction: <span class="fill empty" data-fill="friction">[the friction you noted above]</span>. Walk it through four questions and answer each one plainly.</span> <span class="c">Use what I have told you about this workflow, and say so if it is not enough to judge.</span> <span class="e">What are the repeatable steps a person does today? What triggers it &mdash; an email, a file, a question, a date? Which of the three patterns fits best: knowledge, specialty, or productivity? And is this genuinely worth an agent, or is it really just a saved prompt?</span> <span class="eq">If it is too vague or too varied to automate, say so plainly and suggest a sharper version &mdash; do not be polite about it.</span></pre>
       </div>
-      <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><button class="guide-button" data-go="2">Next &rarr; The three patterns</button></div>
-    </section>
-
-    <section class="panel" data-mode="agent" data-idx="2">
-      <div class="kicker agent">Pick your pattern</div>
-      <h2>Three agent patterns</h2>
-      <p class="lede">Almost every useful agent is one of these three. Decide which one your friction needs before you build.</p>
-      <div class="grid3">
-        <article><strong>Knowledge</strong><p>Answers from a trusted source &mdash; policy, product, process. Grounded on documents your team relies on.</p></article>
-        <article><strong>Specialty</strong><p>Runs a specific task end to end &mdash; against a rubric, framework or standard output.</p></article>
-        <article><strong>Productivity</strong><p>Automates a personal, repeatable weekly chore &mdash; the catch-up, the status roll-up.</p></article>
-      </div>
-      <div class="note amber"><span class="lbl">Decide first</span><strong>Match the pattern to the friction.</strong> A &ldquo;where do I find X&rdquo; problem is a knowledge agent; a &ldquo;do this the same way every time&rdquo; problem is a specialty agent.</div>
-
-      <h3 style="margin:1.9rem 0 .3rem">What this looks like across Manulife</h3>
-      <p class="lede" style="margin:.4rem 0 1rem">Real examples from the use-case work behind this programme &mdash; the same three patterns, in different business groups.</p>
-      <div class="grid3">
-        <article><strong>Knowledge</strong><p><b>Policy &amp; guideline assistants.</b> Investment guidelines, audit methodology, HR policy, conservation playbooks &mdash; grounded on the approved source so the answer is consistent no matter who asks.</p></article>
-        <article><strong>Specialty</strong><p><b>Drafting against a standard.</b> Variance commentary in the reporting template, risk write-ups in the standard format, campaign briefs against the brand guide &mdash; the shape is fixed, only the content changes.</p></article>
-        <article><strong>Productivity</strong><p><b>The weekly roll-up.</b> Ops status packs, review-pack assembly, meeting follow-through &mdash; the chore you do every week that has a predictable trigger and a predictable output.</p></article>
-      </div>
-      <p class="why"><b>Notice the pattern behind the pattern.</b> Knowledge agents remove &ldquo;where do I find it&rdquo;. Specialty agents remove &ldquo;how do I write it up&rdquo;. Productivity agents remove &ldquo;I have to do this again&rdquo;. Which of those three is your friction?</p>
       <div class="guide"><button class="guide-button secondary" data-go="1">&larr; Back</button><button class="guide-button" data-go="3">Next &rarr; Build it in your pod</button></div>
     </section>
-
     <section class="panel" data-mode="agent" data-idx="3">
       <div class="kicker agent">Hands-on · in pods</div>
       <h2>Build it &mdash; and test it</h2>
@@ -598,7 +547,6 @@
       <div class="note amber"><span class="lbl">Keep it non-sensitive</span><strong>Use a fictional or non-sensitive knowledge source for the build.</strong> Real, sensitive content comes later once your agent works.</div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Starter ideas for your group</button></div>
     </section>
-
     <section class="panel" data-mode="agent" data-idx="4">
       <div class="kicker agent">Make it yours</div>
       <h2>Starter agent ideas by business group</h2>
@@ -610,21 +558,48 @@
       </div>
       <div class="bu-example" id="bu-agent-idea"></div>
       <div class="note blue"><span class="lbl">Run it through the method</span><strong>Friction &rarr; workflow &rarr; trigger &rarr; pattern.</strong> Even a starter idea gets better when you name the workflow and trigger before building.</div>
-      <div class="guide"><button class="guide-button secondary" data-go="3">&larr; Back</button><button class="guide-button" data-go="5">Next &rarr; Take it further</button></div>
+      <div class="guide"><button class="guide-button secondary" data-go="3">&larr; Back</button><span class="status">Pause here &mdash; your facilitator will pick it up from the deck.</span></div>
     </section>
-
-    <section class="panel" data-mode="agent" data-idx="5">
-      <div class="kicker agent">Take it with you</div>
-      <h2>From build to everyday value</h2>
-      <p class="lede">Finish and share the agent you started &mdash; then help one teammate build theirs. That&rsquo;s how the whole team moves.</p>
-      <div class="grid2">
-        <article><strong>Finish &amp; share</strong><p>Complete the agent you started and show it in your channel.</p></article>
-        <article><strong>Teach the method</strong><p>Walk a teammate through friction &rarr; workflow &rarr; trigger &rarr; pattern.</p></article>
-        <article><strong>Submit the use case</strong><p>Log what you built as a Copilot use case for the backlog.</p></article>
-        <article><strong>Spot the next one</strong><p>Note one more repeatable workflow worth an agent.</p></article>
+    <section class="panel" data-mode="value" data-idx="0">
+      <div class="kicker">Make it yours · you try this</div>
+      <h2>From a KPI you own to a Copilot use case</h2>
+      <p class="lede">A <strong>Copilot use case</strong> means applying Copilot Premium to a real business scenario for value &mdash; not building a data-science model. Pick your business group, then use the master prompt to find one that&rsquo;s yours.</p>
+      <div class="chain">
+        <div class="c1">KPI<small>the outcome you own</small></div>
+        <div class="c2">Process<small>what delivers it</small></div>
+        <div class="c3">Activity<small>the step with friction</small></div>
+        <div class="c4">Copilot use case<small>what you apply</small></div>
       </div>
-      <div class="note blue"><span class="lbl">The through-line</span><strong>You just turned a real workflow into something that runs on its own.</strong> That&rsquo;s the muscle you build across your team.</div>
-      <div class="guide"><button class="guide-button secondary" data-go="4">&larr; Back</button><span class="status">End of walkthrough &mdash; thank you.</span></div>
+      <p class="why" style="margin-bottom:1.2rem"><b>Work right to left and you get a tool looking for a job.</b> Work left to right and every use case has a number attached to it. We go deeper on this after the break &mdash; for now, just find one that&rsquo;s yours.</p>
+      <div class="bu-bar">
+        <label for="bu-select-adv">Your business group:</label>
+        <select id="bu-select-adv"></select>
+        <span class="hint">Examples below tailor to your group. KPIs are illustrative &mdash; swap in your own.</span>
+      </div>
+      <div class="bu-kpis" id="bu-kpis-adv"></div>
+      <div class="bu-example" id="bu-example-adv"></div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; The master prompt &mdash; find your use case</h4><button class="copy-button">Copy</button></div>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre id="master-prompt">Pick your business group above to tailor this prompt.</pre>
+      </div>
+      <div class="note blue"><span class="lbl">Tie it back to the build</span><strong>Look at what you just built through this lens.</strong> The agent you shaped in the last section should ladder up to a measure your team is judged on &mdash; that is what turns it from a clever demo into a use case worth funding.</div>
+      <div class="note"><span class="lbl">Bring it back</span><strong>Then drop it in the champion Teams channel</strong> as a Copilot use case, so it reaches the AI Leads and Portfolio Leads who prioritise the backlog &mdash; and we build the highest-impact ones together.</div>
+      <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; Take it further</button></div>
+    </section>
+    <section class="panel" data-mode="value" data-idx="1">
+      <div class="kicker">Take it with you</div>
+      <h2>From capability to everyday value</h2>
+      <p class="lede">You found a use case and you built something that runs. The last step is the one that compounds &mdash; take it back to your team, and put what you found where it can be prioritised.</p>
+      <div class="grid2">
+        <article><strong>Finish &amp; share your agent</strong><p>Complete what you started in the pod and show it in your channel.</p></article>
+        <article><strong>Teach the method</strong><p>Walk a teammate through friction &rarr; workflow &rarr; trigger &rarr; pattern.</p></article>
+        <article><strong>Submit your Copilot use case</strong><p>Drop it in the champion Teams channel so it reaches the AI Leads and Portfolio Leads who prioritise the backlog.</p></article>
+        <article><strong>Re-run it with your team</strong><p>Personalization and the chain make a ready-made lunch &amp; learn.</p></article>
+      </div>
+      <div class="note blue"><span class="lbl">The through-line</span><strong>You turned a measure you own into a use case, and a use case into something that runs on its own.</strong> That is the whole point &mdash; capability only counts once it shows up in the work.</div>
+      <div class="note"><span class="lbl">Your through-line</span><strong>You are how Manulife turns Copilot Premium into everyday value.</strong></div>
+      <div class="guide"><button class="guide-button secondary" data-go="0">&larr; Back</button><span class="status">End of walkthrough &mdash; thank you.</span></div>
     </section>
   </main>
 
@@ -687,10 +662,13 @@
   var currentBU = "Finance";
 
   var STEPS = {
-    adv:[["Welcome","Objectives &amp; how it runs"],["Prompting pattern","RACE + EQ"],["Personalization","Try it — set it up"],["Prompt chaining","Try it — catch up"],["Cowork orchestration","It does the work"],["Find your use case","Master prompt + your group"],["Agentic landscape","Bridge to the build"],["Take it further","Resources &amp; next"]],
-    agent:[["Overview","What&rsquo;s worth building"],["The method","Friction to pattern"],["Three patterns","Knowledge / specialty / productivity"],["Build it in your pod","Hands-on"],["Ideas for your group","Starter agents by BU"],["Take it further","Gallery walk &amp; next"]]
+    adv:[["Welcome","Objectives &amp; how it runs"],["Prompting pattern","RACE + EQ"],["Personalization","Try it — set it up"],["Prompt chaining","Try it — catch up"],["Cowork orchestration","It does the work"],["Agentic landscape","Where prompting stops"]],
+    agent:[["Overview","What&rsquo;s worth building"],["Three patterns","Knowledge / specialty / productivity"],["The method","Friction to pattern"],["Build it in your pod","Hands-on"],["Ideas for your group","Starter agents by BU"]],
+    value:[["Find your use case","KPI to Copilot use case"],["Take it further","Bring it back &amp; next"]]
   };
-  var LABEL = {adv:"Advanced capabilities", agent:"Agent building"};
+  var LABEL = {adv:"Advanced capabilities", agent:"Agent building", value:"Capability to value"};
+  var BADGE = {adv:"Advanced Capabilities", agent:"Agent Building", value:"Capability to Value"};
+  var RAIL  = {adv:"Advanced Capabilities, live", agent:"Agent Building 2.0", value:"From Capability to Value"};
 
   var mode = "adv", idx = 0;
   var nav = document.getElementById("nav");
@@ -720,8 +698,8 @@
     fill.style.width = ((idx+1)/total*100)+"%";
     plabel.innerHTML = "Step "+(idx+1)+" of "+total;
     ptime.textContent = LABEL[mode];
-    badge.textContent = mode==="adv" ? "Advanced Capabilities" : "Agent Building";
-    railTitle.innerHTML = mode==="adv" ? "Advanced Capabilities, live" : "Agent Building 2.0";
+    badge.textContent = BADGE[mode];
+    railTitle.innerHTML = RAIL[mode];
     document.getElementById("stage").scrollIntoView({behavior:"smooth",block:"start"});
   }
   function go(i){ var total=STEPS[mode].length; if(i<0||i>=total) return; idx=i; render(); }
