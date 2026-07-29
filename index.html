@@ -635,7 +635,7 @@
       <div class="note blue"><span class="lbl">Tie it back to the build</span><strong>Look at what you just built through this lens.</strong> The agent you shaped in the last section should ladder up to a measure your team is judged on &mdash; that is what turns it from a clever demo into a use case worth funding.</div>
       <div class="ws">
         <h4>Your use case &mdash; capture it here<span class="ws-status" id="uc-saved">saved</span></h4>
-        <p class="sub">Your choices above carry down automatically. Run the prompt, then bring the answer back here &mdash; paste Copilot&rsquo;s output or write it in your own words. This is what gets submitted.</p>
+        <p class="sub">Run the prompt, then bring the answer back here &mdash; paste Copilot&rsquo;s output or write it in your own words. Your group, measure, process and friction step are copied along with it.</p>
         <div class="uc-summary" id="uc-summary"></div>
         <div class="ws-grid">
           <div class="full">
@@ -644,11 +644,11 @@
           </div>
         </div>
         <div class="uc-actions">
-          <button type="button" class="uc-primary" id="uc-submit">Submit use case</button>
+          <button type="button" class="uc-primary" id="uc-submit">Copy &amp; open the form &rarr;</button>
           <button type="button" class="uc-secondary" id="uc-copy">Copy</button>
           <span class="msg" id="uc-msg">Copied</span>
         </div>
-        <p class="hintline"><b>Saved on this device.</b> Nothing leaves this page until you press Submit.</p>
+        <p class="hintline"><b>Saved on this device only.</b> Nothing is sent anywhere automatically. The button copies your use case and opens the submission form in a new tab &mdash; pick your group, paste with Ctrl+V, and press Submit there.</p>
       </div>
       <div class="note"><span class="lbl">Where it goes</span><strong>Submitted use cases reach the AI Leads and Portfolio Leads</strong> who prioritize the backlog &mdash; so the highest-impact ones get built together.</div>
       <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; Take it further</button></div>
@@ -889,7 +889,7 @@
 
   // ---- use-case worksheet: KPI picker + capture + submit ----
   // Destination for submitted use cases. Leave url empty to fall back to copy-only.
-  var SUBMIT = { mode: "copy", url: "" };
+  var SUBMIT = { mode: "form", url: "https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxDbXfRW7X5Ogau-Uh7HuuBUNTNaOUwwVjQ4NVRPUUJWN0Q2M1c1RkRIUS4u" };
 
   function addChip(panelId, inputId){
     var b = document.createElement("button");
@@ -1084,15 +1084,8 @@
       if(!cse.trim()){ ucFlash("Add your use case first"); document.getElementById("uc-case").focus(); return; }
       ucCopy(function(){
         if(SUBMIT.url){
-          var u = SUBMIT.url;
-          if(SUBMIT.mode === "form"){
-            u += (u.indexOf("?") < 0 ? "?" : "&")
-               + "bu=" + encodeURIComponent(currentBU)
-               + "&kpi=" + encodeURIComponent(selectedKPI() || "")
-               + "&uc=" + encodeURIComponent(cse.trim());
-          }
-          window.open(u, "_blank", "noopener");
-          ucFlash("Copied \u2014 opening the form");
+          window.open(SUBMIT.url, "_blank", "noopener");
+          ucFlash("Copied \u2014 paste it into the form (Ctrl+V)");
         } else {
           ucFlash("Copied \u2014 paste it into the champion channel");
         }
