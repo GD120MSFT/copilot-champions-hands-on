@@ -192,6 +192,14 @@
   .kpi-add{display:flex;gap:.5rem;margin-top:.75rem;}
   .kpi-add input{flex:1;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.88rem;color:var(--ink);font-family:inherit;}
   .kpi-add input:focus{outline:2px solid var(--green-deep);outline-offset:1px;background:#fff;}
+  .chain-pick{margin:1.1rem 0;padding:0;background:#fff;border:1px solid var(--line);border-top:5px solid var(--green-deep);border-radius:0 0 10px 10px;overflow:hidden;}
+  .cp-step{padding:1rem 1.2rem;border-bottom:1px solid var(--line);}
+  .cp-step:last-child{border-bottom:0;}
+  .cp-step > label{display:block;margin-bottom:.2rem;color:var(--green-deep);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .cp-step .opt{margin-left:.4rem;padding:.08rem .35rem;background:var(--cream);color:var(--muted);border-radius:4px;font-size:.62rem;letter-spacing:.04em;}
+  .cp-step .sub{margin:0 0 .7rem;color:var(--muted);font-size:.84rem;}
+  .cp-step > input[type=text]{width:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.9rem;color:var(--ink);font-family:inherit;}
+  .cp-step > input[type=text]:focus{outline:2px solid var(--green-deep);outline-offset:1px;background:#fff;}
   .kpi-add button{padding:.55rem 1rem;border:0;border-radius:6px;background:var(--green-deep);color:#fff;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit;}
   .ws textarea{width:100%;min-height:104px;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.9rem;color:var(--ink);font-family:inherit;line-height:1.5;resize:vertical;}
   .ws textarea:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff;}
@@ -597,14 +605,31 @@
         <select id="bu-select-adv"></select>
         <span class="hint">Pick your group, then choose or add the measure you own.</span>
       </div>
-      <div class="kpi-pick">
-        <label>Pick the measure you own</label>
-        <p class="sub">These are illustrative for your group &mdash; select the closest one, or add the measure your team is actually judged on. Your choice drops straight into the prompt below.</p>
-        <div class="kpi-choices" id="kpi-choices"></div>
-        <div class="kpi-add">
-          <input id="kpi-custom" type="text" placeholder="Add your own measure &mdash; e.g. broker onboarding turnaround">
-          <button type="button" id="kpi-add-btn">Add</button>
+      <div class="chain-pick">
+        <div class="cp-step">
+          <label>1 &middot; The measure you own</label>
+          <p class="sub">Illustrative for your group &mdash; pick the closest, or add the one your team is actually judged on.</p>
+          <div class="kpi-choices" id="kpi-choices"></div>
+          <div class="kpi-add">
+            <input id="kpi-custom" type="text" placeholder="Other &mdash; type the measure you own">
+            <button type="button" id="kpi-add-btn">Add</button>
+          </div>
         </div>
+        <div class="cp-step">
+          <label>2 &middot; The process behind it</label>
+          <p class="sub">Which process actually delivers that measure? This is what Copilot will map for you.</p>
+          <div class="kpi-choices" id="proc-choices"></div>
+          <div class="kpi-add">
+            <input id="proc-custom" type="text" placeholder="Other &mdash; type the process you have in mind">
+            <button type="button" id="proc-add-btn">Add</button>
+          </div>
+        </div>
+        <div class="cp-step">
+          <label>3 &middot; The step with the friction <span class="opt">optional</span></label>
+          <p class="sub">The bit that annoys you most. Not sure? Leave it blank &mdash; Copilot will find the friction for you.</p>
+          <input id="act-input" type="text" placeholder="e.g. chasing the numbers from four different people before I can start">
+        </div>
+      </div>
       </div>
       <div class="bu-example" id="bu-example-adv"></div>
       <div class="prompt-card">
@@ -615,7 +640,7 @@
       <div class="note blue"><span class="lbl">Tie it back to the build</span><strong>Look at what you just built through this lens.</strong> The agent you shaped in the last section should ladder up to a measure your team is judged on &mdash; that is what turns it from a clever demo into a use case worth funding.</div>
       <div class="ws">
         <h4>Your use case &mdash; capture it here<span class="ws-status" id="uc-saved">saved</span></h4>
-        <p class="sub">Run the prompt above, then bring the answer back here. Paste Copilot&rsquo;s output or write it in your own words &mdash; this is what gets submitted.</p>
+        <p class="sub">Your choices above carry down automatically. Run the prompt, then bring the answer back here &mdash; paste Copilot&rsquo;s output or write it in your own words. This is what gets submitted.</p>
         <div class="ws-grid">
           <div>
             <label for="uc-bu">Business group</label>
@@ -625,14 +650,19 @@
             <label for="uc-kpi">The measure you own</label>
             <input id="uc-kpi" type="text" readonly>
           </div>
-          <div class="full">
+          <div>
+            <label for="uc-proc">The process</label>
+            <input id="uc-proc" type="text" readonly>
+          </div>
+          <div>
             <label for="uc-activity">The step with the friction</label>
-            <input id="uc-activity" type="text" placeholder="e.g. pulling the numbers together before the monthly review">
+            <input id="uc-activity" type="text" readonly>
           </div>
           <div class="full">
             <label for="uc-case">Your Copilot use case</label>
             <textarea id="uc-case" placeholder="Paste what Copilot gave you, or describe it yourself: what you would apply Copilot to, and what good looks like."></textarea>
           </div>
+        </div>
         </div>
         <div class="uc-actions">
           <button type="button" class="uc-primary" id="uc-submit">Submit use case</button>
@@ -715,6 +745,20 @@
       use:"Summarize regulatory change and map it to obligations, then draft the assessment write-up against your standard.",
       agent:["Specialty agent","A regulatory change & obligations agent that summarizes new requirements and maps them to the controls they touch."]}
   };
+  var PROCS = {
+    "Actuarial":["IFRS 17 quarterly close","Experience study (mortality / lapse)","Assumption setting & sign-off","Model change & validation"],
+    "Audit":["Audit planning & risk assessment","Fieldwork & control testing","Report drafting & review","Issue remediation & validation"],
+    "Business Ops":["New business & policy issue","Claims intake & adjudication","Policy servicing & changes","Exception & rework handling"],
+    "Contact Center":["Inbound call handling","Post-call wrap-up & case notes","Quality monitoring & coaching","Knowledge base & escalation"],
+    "Finance":["Month-end close & consolidation","Management reporting pack","Budgeting & forecasting cycle","Variance analysis & commentary"],
+    "General Account":["Credit & annual obligor review","Portfolio performance reporting","Investment committee memo prep","Watchlist & migration monitoring"],
+    "GWAM":["Quarterly client reporting","RFP / DDQ response production","Client & advisor meeting prep","Product & fund due diligence"],
+    "Inforce":["At-risk / lapse identification","Conservation outreach campaign","Surrender & reinstatement processing","Inforce portfolio review"],
+    "Marketing":["Brief to creative production","Compliance & legal review","Campaign launch & execution","Performance reporting & optimisation"],
+    "People & Comms":["Internal comms production & approval","Recruiting & candidate selection","Employee onboarding","HR policy query handling"],
+    "Retail Distribution":["Quote & illustration production","Application submission & NIGO fixes","Underwriting follow-up & case management","Advisor onboarding & enablement"],
+    "Risk":["Regulatory change assessment","Risk & control self-assessment","Issue & action tracking to closure","KRI monitoring & reporting"]
+  };
   var BU_ORDER = ["Actuarial","Audit","Business Ops","Contact Center","Finance","General Account","GWAM","Inforce","Marketing","People & Comms","Retail Distribution","Risk"];
   var currentBU = "Finance";
 
@@ -770,17 +814,35 @@
   });
   function fillSelect(sel){ BU_ORDER.forEach(function(name){ var o=document.createElement("option"); o.value=name; o.textContent=name; if(name===currentBU)o.selected=true; sel.appendChild(o); }); }
   function masterPromptText(bu){
-    var kpi = (typeof selectedKPI === 'function' ? selectedKPI() : BU[bu].kpis[0]);
+    var kpi  = (typeof selectedKPI  === 'function' ? selectedKPI()  : BU[bu].kpis[0]) || "";
+    var proc = (typeof selectedProc === 'function' ? selectedProc() : "") || "";
+    var actEl = document.getElementById("act-input");
+    var act  = actEl ? (actEl.value || "").trim() : "";
     var S = function(cls, t){ return '<span class="'+cls+'">'+t+'</span>'; };
-    return S("r","Act as a process analyst who knows how insurance and wealth operations actually run.") + " "
-         + S("a","Walk me through the main steps of the process behind that measure today, from trigger to finished output. Then identify the two or three steps where Copilot could most improve speed or quality.") + " "
-         + S("c","I work in "+bu+" at Manulife and one measure my team is judged on is "+kpi.toLowerCase()+".") + " "
-         + S("e","Explain why that step in particular. For each one, give me a concrete way I would use it \u2014 a prompt I could run, a document to ground on, or an agent worth building \u2014 and note what a human still needs to verify. End with the single step you would start with.") + " "
-         + S("eq","Keep it practical for someone who is not technical.");
+
+    var role = "Act as a process analyst who knows how insurance and wealth operations actually run, and who also knows what Microsoft 365 Copilot can and cannot realistically do today.";
+
+    var action = proc
+      ? "Map how " + proc + " runs today, from the trigger that starts it through to the finished output."
+      : "Map the process that actually drives " + kpi + " today, from the trigger that starts it through to the finished output.";
+    action += " Then pinpoint the two or three steps where the most time, rework or waiting is lost";
+    action += act ? ", paying particular attention to " + act + ". " : ". ";
+    action += "For each of those steps, tell me honestly whether Copilot is a genuine fit or not.";
+
+    var ctx = "I work in " + bu + " at Manulife. A measure my team is judged on is " + kpi + ".";
+    if(proc) ctx += " The process I have in mind is " + proc + ".";
+    if(act)  ctx += " The step that frustrates me most is " + act + ".";
+
+    var exp = "For each step you pick: name the step, say why it is the bottleneck, then give me one concrete Copilot use case \u2014 what I would ask it to do, what it would need to be grounded on, and whether it is a one-off prompt, a prompt worth reusing, or an agent worth building. Then say how that use case would move " + kpi + ", and what I could measure after 30 days to prove it. Finish with the single one you would start with, and why. If a step is a poor fit for Copilot, say so and say why.";
+
+    var eq = "Keep it practical and plain-language for someone who is not technical. Where you have had to assume how we work, flag the assumption so I can correct it.";
+
+    return S("r",role) + " " + S("a",action) + " " + S("c",ctx) + " " + S("e",exp) + " " + S("eq",eq);
   }
   function renderBU(){
     var bu = BU[currentBU];
     if(typeof renderKPIs === "function") renderKPIs();
+    if(typeof renderProcs === "function") renderProcs();
     var ex = document.getElementById("bu-example-adv");
     if(ex){ ex.innerHTML = '<div class="role">'+currentBU+' \u00b7 example Copilot use case</div><p style="margin:.35rem 0 0">'+bu.use+'</p>'; }
     var mp = document.getElementById("master-prompt");
@@ -850,6 +912,52 @@
   // Destination for submitted use cases. Leave url empty to fall back to copy-only.
   var SUBMIT = { mode: "copy", url: "" };
 
+  var EXTRA_P = {};        // per-BU user-added processes
+  var pickedProc = {};     // per-BU selected process
+
+  function procList(bu){ return (PROCS[bu] || []).concat(EXTRA_P[bu] || []); }
+  function selectedProc(){
+    var list = procList(currentBU);
+    var p = pickedProc[currentBU];
+    return (p && list.indexOf(p) >= 0) ? p : list[0];
+  }
+  function renderProcs(){
+    var wrap = document.getElementById("proc-choices"); if(!wrap) return;
+    var list = procList(currentBU), sel = selectedProc();
+    wrap.innerHTML = "";
+    list.forEach(function(k){
+      var isCustom = (EXTRA_P[currentBU] || []).indexOf(k) >= 0;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "kpi-opt" + (k === sel ? " is-on" : "");
+      b.textContent = k;
+      b.setAttribute("aria-pressed", k === sel ? "true" : "false");
+      if(isCustom){
+        var x = document.createElement("span");
+        x.className = "x"; x.textContent = "\u00d7"; x.title = "Remove";
+        x.addEventListener("click", function(ev){
+          ev.stopPropagation();
+          EXTRA_P[currentBU] = (EXTRA_P[currentBU]||[]).filter(function(v){ return v !== k; });
+          if(pickedProc[currentBU] === k) delete pickedProc[currentBU];
+          renderProcs(); syncUseCase(); ucSave();
+        });
+        b.appendChild(x);
+      }
+      b.addEventListener("click", function(){
+        pickedProc[currentBU] = k; renderProcs(); syncUseCase(); ucSave();
+      });
+      wrap.appendChild(b);
+    });
+  }
+  function addCustomProc(){
+    var inp = document.getElementById("proc-custom"); if(!inp) return;
+    var v = (inp.value || "").trim(); if(!v) return;
+    EXTRA_P[currentBU] = EXTRA_P[currentBU] || [];
+    if(EXTRA_P[currentBU].indexOf(v) < 0 && (PROCS[currentBU]||[]).indexOf(v) < 0) EXTRA_P[currentBU].push(v);
+    pickedProc[currentBU] = v; inp.value = "";
+    renderProcs(); syncUseCase(); ucSave();
+  }
+
   var EXTRA = {};          // per-BU user-added measures
   var pickedKPI = {};      // per-BU selected measure
 
@@ -899,14 +1007,19 @@
     var b = document.getElementById("uc-bu"), k = document.getElementById("uc-kpi");
     if(b) b.value = currentBU;
     if(k) k.value = selectedKPI() || "";
+    var pr = document.getElementById("uc-proc");
+    if(pr) pr.value = selectedProc() || "";
+    var ai = document.getElementById("act-input"), ao = document.getElementById("uc-activity");
+    if(ao) ao.value = ai ? (ai.value || "").trim() : "";
     var mp = document.getElementById("master-prompt");
     if(mp) mp.innerHTML = masterPromptText(currentBU);
   }
   function ucText(){
-    var act = (document.getElementById("uc-activity")||{}).value || "";
+    var act = (document.getElementById("act-input")||{}).value || "";
     var cse = (document.getElementById("uc-case")||{}).value || "";
     return "Business group: " + currentBU
          + "\nMeasure: " + (selectedKPI() || "")
+         + "\nProcess: " + (selectedProc() || "")
          + "\nStep with friction: " + act.trim()
          + "\n\nCopilot use case:\n" + cse.trim();
   }
@@ -919,7 +1032,8 @@
     try{
       localStorage.setItem("mlChampionUseCase", JSON.stringify({
         bu: currentBU, extra: EXTRA, picked: pickedKPI,
-        activity: (document.getElementById("uc-activity")||{}).value || "",
+        extraP: EXTRA_P, pickedP: pickedProc,
+        activity: (document.getElementById("act-input")||{}).value || "",
         useCase: (document.getElementById("uc-case")||{}).value || ""
       }));
       var s = document.getElementById("uc-saved");
@@ -931,8 +1045,9 @@
       var raw = localStorage.getItem("mlChampionUseCase"); if(!raw) return;
       var o = JSON.parse(raw);
       EXTRA = o.extra || {}; pickedKPI = o.picked || {};
+      EXTRA_P = o.extraP || {}; pickedProc = o.pickedP || {};
       if(o.bu && BU[o.bu]) currentBU = o.bu;
-      var a = document.getElementById("uc-activity"); if(a && o.activity) a.value = o.activity;
+      var a = document.getElementById("act-input"); if(a && o.activity) a.value = o.activity;
       var c = document.getElementById("uc-case");     if(c && o.useCase)  c.value = o.useCase;
     }catch(e){}
   }
@@ -952,10 +1067,14 @@
     if(add) add.addEventListener("click", addCustomKPI);
     var ci = document.getElementById("kpi-custom");
     if(ci) ci.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); addCustomKPI(); } });
-    ["uc-activity","uc-case"].forEach(function(id){
-      var el = document.getElementById(id); if(!el) return;
-      el.addEventListener("input", ucSave);
-    });
+    var pa = document.getElementById("proc-add-btn");
+    if(pa) pa.addEventListener("click", addCustomProc);
+    var pi = document.getElementById("proc-custom");
+    if(pi) pi.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); addCustomProc(); } });
+    var ain = document.getElementById("act-input");
+    if(ain) ain.addEventListener("input", function(){ syncUseCase(); ucSave(); });
+    var uc = document.getElementById("uc-case");
+    if(uc) uc.addEventListener("input", ucSave);
     var cp = document.getElementById("uc-copy");
     if(cp) cp.addEventListener("click", function(){ ucCopy(function(){ ucFlash("Copied"); }); });
     var sb = document.getElementById("uc-submit");
@@ -982,7 +1101,7 @@
 
   ucLoad();
   document.querySelectorAll("#bu-select-adv,#bu-select-agent").forEach(function(x){ x.value = currentBU; });
-  buildNav(); render(); renderBU(); syncUseCase();
+  buildNav(); render(); renderBU(); renderProcs(); syncUseCase();
 </script>
 </body>
 </html>
