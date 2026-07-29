@@ -181,6 +181,27 @@
   .bu-bar .hint{color:rgba(255,255,255,.6);font-size:.82rem;}
   .bu-kpis{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0;}
   .kpi-chip{padding:.4rem .7rem;background:var(--green-soft);color:var(--green-deep);font-weight:800;font-size:.85rem;border-radius:20px;}
+  .kpi-pick{margin:1.1rem 0;padding:1.1rem 1.2rem;background:#fff;border:1px solid var(--line);border-top:5px solid var(--green-deep);border-radius:0 0 10px 10px;}
+  .kpi-pick > label{display:block;margin-bottom:.2rem;color:var(--green-deep);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .kpi-pick .sub{margin:0 0 .8rem;color:var(--muted);font-size:.85rem;}
+  .kpi-choices{display:flex;flex-wrap:wrap;gap:.45rem;}
+  .kpi-opt{padding:.42rem .75rem;background:var(--green-soft);color:var(--green-deep);border:2px solid transparent;font-weight:800;font-size:.85rem;border-radius:20px;cursor:pointer;transition:.15s;font-family:inherit;}
+  .kpi-opt:hover{border-color:var(--green-deep);}
+  .kpi-opt.is-on{background:var(--green-deep);color:#fff;border-color:var(--green-deep);}
+  .kpi-opt .x{margin-left:.4rem;opacity:.65;font-weight:900;}
+  .kpi-add{display:flex;gap:.5rem;margin-top:.75rem;}
+  .kpi-add input{flex:1;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.88rem;color:var(--ink);font-family:inherit;}
+  .kpi-add input:focus{outline:2px solid var(--green-deep);outline-offset:1px;background:#fff;}
+  .kpi-add button{padding:.55rem 1rem;border:0;border-radius:6px;background:var(--green-deep);color:#fff;font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit;}
+  .ws textarea{width:100%;min-height:104px;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.9rem;color:var(--ink);font-family:inherit;line-height:1.5;resize:vertical;}
+  .ws textarea:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff;}
+  .ws input[readonly]{background:var(--green-soft);color:var(--green-deep);font-weight:800;}
+  .uc-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:1rem;}
+  .uc-actions button{padding:.6rem 1.1rem;border:0;border-radius:7px;font-weight:800;font-size:.88rem;cursor:pointer;font-family:inherit;}
+  .uc-primary{background:var(--blue);color:#fff;}
+  .uc-secondary{background:var(--cream);color:var(--ink);border:1px solid var(--line) !important;}
+  .uc-actions .msg{color:var(--green-deep);font-size:.82rem;font-weight:800;opacity:0;transition:opacity .2s;}
+  .uc-actions .msg.on{opacity:1;}
   .bu-example{margin:1.1rem 0;padding:1.1rem 1.2rem;background:var(--cream);border:1px solid var(--line);border-radius:10px;}
   .bu-example .role{font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--green-deep);}
   .bu-example h4{margin:.25rem 0 .4rem;}
@@ -574,9 +595,17 @@
       <div class="bu-bar">
         <label for="bu-select-adv">Your business group:</label>
         <select id="bu-select-adv"></select>
-        <span class="hint">Examples below tailor to your group. KPIs are illustrative &mdash; swap in your own.</span>
+        <span class="hint">Pick your group, then choose or add the measure you own.</span>
       </div>
-      <div class="bu-kpis" id="bu-kpis-adv"></div>
+      <div class="kpi-pick">
+        <label>Pick the measure you own</label>
+        <p class="sub">These are illustrative for your group &mdash; select the closest one, or add the measure your team is actually judged on. Your choice drops straight into the prompt below.</p>
+        <div class="kpi-choices" id="kpi-choices"></div>
+        <div class="kpi-add">
+          <input id="kpi-custom" type="text" placeholder="Add your own measure &mdash; e.g. broker onboarding turnaround">
+          <button type="button" id="kpi-add-btn">Add</button>
+        </div>
+      </div>
       <div class="bu-example" id="bu-example-adv"></div>
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; The master prompt &mdash; find your use case</h4><button class="copy-button">Copy</button></div>
@@ -584,7 +613,35 @@
         <pre id="master-prompt">Pick your business group above to tailor this prompt.</pre>
       </div>
       <div class="note blue"><span class="lbl">Tie it back to the build</span><strong>Look at what you just built through this lens.</strong> The agent you shaped in the last section should ladder up to a measure your team is judged on &mdash; that is what turns it from a clever demo into a use case worth funding.</div>
-      <div class="note"><span class="lbl">Bring it back</span><strong>Then drop it in the champion Teams channel</strong> as a Copilot use case, so it reaches the AI Leads and Portfolio Leads who prioritise the backlog &mdash; and we build the highest-impact ones together.</div>
+      <div class="ws">
+        <h4>Your use case &mdash; capture it here<span class="ws-status" id="uc-saved">saved</span></h4>
+        <p class="sub">Run the prompt above, then bring the answer back here. Paste Copilot&rsquo;s output or write it in your own words &mdash; this is what gets submitted.</p>
+        <div class="ws-grid">
+          <div>
+            <label for="uc-bu">Business group</label>
+            <input id="uc-bu" type="text" readonly>
+          </div>
+          <div>
+            <label for="uc-kpi">The measure you own</label>
+            <input id="uc-kpi" type="text" readonly>
+          </div>
+          <div class="full">
+            <label for="uc-activity">The step with the friction</label>
+            <input id="uc-activity" type="text" placeholder="e.g. pulling the numbers together before the monthly review">
+          </div>
+          <div class="full">
+            <label for="uc-case">Your Copilot use case</label>
+            <textarea id="uc-case" placeholder="Paste what Copilot gave you, or describe it yourself: what you would apply Copilot to, and what good looks like."></textarea>
+          </div>
+        </div>
+        <div class="uc-actions">
+          <button type="button" class="uc-primary" id="uc-submit">Submit use case</button>
+          <button type="button" class="uc-secondary" id="uc-copy">Copy</button>
+          <span class="msg" id="uc-msg">Copied</span>
+        </div>
+        <p class="hintline"><b>Saved on this device.</b> Nothing leaves this page until you press Submit.</p>
+      </div>
+      <div class="note"><span class="lbl">Where it goes</span><strong>Submitted use cases reach the AI Leads and Portfolio Leads</strong> who prioritise the backlog &mdash; so the highest-impact ones get built together.</div>
       <div class="guide"><span></span><button class="guide-button" data-go="1">Start &rarr; Take it further</button></div>
     </section>
     <section class="panel" data-mode="value" data-idx="1">
@@ -713,7 +770,7 @@
   });
   function fillSelect(sel){ BU_ORDER.forEach(function(name){ var o=document.createElement("option"); o.value=name; o.textContent=name; if(name===currentBU)o.selected=true; sel.appendChild(o); }); }
   function masterPromptText(bu){
-    var kpi = BU[bu].kpis[0];
+    var kpi = (typeof selectedKPI === 'function' ? selectedKPI() : BU[bu].kpis[0]);
     var S = function(cls, t){ return '<span class="'+cls+'">'+t+'</span>'; };
     return S("r","Act as a process analyst who knows how insurance and wealth operations actually run.") + " "
          + S("a","Walk me through the main steps of the process behind that measure today, from trigger to finished output. Then identify the two or three steps where Copilot could most improve speed or quality.") + " "
@@ -723,8 +780,7 @@
   }
   function renderBU(){
     var bu = BU[currentBU];
-    var kwrap = document.getElementById("bu-kpis-adv");
-    if(kwrap){ kwrap.innerHTML = bu.kpis.map(function(k){return '<span class="kpi-chip">'+k+'</span>';}).join(""); }
+    if(typeof renderKPIs === "function") renderKPIs();
     var ex = document.getElementById("bu-example-adv");
     if(ex){ ex.innerHTML = '<div class="role">'+currentBU+' \u00b7 example Copilot use case</div><p style="margin:.35rem 0 0">'+bu.use+'</p>'; }
     var mp = document.getElementById("master-prompt");
@@ -735,8 +791,9 @@
   }
   var selAdv=document.getElementById("bu-select-adv"), selAgent=document.getElementById("bu-select-agent");
   fillSelect(selAdv); fillSelect(selAgent);
-  selAdv.addEventListener("change", function(){ currentBU=this.value; renderBU(); });
-  selAgent.addEventListener("change", function(){ currentBU=this.value; renderBU(); });
+  function onBUChange(v){ currentBU=v; renderBU(); if(typeof syncUseCase==="function"){ syncUseCase(); ucSave(); } }
+  selAdv.addEventListener("change", function(){ onBUChange(this.value); });
+  selAgent.addEventListener("change", function(){ onBUChange(this.value); });
 
   document.addEventListener("click", function(e){
     var btn = e.target.closest(".copy-button"); if(!btn) return;
@@ -789,7 +846,143 @@
   });
   wsLoad(); wsApply();
 
-  buildNav(); render(); renderBU();
+  // ---- use-case worksheet: KPI picker + capture + submit ----
+  // Destination for submitted use cases. Leave url empty to fall back to copy-only.
+  var SUBMIT = { mode: "copy", url: "" };
+
+  var EXTRA = {};          // per-BU user-added measures
+  var pickedKPI = {};      // per-BU selected measure
+
+  function kpiList(bu){ return (BU[bu].kpis || []).concat(EXTRA[bu] || []); }
+  function selectedKPI(){
+    var list = kpiList(currentBU);
+    var p = pickedKPI[currentBU];
+    return (p && list.indexOf(p) >= 0) ? p : list[0];
+  }
+  function renderKPIs(){
+    var wrap = document.getElementById("kpi-choices"); if(!wrap) return;
+    var list = kpiList(currentBU), sel = selectedKPI();
+    wrap.innerHTML = "";
+    list.forEach(function(k){
+      var isCustom = (EXTRA[currentBU] || []).indexOf(k) >= 0;
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "kpi-opt" + (k === sel ? " is-on" : "");
+      b.textContent = k;
+      b.setAttribute("aria-pressed", k === sel ? "true" : "false");
+      if(isCustom){
+        var x = document.createElement("span");
+        x.className = "x"; x.textContent = "\u00d7"; x.title = "Remove";
+        x.addEventListener("click", function(ev){
+          ev.stopPropagation();
+          EXTRA[currentBU] = (EXTRA[currentBU]||[]).filter(function(v){ return v !== k; });
+          if(pickedKPI[currentBU] === k) delete pickedKPI[currentBU];
+          renderKPIs(); syncUseCase(); ucSave();
+        });
+        b.appendChild(x);
+      }
+      b.addEventListener("click", function(){
+        pickedKPI[currentBU] = k; renderKPIs(); syncUseCase(); ucSave();
+      });
+      wrap.appendChild(b);
+    });
+  }
+  function addCustomKPI(){
+    var inp = document.getElementById("kpi-custom"); if(!inp) return;
+    var v = (inp.value || "").trim(); if(!v) return;
+    EXTRA[currentBU] = EXTRA[currentBU] || [];
+    if(EXTRA[currentBU].indexOf(v) < 0 && (BU[currentBU].kpis||[]).indexOf(v) < 0) EXTRA[currentBU].push(v);
+    pickedKPI[currentBU] = v; inp.value = "";
+    renderKPIs(); syncUseCase(); ucSave();
+  }
+  function syncUseCase(){
+    var b = document.getElementById("uc-bu"), k = document.getElementById("uc-kpi");
+    if(b) b.value = currentBU;
+    if(k) k.value = selectedKPI() || "";
+    var mp = document.getElementById("master-prompt");
+    if(mp) mp.innerHTML = masterPromptText(currentBU);
+  }
+  function ucText(){
+    var act = (document.getElementById("uc-activity")||{}).value || "";
+    var cse = (document.getElementById("uc-case")||{}).value || "";
+    return "Business group: " + currentBU
+         + "\nMeasure: " + (selectedKPI() || "")
+         + "\nStep with friction: " + act.trim()
+         + "\n\nCopilot use case:\n" + cse.trim();
+  }
+  function ucFlash(t){
+    var m = document.getElementById("uc-msg"); if(!m) return;
+    m.textContent = t; m.classList.add("on");
+    clearTimeout(window._ucT); window._ucT = setTimeout(function(){ m.classList.remove("on"); }, 2200);
+  }
+  function ucSave(){
+    try{
+      localStorage.setItem("mlChampionUseCase", JSON.stringify({
+        bu: currentBU, extra: EXTRA, picked: pickedKPI,
+        activity: (document.getElementById("uc-activity")||{}).value || "",
+        useCase: (document.getElementById("uc-case")||{}).value || ""
+      }));
+      var s = document.getElementById("uc-saved");
+      if(s){ s.classList.add("on"); clearTimeout(window._ucS); window._ucS = setTimeout(function(){ s.classList.remove("on"); }, 1200); }
+    }catch(e){}
+  }
+  function ucLoad(){
+    try{
+      var raw = localStorage.getItem("mlChampionUseCase"); if(!raw) return;
+      var o = JSON.parse(raw);
+      EXTRA = o.extra || {}; pickedKPI = o.picked || {};
+      if(o.bu && BU[o.bu]) currentBU = o.bu;
+      var a = document.getElementById("uc-activity"); if(a && o.activity) a.value = o.activity;
+      var c = document.getElementById("uc-case");     if(c && o.useCase)  c.value = o.useCase;
+    }catch(e){}
+  }
+  function ucCopy(cb){
+    var t = ucText();
+    function done(){ if(cb) cb(); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done).catch(done);
+    } else {
+      var ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand("copy"); }catch(_){}
+      document.body.removeChild(ta); done();
+    }
+  }
+  (function(){
+    var add = document.getElementById("kpi-add-btn");
+    if(add) add.addEventListener("click", addCustomKPI);
+    var ci = document.getElementById("kpi-custom");
+    if(ci) ci.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); addCustomKPI(); } });
+    ["uc-activity","uc-case"].forEach(function(id){
+      var el = document.getElementById(id); if(!el) return;
+      el.addEventListener("input", ucSave);
+    });
+    var cp = document.getElementById("uc-copy");
+    if(cp) cp.addEventListener("click", function(){ ucCopy(function(){ ucFlash("Copied"); }); });
+    var sb = document.getElementById("uc-submit");
+    if(sb) sb.addEventListener("click", function(){
+      var cse = (document.getElementById("uc-case")||{}).value || "";
+      if(!cse.trim()){ ucFlash("Add your use case first"); document.getElementById("uc-case").focus(); return; }
+      ucCopy(function(){
+        if(SUBMIT.url){
+          var u = SUBMIT.url;
+          if(SUBMIT.mode === "form"){
+            u += (u.indexOf("?") < 0 ? "?" : "&")
+               + "bu=" + encodeURIComponent(currentBU)
+               + "&kpi=" + encodeURIComponent(selectedKPI() || "")
+               + "&uc=" + encodeURIComponent(cse.trim());
+          }
+          window.open(u, "_blank", "noopener");
+          ucFlash("Copied \u2014 opening the form");
+        } else {
+          ucFlash("Copied \u2014 paste it into the champion channel");
+        }
+      });
+    });
+  })();
+
+  ucLoad();
+  document.querySelectorAll("#bu-select-adv,#bu-select-agent").forEach(function(x){ x.value = currentBU; });
+  buildNav(); render(); renderBU(); syncUseCase();
 </script>
 </body>
 </html>
