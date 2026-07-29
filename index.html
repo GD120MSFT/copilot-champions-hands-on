@@ -799,20 +799,20 @@
     var act  = actEl ? (actEl.value || "").trim() : "";
     var S = function(cls, t){ return '<span class="'+cls+'">'+t+'</span>'; };
 
-    var role = "Act as a process analyst who knows how insurance and wealth operations actually run, and who also knows what Microsoft 365 Copilot can and cannot realistically do today.";
+    var role = "Act as a process analyst who knows how insurance and wealth operations actually run, and who knows the full range of what Microsoft 365 Copilot can do today.";
 
-    var action = proc
-      ? "Map how " + proc + " runs today, from the trigger that starts it through to the finished output."
-      : "Map the process that actually drives " + kpi + " today, from the trigger that starts it through to the finished output.";
-    action += " Then pinpoint the two or three steps where the most time, rework or waiting is lost";
-    action += act ? ", paying particular attention to " + act + ". " : ". ";
-    action += "For each of those steps, tell me honestly whether Copilot is a genuine fit or not.";
+    var action = "Map how this process runs today, from the trigger that starts it through to the finished output. "
+               + "Then pinpoint the two or three steps where the most time, rework or waiting is lost, and show me how Copilot could help at each one.";
 
     var ctx = "I work in " + bu + " at Manulife. A measure my team is judged on is " + kpi + ".";
-    if(proc) ctx += " The process I have in mind is " + proc + ".";
-    if(act)  ctx += " The step that frustrates me most is " + act + ".";
+    ctx += proc ? " The process is " + proc + "." : "";
+    ctx += act  ? " The step that frustrates me most is " + act + "." : "";
 
-    var exp = "For each step you pick: name the step, say why it is the bottleneck, then give me one concrete Copilot use case \u2014 what I would ask it to do, what it would need to be grounded on, and whether it is a one-off prompt, a prompt worth reusing, or an agent worth building. Then say how that use case would move " + kpi + ", and what I could measure after 30 days to prove it. Finish with the single one you would start with, and why. If a step is a poor fit for Copilot, say so and say why.";
+    var exp = "For each step: name it, say why it is the bottleneck, then give me one concrete Copilot use case \u2014 what I would ask it to do and what it would need to be grounded on. "
+            + "Match each one to the right level of Copilot: everyday Copilot Chat or the Copilot built into Word, Excel, PowerPoint, Outlook and Teams; Cowork where the work is multi-step and runs across apps; "
+            + "an Agent Builder agent where it is repeatable and worth packaging; or a Copilot Studio agent with a custom connector where it needs to reach our own systems and data. "
+            + "Say how each one would move " + kpi + ", and what I could measure after 30 days to show it worked. "
+            + "Finish with the single one you would start with, and why.";
 
     var eq = "Keep it practical and plain-language for someone who is not technical. Where you have had to assume how we work, flag the assumption so I can correct it.";
 
