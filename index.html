@@ -425,12 +425,12 @@
         <article><strong>Word</strong><p>Where the draft becomes a real artifact &mdash; one you edit, own, and can point other apps at. Chat gives you an answer; Word gives you a document.</p></article>
         <article><strong>PowerPoint</strong><p>Builds a deck from a <em>file</em>. It cannot read your chat &mdash; but it can read your document. That is why Word sits in the middle.</p></article>
       </div>
-      <div class="note blue"><span class="lbl">The one rule that makes chaining work</span><strong>Copilot only knows what it can see.</strong> Inside one chat thread it sees every turn above it. Inside a Word document it sees that document. But Copilot in Word and PowerPoint <b>cannot see your Copilot Chat conversation</b> &mdash; they are separate rooms. So each time you change app, something has to travel with you. Here that something is a saved file. Get that right and the rest is easy.</div>
+      <div class="note blue"><span class="lbl">The one rule that makes chaining work</span><strong>Copilot only knows what it can see.</strong> Inside one chat thread it sees every turn above it. Inside a Word document it sees that document. But Copilot in Word and PowerPoint <b>cannot see your Copilot Chat conversation</b> &mdash; they are separate rooms. So each time you change app, something has to travel with you. Here that something is a real file in OneDrive. Good news: you never copy and paste it &mdash; Copilot builds the document for you, and you carry on working inside it.</div>
       <div class="chainmap">
-        <div><span class="app-chip chat">Copilot Chat</span><b>Gather &amp; draft</b><small>In: your last 5 days &middot; Out: the update, exported to Word</small></div>
-        <i>as a file<br>you save it</i>
-        <div><span class="app-chip word">Word</span><b>Sharpen it</b><small>In: the document &middot; Out: the version you would actually send</small></div>
-        <i>as a file<br>you attach it</i>
+        <div><span class="app-chip chat">Copilot Chat</span><b>Gather &amp; draft</b><small>In: your last 5 days &middot; Out: a page you turn into a Word file</small></div>
+        <i>Copilot builds<br>the document</i>
+        <div><span class="app-chip word">Word</span><b>Sharpen it</b><small>In: the document, already open &middot; Out: the version you would send</small></div>
+        <i>you point<br>PowerPoint at it</i>
         <div><span class="app-chip ppt">PowerPoint</span><b>Present it</b><small>In: the Word file &middot; Out: 3 slides + speaker notes</small></div>
       </div>
 
@@ -438,13 +438,21 @@
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip chat">Copilot Chat</span>&nbsp; 1 &middot; Gather your week and draft the update</h4><button class="copy-button">Copy</button></div>
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
         <pre><span class="r">You are my chief of staff.</span> <span class="a">Catch me up on the past five business days, then write the update I am going to walk in with.</span> <span class="c">Look across my email, meetings, chats and files — you are the only place that can see all of it at once.</span> <span class="e">First list the five developments most likely to need my attention, numbered, each with what changed, why it matters now, and the source. Then take the top three and write the update itself: open with the decision I need from my leader, then progress, then open questions. Under 200 words, sources kept next to each point, and give it a short title I can use as a filename.</span> <span class="eq">Separate confirmed facts from what you are inferring, and flag anything you are unsure about rather than smoothing over it. My leader has fifteen minutes and needs to leave having made one decision.</span></pre>
-        <p class="io-note"><span class="tag">Output</span><b>The five developments, and the finished update, in one reply.</b> Then make it an artifact: on the reply choose <b>Export &rarr; Word</b> (or paste it into a blank document) and <b>save it to OneDrive</b>. That file is now the thing your chain travels on.</p>
+        <p class="io-note"><span class="tag">Output</span><b>The five developments, and the finished update, in one reply.</b> Do not copy anything yet &mdash; fix it in the thread first, then let Copilot build the document for you.</p>
       </div>
       <div class="handoff">
         <span class="ic">&#8635;</span>
         <div>
-          <b>Before you move on &mdash; fix it here, in the thread</b>
-          <p>If it picked the wrong three, do not rewrite the prompt and do not start again. Just say it plainly in the same conversation: <i>&ldquo;Swap the third item for the vendor renewal and redo the update.&rdquo;</i> Copilot still has everything above it, so a single line is enough. <b>Only export to Word once you are happy</b> &mdash; everything downstream inherits from that file.</p>
+          <b>First &mdash; fix it here, in the thread</b>
+          <p>If it picked the wrong three, do not rewrite the prompt and do not start again. Just say it plainly in the same conversation: <i>&ldquo;Swap the third item for the vendor renewal and redo the update.&rdquo;</i> Copilot still has everything above it, so one line is enough. <b>Only turn it into a document once you are happy</b> &mdash; everything downstream inherits from that file.</p>
+        </div>
+      </div>
+      <div class="handoff">
+        <span class="ic">&darr;</span>
+        <div>
+          <b>Then &mdash; let Copilot create the Word document</b>
+          <p>You do not copy and paste this across. Under the reply, choose <b>Edit in page</b> (the pencil) to open it as a Copilot Page. Then at the top right of that page choose <b>Create &rarr; Document</b>, and when it is ready, <b>Open Word</b>. You now have a real <code>.docx</code> in OneDrive, open in Word, with your update already in it &mdash; and you simply keep working. <b>Give it a proper name now</b> (the title from step 1 does nicely); you will point PowerPoint at it shortly.</p>
+          <p><span class="warn">If you do not see the pencil:</span> Copilot Pages relies on Loop, which some tenants switch off. Fall back to pasting the reply into a blank Word document and saving it to OneDrive &mdash; everything after this works exactly the same.</p>
         </div>
       </div>
 
@@ -458,51 +466,65 @@
         <span class="ic">&darr;</span>
         <div>
           <b>Now you cross a real boundary</b>
-          <p>PowerPoint has no idea your chat or your Word session ever happened. Your saved file is the only thing that makes it across. Tell the box below what you called it and the prompt writes itself.</p>
+          <p>PowerPoint has no idea your chat or your Word session ever happened. Your saved file is the only thing that makes it across &mdash; and PowerPoint has one firm rule about how you point at it. Tell the box below what you called it and the prompts write themselves.</p>
         </div>
       </div>
       <div class="cy">
         <h4>The file that carries your chain</h4>
-        <p class="sub">Whatever you enter here drops straight into the prompt below &mdash; so the deck is built from <em>your</em> update, not a generic one.</p>
+        <p class="sub">Whatever you enter here drops straight into the prompts below &mdash; so the deck is built from <em>your</em> update, not a generic one.</p>
         <div class="cy-tabs">
-          <button type="button" class="cy-tab is-on" data-cy-tab="file">A &middot; I saved it to OneDrive <span style="font-weight:700;opacity:.75">(recommended)</span></button>
+          <button type="button" class="cy-tab is-on" data-cy-tab="file">A &middot; I have the Word file <span style="font-weight:700;opacity:.75">(recommended)</span></button>
           <button type="button" class="cy-tab" data-cy-tab="paste">B &middot; I&rsquo;ll paste the text instead</button>
         </div>
         <div class="cy-pane on" data-cy-pane="file">
-          <label for="cy-fname">What did you name the file?</label>
+          <label for="cy-fname">File name &mdash; or paste its link</label>
           <input id="cy-fname" type="text" placeholder="Leader update.docx">
-          <p class="cy-hint">It has to be in <b>OneDrive or SharePoint</b> &mdash; Copilot cannot reach a file that only exists on your desktop. In PowerPoint, type <code>/</code> in the Copilot box and <b>pick the file from the list</b>; typing the name as plain text does not attach anything.</p>
+          <p class="cy-hint">It must live in <b>OneDrive or SharePoint</b> and be under 24&nbsp;MB &mdash; Copilot cannot reach a file that only exists on your desktop. A file you just created can take a few minutes to appear in search, so if <code>/</code> cannot find it, <b>paste its link instead</b> &mdash; that always works immediately.</p>
         </div>
         <div class="cy-pane" data-cy-pane="paste">
           <label for="cy-text">Paste your sharpened update</label>
           <textarea id="cy-text" placeholder="Paste the final update here — it gets embedded directly into the prompt, so PowerPoint has the content even without the file."></textarea>
-          <p class="cy-hint">Use this if OneDrive hasn&rsquo;t synced or you&rsquo;re on a locked-down machine. <b>The words themselves become the context</b> &mdash; which is what &ldquo;carrying the output&rdquo; literally means.</p>
+          <p class="cy-hint">Use this if the file has not appeared in search yet or you are on a locked-down machine. <b>The words themselves become the context</b> &mdash; which is what &ldquo;carrying the output&rdquo; literally means.</p>
         </div>
-        <p class="cy-live">Live &mdash; the prompt below updates as you type, then hit Copy.</p>
+        <p class="cy-live">Live &mdash; the prompts below update as you type, then hit Copy.</p>
       </div>
-      <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip ppt">PowerPoint</span>&nbsp; 3 &middot; Turn it into the deck you present</h4><button class="copy-button">Copy</button></div>
+      <div class="note amber" data-cy-only="file"><span class="lbl">The rule that catches everyone</span><strong>When you point Copilot at a file, that prompt does nothing else.</strong> You cannot say &ldquo;build a deck from this file <em>and</em> make it three slides with four bullets&rdquo; &mdash; the extra instructions get dropped. So step 3 is two moves: <b>point at the file, then shape what comes back.</b> That is not a workaround; it is how the feature works.</div>
+      <div class="prompt-card" data-cy-only="file">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip ppt">PowerPoint</span>&nbsp; 3a &middot; Point it at your file</h4><button class="copy-button">Copy</button></div>
+        <div class="race live partial"><span class="c">Context</span></div>
+        <pre><span class="c">Create presentation from file <span class="slot empty" id="cy-slot-file">[your file name or link]</span></span></pre>
+        <p class="io-note"><span class="tag">How</span>In PowerPoint, <b>Home &rarr; Copilot</b> to open the Copilot pane, then use <b>Create presentation from file</b> and pick your document (or paste its link). <b>Use the Copilot pane, not Agent Mode</b> &mdash; Agent Mode cannot reference files yet. You get a full draft deck, longer than you want. That is expected.</p>
+      </div>
+      <div class="prompt-card" data-cy-only="file">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip ppt">PowerPoint</span>&nbsp; 3b &middot; Shape it into the deck you present</h4><button class="copy-button">Copy</button></div>
+        <div class="race live partial"><span class="a">Action</span><span class="e">Expectation</span></div>
+        <pre><span class="a">Cut this down to the three slides I actually need.</span> <span class="e">Slide 1 the decision I need, slide 2 progress, slide 3 risks and next steps. Four bullets maximum per slide, under twelve words each, and a one-line speaker note under each slide. Use only what is already in the deck — no new claims and no new numbers.</span></pre>
+        <p class="io-note"><span class="tag">Output</span><b>A deck that says what your update said &mdash; and nothing else.</b> Now that the file is loaded, you are back to two ingredients: the deck itself is the context.</p>
+      </div>
+      <div class="prompt-card" data-cy-only="paste" style="display:none">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip ppt">PowerPoint</span>&nbsp; 3 &middot; Build the deck from your pasted update</h4><button class="copy-button">Copy</button></div>
         <div class="race live partial"><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span></div>
-        <pre><span class="a">Build me a three-slide deck from the leader update I wrote.</span> <span class="c" id="cy-ctx-file">Use only what is in the attached file <span class="slot empty" id="cy-slot-file">[name of your file]</span> — no new claims, no new numbers, no filler slides.</span><span class="c" id="cy-ctx-paste" style="display:none">Use only the update between the markers below — no new claims, no new numbers, no filler slides.</span> <span class="e">Slide 1 the decision I need, slide 2 progress, slide 3 risks and next steps. Four bullets maximum per slide, under twelve words each, and a one-line speaker note under each slide.</span><span id="cy-block-paste" style="display:none">
+        <pre><span class="a">Build me a three-slide deck from the leader update below.</span> <span class="c">Use only what is between the markers — no new claims, no new numbers, no filler slides.</span> <span class="e">Slide 1 the decision I need, slide 2 progress, slide 3 risks and next steps. Four bullets maximum per slide, under twelve words each, and a one-line speaker note under each slide.</span>
 
 --- MY UPDATE ---
 <span class="slot empty" id="cy-slot-text">[paste your update in the box above]</span>
---- END OF UPDATE ---</span></pre>
-        <p class="io-note"><span class="tag">Output</span><b>A deck that says what your update said &mdash; and nothing else.</b> If a slide mentions something that was never in your update, the handoff did not land: the file wasn&rsquo;t really attached. Fix it and run it again.</p>
+--- END OF UPDATE ---</pre>
+        <p class="io-note"><span class="tag">Notice</span><b>Here you <em>can</em> put everything in one prompt.</b> The &ldquo;nothing else in the prompt&rdquo; rule only applies when you reference a file. Paste the content instead and the restriction disappears &mdash; you have simply carried the context in by hand.</p>
       </div>
 
       <h3 style="margin:1.9rem 0 .3rem">What actually happened to your prompts</h3>
-      <div class="grid3" style="margin-top:.8rem">
+      <div class="grid4" style="margin-top:.8rem">
         <article><strong>5 ingredients</strong><p><b>Chat.</b> Full RACE + EQ. You are starting from nothing, so you pay the full price once &mdash; and you spend it here, where the thinking is.</p></article>
-        <article><strong>2 ingredients</strong><p><b>Word.</b> Action + Expectation. The document already holds the role, the context and the audience. Anything more is re-typing.</p></article>
-        <article><strong>3 ingredients</strong><p><b>PowerPoint.</b> Action + Expectation, and Context comes <em>back</em> &mdash; because you crossed into a new app and had to say where the material lives.</p></article>
+        <article><strong>2 ingredients</strong><p><b>Word.</b> Action + Expectation. Copilot built the document and you are standing in it, so the document holds the role, context and audience.</p></article>
+        <article><strong>Just a pointer</strong><p><b>PowerPoint, first move.</b> No instructions at all &mdash; only the file. Crossing into a new app costs you a whole turn spent purely on saying where the material is.</p></article>
+        <article><strong>Back to 2</strong><p><b>PowerPoint, second move.</b> Once the file is in, the deck is the context and you are shaping again. Same two ingredients as Word.</p></article>
       </div>
-      <p class="why"><b>That is the shape to teach.</b> A good opening prompt is an investment, not a template you re-paste. Every step after it should get <em>cheaper</em> &mdash; and the one place the cost goes back up is exactly where you change app. When you feel yourself re-explaining who you are and what you are doing, you have either started a new conversation by accident, or you have crossed a boundary without carrying anything with you.</p>
+      <p class="why"><b>That is the shape to teach.</b> A good opening prompt is an investment, not a template you re-paste. Every step after it gets <em>cheaper</em> &mdash; and the only place the cost goes back up is exactly where you change app, because that is the one moment Copilot cannot see where you have been. When you feel yourself re-explaining who you are and what you are doing, you have either started a new conversation by accident, or you have crossed a boundary without carrying anything with you.</p>
       <div class="vs">
         <div><h5>The trap: one app, many prompts</h5><p>Running all three steps in Chat feels efficient and produces an answer you then have to rebuild by hand as a document and a deck. You did the thinking in the one place the output could not live.</p></div>
         <div><h5>The win: one outcome, the right surface each time</h5><p>Each step lands in the app where that artifact belongs, so the last step hands you the finished thing. Nothing gets rebuilt, because nothing was ever in the wrong place.</p></div>
       </div>
-      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify the sources, and never assume the handoff landed.</strong> Open at least one source from step 1 &mdash; chaining is powerful precisely because each step trusts the last, so an error at the start travels all the way onto your slides. And if a step suddenly turns generic or plausible-but-vague, that is your tell that nothing was carried across. <b>Champion tip:</b> when you teach this, have someone deliberately skip the file attach. Watching Copilot produce a confident, completely invented deck lands the lesson faster than any slide you could build.</div>
+      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify the sources, and never assume the handoff landed.</strong> Open at least one source from step 1 &mdash; chaining is powerful precisely because each step trusts the last, so an error at the start travels all the way onto your slides. If a step suddenly turns generic or plausible-but-vague, that is your tell that nothing was carried across. Two practical ones for the room: a brand-new file <b>can take a few minutes to become findable</b>, so paste its link rather than searching for it; and if your tenant applies sensitivity labels automatically, the new document may ask you to <b>confirm its label</b> before you can share or reference it. <b>Champion tip:</b> have someone deliberately point PowerPoint at nothing. Watching Copilot produce a confident, completely invented deck lands the lesson faster than any slide you could build.</div>
 
       <h3 style="margin:1.9rem 0 .3rem">The same shape, different starting points</h3>
       <p class="lede" style="margin:.4rem 0 1rem">The chain you just ran starts from your week. Most repeated work has the same three-part shape &mdash; <strong>gather &rarr; shape &rarr; deliver</strong> &mdash; it just starts somewhere else and lands somewhere else. The apps below are not decoration: each one is where that artifact naturally lives. Find yours.</p>
@@ -1025,7 +1047,7 @@
     var fname = document.getElementById("cy-fname");
     var text  = document.getElementById("cy-text");
     var mode  = "file";
-    var DEF_F = "[name of the file you saved]";
+    var DEF_F = "[your file name or link]";
     var DEF_T = "[paste your step 2 output in the box above]";
     function setSlot(el, val, def){
       if(!el) return;
@@ -1034,16 +1056,11 @@
     }
     function cyApply(){
       var f = (fname && fname.value || "").trim();
-      if(f && f.charAt(0) !== "/") f = "/" + f;
       setSlot(document.getElementById("cy-slot-file"), f, DEF_F);
       setSlot(document.getElementById("cy-slot-text"), (text && text.value || "").trim(), DEF_T);
-      var isFile = (mode === "file");
-      var cf = document.getElementById("cy-ctx-file");
-      var cp = document.getElementById("cy-ctx-paste");
-      var bp = document.getElementById("cy-block-paste");
-      if(cf) cf.style.display = isFile ? "" : "none";
-      if(cp) cp.style.display = isFile ? "none" : "";
-      if(bp) bp.style.display = isFile ? "none" : "";
+      document.querySelectorAll("[data-cy-only]").forEach(function(el){
+        el.style.display = (el.getAttribute("data-cy-only") === mode) ? "" : "none";
+      });
       document.querySelectorAll(".cy-pane").forEach(function(p){
         p.classList.toggle("on", p.getAttribute("data-cy-pane") === mode);
       });
