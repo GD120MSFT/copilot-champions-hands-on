@@ -108,6 +108,8 @@
   pre .e{background:rgba(194,90,0,.14);box-shadow:inset 0 -2px 0 #c25a00;}
   pre .eq{background:rgba(47,111,68,.14);box-shadow:inset 0 -2px 0 #2f6f44;}
   .race.live::after{content:"shown in the prompt below";margin-left:.2rem;color:var(--muted);font-size:.62rem;font-weight:700;letter-spacing:.02em;text-transform:none;}
+  .race.partial::before{content:"Ingredients used";}
+  .race.partial::after{content:"\2014\00a0that is all it needs";}
 
   /* which app each step runs in, and how the output travels to the next step */
   .app-chip{display:inline-flex;align-items:center;padding:.26rem .5rem;color:#fff;background:var(--ink);border-radius:5px;font-size:.64rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;vertical-align:middle;}
@@ -406,99 +408,117 @@
       </ul>
       <div class="note amber"><span class="lbl">Leave with it running</span><strong>Don&rsquo;t stop at &ldquo;drafted.&rdquo;</strong> The goal is that your personalization is saved and shaping answers before you leave the room &mdash; that&rsquo;s what you&rsquo;ll be teaching your teams to do.</div>
       <div class="note"><span class="lbl">Why this matters for champions</span><strong>You can only teach what you understand.</strong> Champions who get the &ldquo;behind the scenes&rdquo; of custom instructions and memory can set it up for a whole team.</div>
-      <div class="guide"><button class="guide-button secondary" data-go="1">&larr; Back</button><button class="guide-button" data-go="3">Next &rarr; Prompt chaining</button></div>
+      <div class="guide"><button class="guide-button secondary" data-go="1">&larr; Back</button><button class="guide-button" data-go="3">Next &rarr; Chaining across apps</button></div>
     </section>
     <section class="panel" data-mode="adv" data-idx="3">
       <div class="kicker">Capability 2 · you try this</div>
-      <h2>Advanced prompt chaining</h2>
-      <p class="lede">One real workflow across three apps &mdash; catch up on your week, shape it into a leader update, then turn that into slides. The lesson here is not the three prompts. It is the <strong>two handoffs between them</strong>: what you carry from one step to the next, and how.</p>
-      <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~10 min</span><span class="pill">2 prompts in Copilot Chat &middot; 1 in PowerPoint</span><span class="pill">Word is the bridge</span></div>
-      <div class="note blue"><span class="lbl">Read this before you start</span><strong>Copilot only knows what it can see.</strong> Inside one chat thread it can see every turn above it &mdash; so step&nbsp;2 can say &ldquo;the list you just gave me&rdquo; and it simply works. But Copilot in Word and Copilot in PowerPoint <b>cannot see your Copilot Chat conversation</b>. They are separate rooms. So the moment a chain crosses into another app, <b>you</b> have to carry the output over &mdash; as a file you attach with <code>/</code>, or as text you paste. That carry-over is the handoff, and it is the step most people skip without realising it.</div>
-      <div class="chainmap">
-        <div><span class="app-chip chat">Copilot Chat</span><b>1 &middot; Catch up</b><small>Out: 5 numbered developments + sources</small></div>
-        <i>same thread<br>context carries itself</i>
-        <div><span class="app-chip chat">Copilot Chat</span><b>2 &middot; Leader update</b><small>In: items 1&ndash;3 above &middot; Out: update saved to Word</small></div>
-        <i>via the file<br>you carry it</i>
-        <div><span class="app-chip ppt">PowerPoint</span><b>3 &middot; Slides</b><small>In: the Word file &middot; Out: 3 slides</small></div>
+      <h2>Chaining across apps</h2>
+      <p class="lede">This is not three clever prompts. It is <strong>one outcome</strong>, picked up by Copilot in each app where that part of the work actually lives. Watch what happens to the prompts as you go &mdash; they get <em>shorter</em>. That is the whole payoff.</p>
+      <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~10 min</span><span class="pill">Copilot Chat &rarr; Word &rarr; PowerPoint</span><span class="pill">1 outcome &middot; 3 surfaces</span></div>
+      <div class="scenario">
+        <strong>The outcome you are working towards</strong>
+        <p>Monday, 9am. You walk into the leadership check-in with a three-slide deck built from your real week &mdash; the decision you need is on slide one, every claim traces back to a source, and it cost you ten minutes instead of an evening.</p>
       </div>
+      <h3 style="margin:1.6rem 0 .3rem">Three apps, because each one does something the others cannot</h3>
+      <div class="grid3" style="margin-top:.8rem">
+        <article><strong>Copilot Chat</strong><p>The only surface that can look across your email, meetings, chats and files at once. Nothing else can <em>gather</em> your week.</p></article>
+        <article><strong>Word</strong><p>Where the draft becomes a real artifact &mdash; one you edit, own, and can point other apps at. Chat gives you an answer; Word gives you a document.</p></article>
+        <article><strong>PowerPoint</strong><p>Builds a deck from a <em>file</em>. It cannot read your chat &mdash; but it can read your document. That is why Word sits in the middle.</p></article>
+      </div>
+      <div class="note blue"><span class="lbl">The one rule that makes chaining work</span><strong>Copilot only knows what it can see.</strong> Inside one chat thread it sees every turn above it. Inside a Word document it sees that document. But Copilot in Word and PowerPoint <b>cannot see your Copilot Chat conversation</b> &mdash; they are separate rooms. So each time you change app, something has to travel with you. Here that something is a saved file. Get that right and the rest is easy.</div>
+      <div class="chainmap">
+        <div><span class="app-chip chat">Copilot Chat</span><b>Gather &amp; draft</b><small>In: your last 5 days &middot; Out: the update, exported to Word</small></div>
+        <i>as a file<br>you save it</i>
+        <div><span class="app-chip word">Word</span><b>Sharpen it</b><small>In: the document &middot; Out: the version you would actually send</small></div>
+        <i>as a file<br>you attach it</i>
+        <div><span class="app-chip ppt">PowerPoint</span><b>Present it</b><small>In: the Word file &middot; Out: 3 slides + speaker notes</small></div>
+      </div>
+
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip chat">Copilot Chat</span>&nbsp; 1 &middot; Catch up &mdash; find the signal</h4><button class="copy-button">Copy</button></div>
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip chat">Copilot Chat</span>&nbsp; 1 &middot; Gather your week and draft the update</h4><button class="copy-button">Copy</button></div>
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">You are my chief of staff.</span> <span class="a">I am catching up after a busy week — identify the five developments most likely to need my attention.</span> <span class="c">Review my work from the past five business days across email, chats, meetings and files.</span> <span class="e">Number them 1 to 5 so I can point back at them later. For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</span> <span class="eq">I am walking straight into a leadership check-in, so keep it skimmable and direct.</span></pre>
-        <p class="io-note"><span class="tag">Output</span><b>A numbered list of five developments, each with its source.</b> Leave it on screen &mdash; that list is the input for step 2.</p>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">Catch me up on the past five business days, then write the update I am going to walk in with.</span> <span class="c">Look across my email, meetings, chats and files — you are the only place that can see all of it at once.</span> <span class="e">First list the five developments most likely to need my attention, numbered, each with what changed, why it matters now, and the source. Then take the top three and write the update itself: open with the decision I need from my leader, then progress, then open questions. Under 200 words, sources kept next to each point, and give it a short title I can use as a filename.</span> <span class="eq">Separate confirmed facts from what you are inferring, and flag anything you are unsure about rather than smoothing over it. My leader has fifteen minutes and needs to leave having made one decision.</span></pre>
+        <p class="io-note"><span class="tag">Output</span><b>The five developments, and the finished update, in one reply.</b> Then make it an artifact: on the reply choose <b>Export &rarr; Word</b> (or paste it into a blank document) and <b>save it to OneDrive</b>. That file is now the thing your chain travels on.</p>
       </div>
       <div class="handoff">
-        <span class="ic">&darr;</span>
+        <span class="ic">&#8635;</span>
         <div>
-          <b>Handoff 1 &mdash; stay in the same chat thread</b>
-          <p>Do <b>not</b> open a new chat. Prompt 2 says &ldquo;items 1, 2 and 3 from the list you just gave me&rdquo;, and that only works because step 1 is still sitting above it in the same conversation. This is the one handoff you get for free: Copilot re-reads its own answer, so you never restate your week.</p>
-          <p><span class="warn">If your chat reset or you closed the tab:</span> re-run step 1 before continuing. A fresh thread has no memory of it, and prompt 2 will quietly invent an update instead of building on yours.</p>
+          <b>Before you move on &mdash; fix it here, in the thread</b>
+          <p>If it picked the wrong three, do not rewrite the prompt and do not start again. Just say it plainly in the same conversation: <i>&ldquo;Swap the third item for the vendor renewal and redo the update.&rdquo;</i> Copilot still has everything above it, so a single line is enough. <b>Only export to Word once you are happy</b> &mdash; everything downstream inherits from that file.</p>
         </div>
       </div>
+
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip chat">Copilot Chat &mdash; same thread</span>&nbsp; 2 &middot; Draft the leader update</h4><button class="copy-button">Copy</button></div>
-        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">You are my chief of staff.</span> <span class="a">Take items 1, 2 and 3 from the list you just gave me and draft a written update for my direct leader.</span> <span class="c">Use only those three items and the sources you already cited above — do not go back out and look for anything new.</span> <span class="e">Start with a short title line I can use as a filename. Then lead with what needs a decision, then progress, then open questions. Under 200 words, with the source kept next to each point.</span> <span class="eq">My leader has fifteen minutes and needs to leave with one decision made — neutral and direct, no padding.</span></pre>
-        <p class="io-note"><span class="tag">Output</span><b>A titled update, under 200 words.</b> Now put it into Word: use <b>Export</b> (or copy the reply) into a blank document and save it to OneDrive as <code>Leader update.docx</code>. That file is your handoff into the next app.</p>
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip word">Word</span>&nbsp; 2 &middot; Sharpen it into something you would send</h4><button class="copy-button">Copy</button></div>
+        <div class="race live partial"><span class="a">Action</span><span class="e">Expectation</span></div>
+        <pre><span class="a">Tighten this into something I would actually send.</span> <span class="e">Cut it to about 150 words, make the decision I am asking for unmissable in the first two lines, and turn the open questions into a short list. Keep every source reference exactly where it is.</span></pre>
+        <p class="io-note"><span class="tag">Look at what just happened</span><b>No role. No context. Two ingredients instead of five &mdash; and it still works.</b> You are inside the document, so the document <em>is</em> the context. Re-typing &ldquo;you are my chief of staff&rdquo; here would buy you nothing.</p>
       </div>
       <div class="handoff">
         <span class="ic">&darr;</span>
         <div>
-          <b>Handoff 2 &mdash; you have to carry this one yourself</b>
-          <p>PowerPoint has no idea your chat ever happened. What it <i>can</i> see is your files &mdash; so the update has to travel across as something PowerPoint can reach. There are two ways to do it, and the box below writes the step&nbsp;3 prompt for you either way.</p>
+          <b>Now you cross a real boundary</b>
+          <p>PowerPoint has no idea your chat or your Word session ever happened. Your saved file is the only thing that makes it across. Tell the box below what you called it and the prompt writes itself.</p>
         </div>
       </div>
       <div class="cy">
-        <h4>Carry your step 2 output into step 3</h4>
-        <p class="sub">Pick how you want to hand it over. What you enter here drops straight into the prompt below &mdash; so the slides are built from <em>your</em> update, not a generic one.</p>
+        <h4>The file that carries your chain</h4>
+        <p class="sub">Whatever you enter here drops straight into the prompt below &mdash; so the deck is built from <em>your</em> update, not a generic one.</p>
         <div class="cy-tabs">
-          <button type="button" class="cy-tab is-on" data-cy-tab="file">A &middot; I saved it to Word <span style="font-weight:700;opacity:.75">(recommended)</span></button>
-          <button type="button" class="cy-tab" data-cy-tab="paste">B &middot; I&rsquo;ll paste the text straight in</button>
+          <button type="button" class="cy-tab is-on" data-cy-tab="file">A &middot; I saved it to OneDrive <span style="font-weight:700;opacity:.75">(recommended)</span></button>
+          <button type="button" class="cy-tab" data-cy-tab="paste">B &middot; I&rsquo;ll paste the text instead</button>
         </div>
         <div class="cy-pane on" data-cy-pane="file">
-          <label for="cy-fname">Name of the file you saved</label>
+          <label for="cy-fname">What did you name the file?</label>
           <input id="cy-fname" type="text" placeholder="Leader update.docx">
-          <p class="cy-hint">Export the step&nbsp;2 reply into Word and save it to <b>OneDrive</b> (not your desktop &mdash; Copilot cannot reach local-only files). Then in PowerPoint, type <code>/</code> in the Copilot box and pick this file so it is genuinely attached &mdash; typing the name alone is not enough.</p>
+          <p class="cy-hint">It has to be in <b>OneDrive or SharePoint</b> &mdash; Copilot cannot reach a file that only exists on your desktop. In PowerPoint, type <code>/</code> in the Copilot box and <b>pick the file from the list</b>; typing the name as plain text does not attach anything.</p>
         </div>
         <div class="cy-pane" data-cy-pane="paste">
-          <label for="cy-text">Paste the update Copilot wrote in step 2</label>
-          <textarea id="cy-text" placeholder="Paste the full update here — it gets embedded into the prompt below, so PowerPoint has the content even without the file."></textarea>
-          <p class="cy-hint">Use this if OneDrive hasn&rsquo;t synced yet or you&rsquo;re on a locked-down machine. <b>The words themselves become the context</b> &mdash; that is what &ldquo;carrying the output&rdquo; literally means.</p>
+          <label for="cy-text">Paste your sharpened update</label>
+          <textarea id="cy-text" placeholder="Paste the final update here — it gets embedded directly into the prompt, so PowerPoint has the content even without the file."></textarea>
+          <p class="cy-hint">Use this if OneDrive hasn&rsquo;t synced or you&rsquo;re on a locked-down machine. <b>The words themselves become the context</b> &mdash; which is what &ldquo;carrying the output&rdquo; literally means.</p>
         </div>
         <p class="cy-live">Live &mdash; the prompt below updates as you type, then hit Copy.</p>
       </div>
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip ppt">PowerPoint</span>&nbsp; 3 &middot; Turn it into slides</h4><button class="copy-button">Copy</button></div>
-        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">You are my chief of staff.</span> <span class="a">Build me a three-slide deck from the leader update I wrote.</span> <span class="c" id="cy-ctx-file">Use only what is in the attached file <span class="slot empty" id="cy-slot-file">[name of the file you saved]</span> — do not add new claims, new numbers or filler slides.</span><span class="c" id="cy-ctx-paste" style="display:none">Use only the update between the markers below — do not add new claims, new numbers or filler slides.</span> <span class="e">Slide 1 the decision I need, slide 2 progress, slide 3 risks and next steps. Maximum four bullets per slide, under twelve words each, and a one-line speaker note under each slide.</span> <span class="eq">I am presenting this live to the same leadership group, so keep the wording tight enough to say out loud.</span><span id="cy-block-paste" style="display:none">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip ppt">PowerPoint</span>&nbsp; 3 &middot; Turn it into the deck you present</h4><button class="copy-button">Copy</button></div>
+        <div class="race live partial"><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span></div>
+        <pre><span class="a">Build me a three-slide deck from the leader update I wrote.</span> <span class="c" id="cy-ctx-file">Use only what is in the attached file <span class="slot empty" id="cy-slot-file">[name of your file]</span> — no new claims, no new numbers, no filler slides.</span><span class="c" id="cy-ctx-paste" style="display:none">Use only the update between the markers below — no new claims, no new numbers, no filler slides.</span> <span class="e">Slide 1 the decision I need, slide 2 progress, slide 3 risks and next steps. Four bullets maximum per slide, under twelve words each, and a one-line speaker note under each slide.</span><span id="cy-block-paste" style="display:none">
 
---- MY UPDATE FROM STEP 2 ---
-<span class="slot empty" id="cy-slot-text">[paste your step 2 output in the box above]</span>
+--- MY UPDATE ---
+<span class="slot empty" id="cy-slot-text">[paste your update in the box above]</span>
 --- END OF UPDATE ---</span></pre>
-        <p class="io-note"><span class="tag">Output</span><b>Three slides built from &mdash; and only from &mdash; the update you wrote in step 2.</b> If the slides mention things that were never in your update, the handoff did not land: the file wasn&rsquo;t really attached, or the text wasn&rsquo;t pasted. Fix it and run again.</p>
+        <p class="io-note"><span class="tag">Output</span><b>A deck that says what your update said &mdash; and nothing else.</b> If a slide mentions something that was never in your update, the handoff did not land: the file wasn&rsquo;t really attached. Fix it and run it again.</p>
       </div>
-      <div class="vs" style="margin-top:1.5rem">
-        <div><h5>Inside one app &mdash; context is free</h5><p>Steps 1 &rarr; 2 stay in the same chat thread, so Copilot re-reads everything above it on its own. That is why prompt 2 is so short: you are not re-explaining your week, you are pointing at an answer that is already on screen.</p></div>
-        <div><h5>Across apps &mdash; context must be carried</h5><p>Step 2 &rarr; 3 crosses into PowerPoint, which cannot see the chat. A file or pasted text is the only bridge. Skip it and the prompt still runs &mdash; it just quietly makes the content up.</p></div>
+
+      <h3 style="margin:1.9rem 0 .3rem">What actually happened to your prompts</h3>
+      <div class="grid3" style="margin-top:.8rem">
+        <article><strong>5 ingredients</strong><p><b>Chat.</b> Full RACE + EQ. You are starting from nothing, so you pay the full price once &mdash; and you spend it here, where the thinking is.</p></article>
+        <article><strong>2 ingredients</strong><p><b>Word.</b> Action + Expectation. The document already holds the role, the context and the audience. Anything more is re-typing.</p></article>
+        <article><strong>3 ingredients</strong><p><b>PowerPoint.</b> Action + Expectation, and Context comes <em>back</em> &mdash; because you crossed into a new app and had to say where the material lives.</p></article>
       </div>
-      <p class="why"><b>This is the whole technique.</b> A chain is not three good prompts. It is three good prompts <b>plus</b> a deliberate decision at every arrow: does this step stay in the thread, or do I have to carry the output into the next app myself? <b>Champion tip:</b> when you teach this, make someone deliberately skip handoff 2 &mdash; watching Copilot produce a confident, completely invented deck teaches the lesson faster than any slide.</p>
-      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify the sources, and never assume the handoff landed.</strong> Open at least one cited source from step 1 &mdash; chaining is powerful precisely because each step trusts the last, so an error in step one travels all the way onto your slides. And if any step suddenly turns generic or plausible-but-vague, that is your tell that the handoff did not happen.</div>
+      <p class="why"><b>That is the shape to teach.</b> A good opening prompt is an investment, not a template you re-paste. Every step after it should get <em>cheaper</em> &mdash; and the one place the cost goes back up is exactly where you change app. When you feel yourself re-explaining who you are and what you are doing, you have either started a new conversation by accident, or you have crossed a boundary without carrying anything with you.</p>
+      <div class="vs">
+        <div><h5>The trap: one app, many prompts</h5><p>Running all three steps in Chat feels efficient and produces an answer you then have to rebuild by hand as a document and a deck. You did the thinking in the one place the output could not live.</p></div>
+        <div><h5>The win: one outcome, the right surface each time</h5><p>Each step lands in the app where that artifact belongs, so the last step hands you the finished thing. Nothing gets rebuilt, because nothing was ever in the wrong place.</p></div>
+      </div>
+      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify the sources, and never assume the handoff landed.</strong> Open at least one source from step 1 &mdash; chaining is powerful precisely because each step trusts the last, so an error at the start travels all the way onto your slides. And if a step suddenly turns generic or plausible-but-vague, that is your tell that nothing was carried across. <b>Champion tip:</b> when you teach this, have someone deliberately skip the file attach. Watching Copilot produce a confident, completely invented deck lands the lesson faster than any slide you could build.</div>
 
       <h3 style="margin:1.9rem 0 .3rem">The same shape, different starting points</h3>
-      <p class="lede" style="margin:.4rem 0 1rem">The chain you just ran starts from your week. Most repeated work follows the same three-part shape &mdash; <strong>gather &rarr; shape &rarr; deliver</strong> &mdash; it just starts somewhere else. Every arrow below is a handoff: ask yourself whether it can stay in one chat, or whether it crosses into another app and needs a file. Find yours.</p>
+      <p class="lede" style="margin:.4rem 0 1rem">The chain you just ran starts from your week. Most repeated work has the same three-part shape &mdash; <strong>gather &rarr; shape &rarr; deliver</strong> &mdash; it just starts somewhere else and lands somewhere else. The apps below are not decoration: each one is where that artifact naturally lives. Find yours.</p>
       <div class="pattern"><b>Start from your week</b><em>The one you just ran &mdash; for any recurring check-in or status.</em>
-        <div class="flow"><span>Catch up on 5 days</span><i>&rarr;</i><span>Leader update</span><i>&rarr;</i><span>Slides</span></div></div>
+        <div class="flow"><span>Chat &middot; catch up on 5 days</span><i>&rarr;</i><span>Word &middot; the update</span><i>&rarr;</i><span>PowerPoint &middot; the deck</span></div></div>
       <div class="pattern"><b>Start from a document</b><em>A report, submission or policy lands and something has to come out of it.</em>
-        <div class="flow"><span>Summarize the file</span><i>&rarr;</i><span>Pull the implications</span><i>&rarr;</i><span>Draft the response</span></div></div>
+        <div class="flow"><span>Word &middot; read &amp; pull implications</span><i>&rarr;</i><span>Chat &middot; check it against our position</span><i>&rarr;</i><span>Outlook &middot; the response</span></div></div>
       <div class="pattern"><b>Start from a meeting</b><em>Decisions get made and the follow-through is the work.</em>
-        <div class="flow"><span>Recap &amp; decisions</span><i>&rarr;</i><span>Actions by owner</span><i>&rarr;</i><span>Follow-up note</span></div></div>
+        <div class="flow"><span>Teams &middot; recap &amp; decisions</span><i>&rarr;</i><span>Chat &middot; actions by owner</span><i>&rarr;</i><span>Outlook &middot; the follow-up</span></div></div>
       <div class="pattern"><b>Start from data</b><em>The numbers arrive and someone has to explain them.</em>
-        <div class="flow"><span>Analyze the export</span><i>&rarr;</i><span>Explain what moved</span><i>&rarr;</i><span>Commentary for review</span></div></div>
+        <div class="flow"><span>Excel &middot; analyze the export</span><i>&rarr;</i><span>Word &middot; explain what moved</span><i>&rarr;</i><span>PowerPoint &middot; the review pack</span></div></div>
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Find your own chain</h4><button class="copy-button">Copy</button></div>
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip chat">Copilot Chat</span>&nbsp; Find your own chain</h4><button class="copy-button">Copy</button></div>
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">Act as a workflow analyst looking at how I actually spend my time.</span> <span class="a">Find the multi-step outputs I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three.</span> <span class="c">Look at my work over the last 30 days across email, meetings, chats and files.</span> <span class="e">For each, show it as a three-step chain, say what starts it off, who receives the final output, and name which Microsoft 365 app each step would happen in. Then label every arrow as either &ldquo;same chat&rdquo; or &ldquo;hand off a file&rdquo;, and say what that file would be. Finish by writing the first prompt I would run to begin the chain, and tell me which of the three is the best one to hand to Copilot first, and why.</span> <span class="eq">Keep it practical &mdash; I want to act on this today, not read an analysis.</span></pre>
-        <p class="why"><b>Ask yourself as you read it back:</b> which of these do I do most often &mdash; and what would it be worth if the first draft were already written?</p>
+        <pre><span class="r">Act as a workflow analyst looking at how I actually spend my time.</span> <span class="a">Find the multi-step outcomes I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three.</span> <span class="c">Look at my work over the last 30 days across email, meetings, chats and files.</span> <span class="e">For each one, start from the finished thing someone receives and work backwards. Name the Microsoft 365 app each step belongs in and why that app and not another. Say what artifact travels between the steps — the file or document that carries it across. Then write the opening prompt for the best of the three, and tell me which single step in it I should stop doing by hand first.</span> <span class="eq">Keep it practical &mdash; I want to act on this today, not read an analysis.</span></pre>
+        <p class="why"><b>Ask yourself as you read it back:</b> where does the finished thing actually have to live &mdash; and am I currently building it in the wrong app and rebuilding it later?</p>
       </div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Cowork orchestration</button></div>
     </section>
@@ -853,7 +873,7 @@
   var currentBU = "Finance";
 
   var STEPS = {
-    adv:[["Welcome","Objectives &amp; how it runs"],["Prompting pattern","RACE + EQ"],["Personalization","Try it — set it up"],["Prompt chaining","Try it — catch up"],["Cowork orchestration","It does the work"],["Agentic landscape","Where prompting stops"]],
+    adv:[["Welcome","Objectives &amp; how it runs"],["Prompting pattern","RACE + EQ"],["Personalization","Try it — set it up"],["Chaining across apps","Try it — one outcome"],["Cowork orchestration","It does the work"],["Agentic landscape","Where prompting stops"]],
     agent:[["Overview","What&rsquo;s worth building"],["Three patterns","Knowledge / specialty / productivity"],["The method","Friction to pattern"],["Build it in your pod","Hands-on"],["Ideas for your group","Starter agents by BU"]],
     value:[["Find your use case","KPI to Copilot use case"],["Take it further","Bring it back &amp; next"]]
   };
