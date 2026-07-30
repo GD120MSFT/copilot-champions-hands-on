@@ -109,6 +109,48 @@
   pre .eq{background:rgba(47,111,68,.14);box-shadow:inset 0 -2px 0 #2f6f44;}
   .race.live::after{content:"shown in the prompt below";margin-left:.2rem;color:var(--muted);font-size:.62rem;font-weight:700;letter-spacing:.02em;text-transform:none;}
 
+  /* which app each step runs in, and how the output travels to the next step */
+  .app-chip{display:inline-flex;align-items:center;padding:.26rem .5rem;color:#fff;background:var(--ink);border-radius:5px;font-size:.64rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;vertical-align:middle;}
+  .app-chip.chat{background:#6E56CF;} .app-chip.word{background:#185ABD;} .app-chip.ppt{background:#C43E1C;}
+  .chainmap{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.5rem;margin:1.2rem 0 1.5rem;}
+  .chainmap > div{padding:.7rem .8rem;background:#fff;border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:0 0 9px 9px;}
+  .chainmap > div b{display:block;margin:.42rem 0 .12rem;font-size:.92rem;}
+  .chainmap > div small{display:block;color:var(--muted);font-size:.75rem;line-height:1.35;}
+  .chainmap > i{display:grid;place-items:center;align-content:center;padding:0 .25rem;color:var(--amber);font-style:normal;font-size:.64rem;font-weight:900;text-align:center;line-height:1.3;}
+  .chainmap > i::before{content:"\2192";display:block;font-size:1.35rem;line-height:1;}
+  @media(max-width:900px){.chainmap{grid-template-columns:1fr;}.chainmap > i::before{content:"\2193";}}
+  .handoff{display:flex;gap:.8rem;align-items:flex-start;margin:.85rem 0 .85rem 1.5rem;padding:.8rem 1rem;background:#fff;border:1px dashed rgba(26,26,26,.32);border-radius:9px;}
+  .handoff .ic{flex:0 0 auto;display:grid;place-items:center;width:1.85rem;height:1.85rem;background:var(--ink);color:#fff;border-radius:50%;font-size:1rem;font-weight:900;}
+  .handoff > div > b{display:block;font-size:.88rem;color:var(--ink);}
+  .handoff p b{display:inline;color:var(--ink);font-weight:800;}
+  .handoff p{margin:.28rem 0 0;color:var(--muted);font-size:.84rem;}
+  .handoff .warn{color:var(--amber);font-weight:800;}
+  .io-note{display:block;margin:0;padding:.62rem 1rem;background:var(--cream);border-top:1px solid var(--line);color:var(--muted);font-size:.83rem;}
+  .io-note b{color:var(--ink);}
+  .io-note .tag{display:inline-block;margin-right:.4rem;padding:.16rem .42rem;background:var(--ink);color:#fff;border-radius:4px;font-size:.6rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;}
+  .handoff code,.io-note code,.note code,.vs code,.cy code{padding:.06rem .3rem;background:var(--cream);border:1px solid var(--line);border-radius:4px;font-family:Consolas,monospace;font-size:.8rem;color:var(--ink);}
+  .note code{background:rgba(255,255,255,.75);}
+  pre .slot{padding:.06em .3em;background:#FFF1D6;box-shadow:inset 0 -2px 0 var(--amber);border-radius:3px;color:#7a4400;font-weight:800;}
+  pre .slot.empty{background:var(--cream);box-shadow:inset 0 -2px 0 var(--line);color:var(--muted);font-style:italic;font-weight:700;}
+
+  /* carry-over box: turns your step 2 output into the step 3 prompt */
+  .cy{margin:.2rem 0 1.1rem 1.5rem;padding:1rem 1.15rem;background:#fff;border:1px solid var(--line);border-top:5px solid var(--amber);border-radius:0 0 10px 10px;}
+  .cy h4{margin:0 0 .2rem;font-size:1rem;color:var(--ink);}
+  .cy .sub{margin:0 0 .85rem;color:var(--muted);font-size:.85rem;}
+  .cy-tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.85rem;padding:.3rem;background:var(--cream);border-radius:9px;}
+  .cy-tab{flex:1 1 auto;padding:.5rem .7rem;border:0;background:transparent;border-radius:7px;color:var(--muted);font-weight:800;font-size:.8rem;font-family:inherit;line-height:1.25;}
+  .cy-tab:hover{color:var(--ink);}
+  .cy-tab.is-on{background:var(--ink);color:#fff;}
+  .cy-pane{display:none;} .cy-pane.on{display:block;}
+  .cy label{display:block;margin-bottom:.25rem;color:var(--amber);font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .cy input,.cy textarea{width:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:6px;background:var(--cream);font-size:.9rem;color:var(--ink);font-family:inherit;line-height:1.5;}
+  .cy textarea{min-height:110px;resize:vertical;}
+  .cy input:focus,.cy textarea:focus{outline:2px solid var(--amber);outline-offset:1px;background:#fff;}
+  .cy-hint{margin:.5rem 0 0;color:var(--muted);font-size:.8rem;}
+  .cy-hint b{color:var(--ink);}
+  .cy-live{display:flex;align-items:center;gap:.4rem;margin:.7rem 0 0;padding:.5rem .7rem;background:var(--amber-soft);border-radius:7px;color:var(--amber);font-size:.79rem;font-weight:800;}
+  .cy-live::before{content:"\2193";font-weight:900;}
+
   /* option A / B blocks */
   .opt-or{display:flex;align-items:center;gap:.9rem;margin:1.1rem 0;color:var(--muted);font-size:.72rem;font-weight:900;letter-spacing:.12em;}
   .opt-or::before,.opt-or::after{content:"";flex:1;height:1px;background:var(--line);}
@@ -369,28 +411,81 @@
     <section class="panel" data-mode="adv" data-idx="3">
       <div class="kicker">Capability 2 · you try this</div>
       <h2>Advanced prompt chaining</h2>
-      <p class="lede">One real workflow, end to end &mdash; catch up on your week, turn it into a leader update, then into slides &mdash; without leaving the flow. Each prompt builds on the last.</p>
-      <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~8 min</span><span class="pill">Chat &rarr; Word &rarr; PowerPoint</span></div>
-      <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 1 · Catch up &mdash; find the signal</h4><button class="copy-button">Copy</button></div>
-        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">You are my chief of staff.</span> <span class="a">I am catching up after a busy week — identify the five developments most likely to need my attention.</span> <span class="c">Review my work from the past five business days across email, chats, meetings and files.</span> <span class="e">For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</span> <span class="eq">I am walking straight into a leadership check-in, so keep it skimmable and direct.</span></pre>
+      <p class="lede">One real workflow across three apps &mdash; catch up on your week, shape it into a leader update, then turn that into slides. The lesson here is not the three prompts. It is the <strong>two handoffs between them</strong>: what you carry from one step to the next, and how.</p>
+      <div class="meta"><span class="pill solid">Try it yourself</span><span class="pill">~10 min</span><span class="pill">2 prompts in Copilot Chat &middot; 1 in PowerPoint</span><span class="pill">Word is the bridge</span></div>
+      <div class="note blue"><span class="lbl">Read this before you start</span><strong>Copilot only knows what it can see.</strong> Inside one chat thread it can see every turn above it &mdash; so step&nbsp;2 can say &ldquo;the list you just gave me&rdquo; and it simply works. But Copilot in Word and Copilot in PowerPoint <b>cannot see your Copilot Chat conversation</b>. They are separate rooms. So the moment a chain crosses into another app, <b>you</b> have to carry the output over &mdash; as a file you attach with <code>/</code>, or as text you paste. That carry-over is the handoff, and it is the step most people skip without realising it.</div>
+      <div class="chainmap">
+        <div><span class="app-chip chat">Copilot Chat</span><b>1 &middot; Catch up</b><small>Out: 5 numbered developments + sources</small></div>
+        <i>same thread<br>context carries itself</i>
+        <div><span class="app-chip chat">Copilot Chat</span><b>2 &middot; Leader update</b><small>In: items 1&ndash;3 above &middot; Out: update saved to Word</small></div>
+        <i>via the file<br>you carry it</i>
+        <div><span class="app-chip ppt">PowerPoint</span><b>3 &middot; Slides</b><small>In: the Word file &middot; Out: 3 slides</small></div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 2 · Draft the leader update</h4><button class="copy-button">Copy</button></div>
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip chat">Copilot Chat</span>&nbsp; 1 &middot; Catch up &mdash; find the signal</h4><button class="copy-button">Copy</button></div>
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">You are my chief of staff.</span> <span class="a">From the top three of those, draft a written update for my direct leader.</span> <span class="c">Use the items you just identified as the source, and keep the sources next to each point.</span> <span class="e">Lead with what needs a decision, then progress, then open questions. Keep it under 200 words.</span> <span class="eq">My leader has fifteen minutes and needs to leave with one decision made &mdash; neutral and direct, no padding.</span></pre>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">I am catching up after a busy week — identify the five developments most likely to need my attention.</span> <span class="c">Review my work from the past five business days across email, chats, meetings and files.</span> <span class="e">Number them 1 to 5 so I can point back at them later. For each: what changed, why it matters now, the decision or next step it may need, and the source that supports it. Put the most time-sensitive first, keep each to two or three lines, and separate confirmed facts from things you are inferring.</span> <span class="eq">I am walking straight into a leadership check-in, so keep it skimmable and direct.</span></pre>
+        <p class="io-note"><span class="tag">Output</span><b>A numbered list of five developments, each with its source.</b> Leave it on screen &mdash; that list is the input for step 2.</p>
+      </div>
+      <div class="handoff">
+        <span class="ic">&darr;</span>
+        <div>
+          <b>Handoff 1 &mdash; stay in the same chat thread</b>
+          <p>Do <b>not</b> open a new chat. Prompt 2 says &ldquo;items 1, 2 and 3 from the list you just gave me&rdquo;, and that only works because step 1 is still sitting above it in the same conversation. This is the one handoff you get for free: Copilot re-reads its own answer, so you never restate your week.</p>
+          <p><span class="warn">If your chat reset or you closed the tab:</span> re-run step 1 before continuing. A fresh thread has no memory of it, and prompt 2 will quietly invent an update instead of building on yours.</p>
+        </div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; 3 · Turn it into slides</h4><button class="copy-button">Copy</button></div>
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip chat">Copilot Chat &mdash; same thread</span>&nbsp; 2 &middot; Draft the leader update</h4><button class="copy-button">Copy</button></div>
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">You are my chief of staff.</span> <span class="a">Turn the update you just wrote into three slides.</span> <span class="c">Use only what is in the update &mdash; do not add new claims.</span> <span class="e">One headline decision slide, one progress slide, one risks-and-next-steps slide. Maximum four bullets per slide, under twelve words each, and give me a one-line speaker note per slide.</span> <span class="eq">I am presenting these live to that same leadership group, so keep the wording tight enough to say out loud.</span></pre>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">Take items 1, 2 and 3 from the list you just gave me and draft a written update for my direct leader.</span> <span class="c">Use only those three items and the sources you already cited above — do not go back out and look for anything new.</span> <span class="e">Start with a short title line I can use as a filename. Then lead with what needs a decision, then progress, then open questions. Under 200 words, with the source kept next to each point.</span> <span class="eq">My leader has fifteen minutes and needs to leave with one decision made — neutral and direct, no padding.</span></pre>
+        <p class="io-note"><span class="tag">Output</span><b>A titled update, under 200 words.</b> Now put it into Word: use <b>Export</b> (or copy the reply) into a blank document and save it to OneDrive as <code>Leader update.docx</code>. That file is your handoff into the next app.</p>
       </div>
-      <p class="why"><b>Notice what makes this a chain.</b> Prompt 2 uses prompt 1&rsquo;s output as its source, and prompt 3 uses prompt 2&rsquo;s. You never re-explain the context &mdash; that&rsquo;s the whole technique.</p>
-      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify before you rely on it.</strong> Open at least one cited source. Chaining is powerful precisely because each step trusts the last &mdash; so an error in step one travels all the way to your slides.</div>
+      <div class="handoff">
+        <span class="ic">&darr;</span>
+        <div>
+          <b>Handoff 2 &mdash; you have to carry this one yourself</b>
+          <p>PowerPoint has no idea your chat ever happened. What it <i>can</i> see is your files &mdash; so the update has to travel across as something PowerPoint can reach. There are two ways to do it, and the box below writes the step&nbsp;3 prompt for you either way.</p>
+        </div>
+      </div>
+      <div class="cy">
+        <h4>Carry your step 2 output into step 3</h4>
+        <p class="sub">Pick how you want to hand it over. What you enter here drops straight into the prompt below &mdash; so the slides are built from <em>your</em> update, not a generic one.</p>
+        <div class="cy-tabs">
+          <button type="button" class="cy-tab is-on" data-cy-tab="file">A &middot; I saved it to Word <span style="font-weight:700;opacity:.75">(recommended)</span></button>
+          <button type="button" class="cy-tab" data-cy-tab="paste">B &middot; I&rsquo;ll paste the text straight in</button>
+        </div>
+        <div class="cy-pane on" data-cy-pane="file">
+          <label for="cy-fname">Name of the file you saved</label>
+          <input id="cy-fname" type="text" placeholder="Leader update.docx">
+          <p class="cy-hint">Export the step&nbsp;2 reply into Word and save it to <b>OneDrive</b> (not your desktop &mdash; Copilot cannot reach local-only files). Then in PowerPoint, type <code>/</code> in the Copilot box and pick this file so it is genuinely attached &mdash; typing the name alone is not enough.</p>
+        </div>
+        <div class="cy-pane" data-cy-pane="paste">
+          <label for="cy-text">Paste the update Copilot wrote in step 2</label>
+          <textarea id="cy-text" placeholder="Paste the full update here — it gets embedded into the prompt below, so PowerPoint has the content even without the file."></textarea>
+          <p class="cy-hint">Use this if OneDrive hasn&rsquo;t synced yet or you&rsquo;re on a locked-down machine. <b>The words themselves become the context</b> &mdash; that is what &ldquo;carrying the output&rdquo; literally means.</p>
+        </div>
+        <p class="cy-live">Live &mdash; the prompt below updates as you type, then hit Copy.</p>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp;<span class="app-chip ppt">PowerPoint</span>&nbsp; 3 &middot; Turn it into slides</h4><button class="copy-button">Copy</button></div>
+        <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
+        <pre><span class="r">You are my chief of staff.</span> <span class="a">Build me a three-slide deck from the leader update I wrote.</span> <span class="c" id="cy-ctx-file">Use only what is in the attached file <span class="slot empty" id="cy-slot-file">[name of the file you saved]</span> — do not add new claims, new numbers or filler slides.</span><span class="c" id="cy-ctx-paste" style="display:none">Use only the update between the markers below — do not add new claims, new numbers or filler slides.</span> <span class="e">Slide 1 the decision I need, slide 2 progress, slide 3 risks and next steps. Maximum four bullets per slide, under twelve words each, and a one-line speaker note under each slide.</span> <span class="eq">I am presenting this live to the same leadership group, so keep the wording tight enough to say out loud.</span><span id="cy-block-paste" style="display:none">
+
+--- MY UPDATE FROM STEP 2 ---
+<span class="slot empty" id="cy-slot-text">[paste your step 2 output in the box above]</span>
+--- END OF UPDATE ---</span></pre>
+        <p class="io-note"><span class="tag">Output</span><b>Three slides built from &mdash; and only from &mdash; the update you wrote in step 2.</b> If the slides mention things that were never in your update, the handoff did not land: the file wasn&rsquo;t really attached, or the text wasn&rsquo;t pasted. Fix it and run again.</p>
+      </div>
+      <div class="vs" style="margin-top:1.5rem">
+        <div><h5>Inside one app &mdash; context is free</h5><p>Steps 1 &rarr; 2 stay in the same chat thread, so Copilot re-reads everything above it on its own. That is why prompt 2 is so short: you are not re-explaining your week, you are pointing at an answer that is already on screen.</p></div>
+        <div><h5>Across apps &mdash; context must be carried</h5><p>Step 2 &rarr; 3 crosses into PowerPoint, which cannot see the chat. A file or pasted text is the only bridge. Skip it and the prompt still runs &mdash; it just quietly makes the content up.</p></div>
+      </div>
+      <p class="why"><b>This is the whole technique.</b> A chain is not three good prompts. It is three good prompts <b>plus</b> a deliberate decision at every arrow: does this step stay in the thread, or do I have to carry the output into the next app myself? <b>Champion tip:</b> when you teach this, make someone deliberately skip handoff 2 &mdash; watching Copilot produce a confident, completely invented deck teaches the lesson faster than any slide.</p>
+      <div class="note amber"><span class="lbl">Watch-out</span><strong>Verify the sources, and never assume the handoff landed.</strong> Open at least one cited source from step 1 &mdash; chaining is powerful precisely because each step trusts the last, so an error in step one travels all the way onto your slides. And if any step suddenly turns generic or plausible-but-vague, that is your tell that the handoff did not happen.</div>
 
       <h3 style="margin:1.9rem 0 .3rem">The same shape, different starting points</h3>
-      <p class="lede" style="margin:.4rem 0 1rem">The chain you just ran starts from your week. Most repeated work follows the same three-part shape &mdash; <strong>gather &rarr; shape &rarr; deliver</strong> &mdash; it just starts somewhere else. Find yours.</p>
+      <p class="lede" style="margin:.4rem 0 1rem">The chain you just ran starts from your week. Most repeated work follows the same three-part shape &mdash; <strong>gather &rarr; shape &rarr; deliver</strong> &mdash; it just starts somewhere else. Every arrow below is a handoff: ask yourself whether it can stay in one chat, or whether it crosses into another app and needs a file. Find yours.</p>
       <div class="pattern"><b>Start from your week</b><em>The one you just ran &mdash; for any recurring check-in or status.</em>
         <div class="flow"><span>Catch up on 5 days</span><i>&rarr;</i><span>Leader update</span><i>&rarr;</i><span>Slides</span></div></div>
       <div class="pattern"><b>Start from a document</b><em>A report, submission or policy lands and something has to come out of it.</em>
@@ -402,7 +497,7 @@
       <div class="prompt-card">
         <div class="prompt-header"><h4><span class="try-tag">Try it</span>&nbsp; Find your own chain</h4><button class="copy-button">Copy</button></div>
         <div class="race live"><span class="r">Role</span><span class="a">Action</span><span class="c">Context</span><span class="e">Expectation</span><span class="eq">EQ</span></div>
-        <pre><span class="r">Act as a workflow analyst looking at how I actually spend my time.</span> <span class="a">Find the multi-step outputs I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three.</span> <span class="c">Look at my work over the last 30 days across email, meetings, chats and files.</span> <span class="e">For each, show it as a three-step chain, say what starts it off, who receives the final output, and write the first prompt I would run to begin that chain. Then tell me which of the three is the best one to hand to Copilot first, and why.</span> <span class="eq">Keep it practical &mdash; I want to act on this today, not read an analysis.</span></pre>
+        <pre><span class="r">Act as a workflow analyst looking at how I actually spend my time.</span> <span class="a">Find the multi-step outputs I produce again and again &mdash; where I gather something, shape it, then deliver it to someone. Give me my top three.</span> <span class="c">Look at my work over the last 30 days across email, meetings, chats and files.</span> <span class="e">For each, show it as a three-step chain, say what starts it off, who receives the final output, and name which Microsoft 365 app each step would happen in. Then label every arrow as either &ldquo;same chat&rdquo; or &ldquo;hand off a file&rdquo;, and say what that file would be. Finish by writing the first prompt I would run to begin the chain, and tell me which of the three is the best one to hand to Copilot first, and why.</span> <span class="eq">Keep it practical &mdash; I want to act on this today, not read an analysis.</span></pre>
         <p class="why"><b>Ask yourself as you read it back:</b> which of these do I do most often &mdash; and what would it be worth if the first draft were already written?</p>
       </div>
       <div class="guide"><button class="guide-button secondary" data-go="2">&larr; Back</button><button class="guide-button" data-go="4">Next &rarr; Cowork orchestration</button></div>
@@ -902,6 +997,68 @@
     el.addEventListener("change", function(){ wsApply(); wsSave(); });
   });
   wsLoad(); wsApply();
+
+  // ---- chaining: carry step 2's output into the step 3 prompt ----
+  (function(){
+    var tabs  = document.querySelectorAll(".cy-tab");
+    if(!tabs.length) return;
+    var fname = document.getElementById("cy-fname");
+    var text  = document.getElementById("cy-text");
+    var mode  = "file";
+    var DEF_F = "[name of the file you saved]";
+    var DEF_T = "[paste your step 2 output in the box above]";
+    function setSlot(el, val, def){
+      if(!el) return;
+      if(val){ el.textContent = val; el.classList.remove("empty"); }
+      else   { el.textContent = def; el.classList.add("empty"); }
+    }
+    function cyApply(){
+      var f = (fname && fname.value || "").trim();
+      if(f && f.charAt(0) !== "/") f = "/" + f;
+      setSlot(document.getElementById("cy-slot-file"), f, DEF_F);
+      setSlot(document.getElementById("cy-slot-text"), (text && text.value || "").trim(), DEF_T);
+      var isFile = (mode === "file");
+      var cf = document.getElementById("cy-ctx-file");
+      var cp = document.getElementById("cy-ctx-paste");
+      var bp = document.getElementById("cy-block-paste");
+      if(cf) cf.style.display = isFile ? "" : "none";
+      if(cp) cp.style.display = isFile ? "none" : "";
+      if(bp) bp.style.display = isFile ? "none" : "";
+      document.querySelectorAll(".cy-pane").forEach(function(p){
+        p.classList.toggle("on", p.getAttribute("data-cy-pane") === mode);
+      });
+      tabs.forEach(function(t){
+        t.classList.toggle("is-on", t.getAttribute("data-cy-tab") === mode);
+      });
+    }
+    function cySave(){
+      try{
+        localStorage.setItem("mlChampionChain", JSON.stringify({
+          mode: mode, f: fname ? fname.value : "", t: text ? text.value : ""
+        }));
+      }catch(e){}
+    }
+    function cyLoad(){
+      try{
+        var raw = localStorage.getItem("mlChampionChain"); if(!raw) return;
+        var o = JSON.parse(raw);
+        if(o.mode) mode = o.mode;
+        if(fname && o.f) fname.value = o.f;
+        if(text  && o.t) text.value  = o.t;
+      }catch(e){}
+    }
+    tabs.forEach(function(t){
+      t.addEventListener("click", function(){
+        mode = t.getAttribute("data-cy-tab"); cyApply(); cySave();
+      });
+    });
+    [fname, text].forEach(function(el){
+      if(!el) return;
+      el.addEventListener("input",  function(){ cyApply(); cySave(); });
+      el.addEventListener("change", function(){ cyApply(); cySave(); });
+    });
+    cyLoad(); cyApply();
+  })();
 
   // ---- use-case worksheet: KPI picker + capture + submit ----
   // Destination for submitted use cases. Leave url empty to fall back to copy-only.
